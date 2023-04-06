@@ -3,7 +3,6 @@ package dongwook.shoppingprcatice.domain.main.controller;
 
 import dongwook.shoppingprcatice.domain.member.model.CurrentMember;
 import dongwook.shoppingprcatice.domain.member.model.Member;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
