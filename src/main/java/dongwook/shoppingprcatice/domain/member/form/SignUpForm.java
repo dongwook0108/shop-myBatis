@@ -11,6 +11,8 @@ public class SignUpForm {
 
     public static final String EMAIL_REGEXP_CHECK_PATTERN = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
 
+    public static final String NOT_EMPTY = "공백일 수 없습니다.";
+
     @NotEmpty
     @Length(min = 2, max = 10, message = "username은 2글자 이상 10글자 이하로 입력해 주세요" )
     private String username;
@@ -20,15 +22,15 @@ public class SignUpForm {
     @NotEmpty
     @Pattern(regexp = EMAIL_REGEXP_CHECK_PATTERN, message = "올바른 이메일이 아닙니다.")
     private String email;
-    @NotEmpty(message = "공백일 수 없습니다")
+    @NotEmpty(message = NOT_EMPTY)
     private String zipcode;
-    @NotEmpty(message = "공백일 수 없습니다")
+    @NotEmpty(message = NOT_EMPTY)
     private String password;
-    @NotEmpty(message = "공백일 수 없습니다")
+    @NotEmpty(message = NOT_EMPTY)
     private String passwordConfirm;
-    @NotEmpty(message = "공백일 수 없습니다")
+    @NotEmpty(message = NOT_EMPTY)
     private String address;
-    @NotEmpty(message = "공백일 수 없습니다")
+    @NotEmpty(message = NOT_EMPTY)
     private String addressDetail;
 
 }
