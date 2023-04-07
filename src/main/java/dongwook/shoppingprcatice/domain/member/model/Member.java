@@ -11,7 +11,7 @@ public class Member {
     private Long id;
 
     private String username;
-    private String phone;
+    private String phoneNumber;
     private String email;
     private String zipcode;
     private String password;
@@ -21,7 +21,7 @@ public class Member {
 
     public Member(SignUpForm form) {
         this.username = form.getUsername();
-        this.phone = form.getPhone();
+        this.phoneNumber = form.getPhoneNumber();
         this.email = form.getEmail();
         this.zipcode = form.getZipcode();
         this.password = form.getPassword();
