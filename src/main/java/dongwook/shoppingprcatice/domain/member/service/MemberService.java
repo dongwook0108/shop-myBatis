@@ -19,13 +19,11 @@ public class MemberService implements UserDetailsService {
     private final MemberMapper memberMapper;
     private final PasswordEncoder passwordEncoder;
 
-    //save
     public void save(SignUpForm form) {
         form.setPassword(passwordEncoder.encode(form.getPassword()));
         Member member = new Member(form);
         memberMapper.save(member);
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
