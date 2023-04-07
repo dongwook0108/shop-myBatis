@@ -9,7 +9,6 @@ import lombok.Getter;
 public class Member {
 
     private Long id;
-
     private String username;
     private String phoneNumber;
     private String email;
