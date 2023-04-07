@@ -10,9 +10,8 @@ import org.springframework.validation.Validator;
 @Component
 @RequiredArgsConstructor
 public class SignUpValidator implements Validator {
-    // todo : 확인
-    private final MemberMapper memberMapper;
 
+    private final MemberMapper memberMapper;
 
     @Override
     public boolean supports(Class<?> clazz) {
