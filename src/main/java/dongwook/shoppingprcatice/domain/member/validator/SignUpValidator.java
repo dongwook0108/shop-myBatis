@@ -24,8 +24,8 @@ public class SignUpValidator implements Validator {
 
         SignUpForm signUpForm = (SignUpForm) target;
 
-        if (memberMapper.existsByPhone(signUpForm.getPhone())) {
-            errors.rejectValue("phone", "invalid.phone", "이미 사용중인 핸드폰 번호입니다.");
+        if (memberMapper.existsByPhone(signUpForm.getPhoneNumber())) {
+            errors.rejectValue("phoneNumber", "invalid.phoneNumber", "이미 사용중인 핸드폰 번호입니다.");
         }
 
         if (memberMapper.existsByEmail(signUpForm.getEmail())) {

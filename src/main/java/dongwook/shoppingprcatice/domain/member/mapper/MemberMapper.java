@@ -10,12 +10,12 @@ public interface MemberMapper {
 
     //save
     @Insert(value = "INSERT INTO MEMBER(username, phone, email, zipcode, password, address, addressDetail) " +
-            "VALUES(#{member.username}, #{member.phone},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail})")
+            "VALUES(#{member.username}, #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail})")
     void save(@Param(value = "member") Member member);
 
 
-    @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phone = #{phone})")
-    boolean existsByPhone(@Param(value = "phone") String phone);
+    @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phone = #{phoneNumber})")
+    boolean existsByPhone(@Param(value = "phoneNumber") String phoneNumber);
 
     @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE email = #{email})")
     boolean existsByEmail(@Param(value = "email") String email);
