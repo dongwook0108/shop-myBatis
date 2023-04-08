@@ -8,11 +8,9 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
-    //save
     @Insert(value = "INSERT INTO MEMBER(username, phone, email, zipcode, password, address, addressDetail) " +
             "VALUES(#{member.username}, #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail})")
     void save(@Param(value = "member") Member member);
-
 
     @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phone = #{phoneNumber})")
     boolean existsByPhone(@Param(value = "phoneNumber") String phoneNumber);
