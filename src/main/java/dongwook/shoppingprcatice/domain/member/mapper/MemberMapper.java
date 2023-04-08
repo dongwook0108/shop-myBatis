@@ -28,6 +28,7 @@ public interface MemberMapper {
             @Result(property = "address", column = "address"),
             @Result(property = "addressDetail", column = "addressDetail"),
     })
-    @Select(value = "SELECT * FROM MEMBER WHERE email = #{username}")
+    @Select(value = "SELECT member_id, username, phone, email, zipcode, password, address, addressDetail FROM MEMBER WHERE email = #{username}")
     Member findByEmail(@Param(value = "username") String username);
+
 }
