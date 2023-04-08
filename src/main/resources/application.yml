@@ -1,6 +1,14 @@
+# MYSQL
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/shopping-study
+#    username: root
+#    password:
+#    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
+
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/shopping-study
-    username: root
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
     password:
-    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
+
