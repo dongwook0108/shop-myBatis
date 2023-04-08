@@ -23,7 +23,7 @@ public interface MemberMapper {
     @Results(id = "MemberMap", value = {
             @Result(property = "id", column = "member_id"),
             @Result(property = "username", column = "username"),
-            @Result(property = "phone", column = "phone"),
+            @Result(property = "phoneNumber", column = "phone"),
             @Result(property = "email", column = "email"),
             @Result(property = "zipcode", column = "zipcode"),
             @Result(property = "password", column = "password"),
