@@ -8,11 +8,17 @@
 - Java11, Spring Boot, Thymeleaf, MyBatis, H2, IntelliJ, Gradle
 
 ---
-<H3> git 브랜치, git 로그 prefix 전략 </H3>
+<H3>프로젝트 주요 관심사</H3>
 
+- git 브랜치 전략
 
+- git 로그 prefix 전략
+
+- 코딩 컨벤션 정하기
+
+- 패키지 구조
 ---
-### 주요 기능
+### 프로젝트 주요 기능
 - 사용자
 1. 회원가입, 탈퇴 / 로그인, 로그아웃 / 소셜로그인(카카오)
 2. 상품페이지 / 주문 / 리뷰
