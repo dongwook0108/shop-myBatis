@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @Slf4j
 @SpringBootTest
@@ -24,7 +26,7 @@ class MemberMapperTest {
 
     @Test
     @DisplayName("save")
-    void 회원저장(){
+    void 회원저장() {
         SignUpForm signUpForm = new SignUpForm();
 
         signUpForm.setUsername("rrrwww");
@@ -39,7 +41,8 @@ class MemberMapperTest {
         Member member = new Member(signUpForm);
         memberMapper.save(member);
 
-        log.info("signUpForm={}", signUpForm);
-        log.info("member={}", member);
+        Member byEmail = memberMapper.findByEmail("test13213@naver.com");
+
+        assertThat(byEmail).isNotNull();
     }
 }

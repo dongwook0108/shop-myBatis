@@ -31,9 +31,4 @@ public class Member {
         this.addressDetail = form.getAddressDetail();
     }
 
-//    public void countId(Long memberId) {
-//        this.id = memberId;
-//    }
-
-
 }
