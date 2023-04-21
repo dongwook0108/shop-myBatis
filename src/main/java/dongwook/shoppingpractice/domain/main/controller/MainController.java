@@ -20,6 +20,7 @@ public class MainController {
 
     @GetMapping(value = "/login")
     public String login(Model model) {
+        System.out.println("model = " + model);
         return "sign-in";
     }
 
