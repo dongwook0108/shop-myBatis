@@ -12,7 +12,7 @@
 
 - git-branch 
    > **Git-Flow** 전략
-   > <img src="/Users/dongwook/Desktop/git-flow.png" width="550px" height="700px" title="px(픽셀) 크기 설정" alt="gig-flow"></img><br/>
+   > ![git-flow](https://user-images.githubusercontent.com/121872570/233758368-c1e1b7d2-6dba-4339-9e56-a2e22c919bea.png)
    >
    > 기능별로 브랜치를 나누어 작업하고 feature 브랜치에 대해 pull request를 통한 리뷰 완료 후 Merge를 하고 있습니다.   
    > release, hotfix 브랜치는 향후 작업 수행이 필요하지 않다고 판다 하여 적용하지 않았습니다.
