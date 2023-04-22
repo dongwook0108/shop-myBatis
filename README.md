@@ -22,19 +22,29 @@
    >  참고문헌 <https://sungjk.github.io/2023/02/20/branch-strategy.html/>
 
 - git log prefix 
-   > **도메인형 디렉토리** 구조  
-   > 사용이유
+  >  - chore: 패키지 매니저 설정할 경우, 코드 수정 없이 설정을 변경            
+  >  - docs: documentation 변경             
+  >  - feat: 새로운 기능                      
+  >  - fix: 버그 수정           
+  >  - refactor: 버그를 수정하거나 기능을 추가하지 않는 코드 변경, 리팩토링              
+  >  - style: 코드 의미에 영향을 주지 않는 변경사항               
+  >  - test: 누락된 테스트 추가 또는 기존 테스트 수정            
+  >  - revert: 작업 되돌리기  
+  >
+  >  참고문헌 <http://karma-runner.github.io/0.10/dev/git-commit-msg.html/>
 
 - code convention 
-   > **도메인형 디렉토리** 구조  
-   > 사용이유
+   > **구글의 코딩 컨벤션** 사용    
+   > 코드 규약은 소프트웨어의 가독성을 향상시켜 엔지니어가 새로운 코드를 더 빠르고 철저하게 이해할 수 있도록 합니다.  
+   > 
+   >  참고문헌 <https://www.oracle.com/java/technologies/javase/codeconventions-introduction.html/>
 
 
  + directory
    > **도메인형 디렉토리** 구조  
    > 사용이유
-   >  >-계층형보다 도메인형으로 표현했을 경우 훨씬 더 직관적이며 해당 도메인을 이해하는 것에도 효율적     
-   > 참고문헌 <https://cheese10yun.github.io/spring-guide-directory//>
+   >  > 계층형보다 도메인형으로 표현했을 경우 훨씬 더 직관적이며 해당 도메인을 이해하는 것에도 효율적입니다.     
+   > 참고문헌 <https://cheese10yun.github.io/spring-guide-directory/>
 
 
 ---
