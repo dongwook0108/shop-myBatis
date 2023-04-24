@@ -6,8 +6,10 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface MemberMapper {
 
-    @Insert(value = "INSERT INTO MEMBER(username, phoneNumber, email, zipcode, password, address, addressDetail) " +
-            "VALUES(#{member.username}, #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail})")
+    @Insert(value =
+            "INSERT INTO MEMBER(username, phoneNumber, email, zipcode, password, address, addressDetail) "
+                    +
+                    "VALUES(#{member.username}, #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail})")
     void save(@Param(value = "member") Member member);
 
     @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phoneNumber = #{phoneNumber})")

@@ -11,4 +11,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.PARAMETER) // (2)
 @AuthenticationPrincipal(expression = "#this == 'anonymousUser' ? null : member")
 public @interface CurrentMember {
+
 }
