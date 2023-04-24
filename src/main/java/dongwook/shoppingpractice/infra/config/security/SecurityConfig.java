@@ -39,7 +39,7 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> {
             web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-            web.ignoring().antMatchers("/fonts/**");
+            web.ignoring().antMatchers("/fonts/**", "/error");
         };
     }
 
