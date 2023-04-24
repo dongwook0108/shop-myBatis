@@ -20,6 +20,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "/member")
 @RequiredArgsConstructor
 public class MemberController {
+
     private final MemberService memberService;
     private final SignUpValidator signUpValidator;
 
