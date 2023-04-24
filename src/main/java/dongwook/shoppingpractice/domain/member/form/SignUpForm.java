@@ -18,10 +18,10 @@ public class SignUpForm {
     public static final String NOT_EMPTY = "공백일 수 없습니다.";
 
     @NotEmpty
-    @Length(min = 2, max = 10, message = "username은 2글자 이상 10글자 이하로 입력해 주세요" )
+    @Length(min = 2, max = 10, message = "username은 2글자 이상 10글자 이하로 입력해 주세요")
     private String username;
     @NotEmpty
-    @Length(min = 10, max = 10, message = "전화번호는 10자리 이상 11자리 이하로 입력해 주세요" )
+    @Length(min = 10, max = 10, message = "전화번호는 10자리 이상 11자리 이하로 입력해 주세요")
     private String phoneNumber;
     @NotEmpty
     @Pattern(regexp = EMAIL_REGEXP_CHECK_PATTERN, message = "올바른 이메일이 아닙니다.")
