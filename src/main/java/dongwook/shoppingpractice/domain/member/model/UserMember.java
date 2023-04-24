@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 public class UserMember extends User {
 
-    private Member member;
+    private final Member member;
 
     public UserMember(Member member) {
         super(member.getEmail(), member.getPassword(), List.of(new SimpleGrantedAuthority("USER")));
