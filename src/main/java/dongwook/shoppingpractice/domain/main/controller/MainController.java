@@ -20,7 +20,7 @@ public class MainController {
 
     @GetMapping(value = "/login")
     public String login() {
-        return "sign-in";
+        return "member/sign-in";
     }
 
 }
