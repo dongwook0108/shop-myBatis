@@ -33,4 +33,8 @@ public class MemberService implements UserDetailsService {
         }
         return new UserMember(member);
     }
+
+    public boolean checkPassword(Member member, String password) {
+        return passwordEncoder.matches(password, member.getPassword());
+    }
 }

@@ -1,6 +1,8 @@
 package dongwook.shoppingpractice.domain.member.controller;
 
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
+import dongwook.shoppingpractice.domain.member.model.CurrentMember;
+import dongwook.shoppingpractice.domain.member.model.Member;
 import dongwook.shoppingpractice.domain.member.validator.SignUpValidator;
 import dongwook.shoppingpractice.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -45,4 +47,25 @@ public class MemberController {
         return "redirect:/login";
     }
 
+    @GetMapping(value = "/check-password")
+    public String checkPasswordPage() {
+        return "member/check-password";
+    }
+
+    @PostMapping(value = "/check-password")
+    public String checkPassword(@CurrentMember Member member, String password, Model model) {
+
+        if (memberService.checkPassword(member, password)) {
+            return "redirect:/member/my-page";
+        }
+
+        model.addAttribute("error", "비밀번호가 틀렸습니다.");
+        return "member/check-password";
+    }
+
+    @GetMapping(value = "/my-page")
+    public String myPage(@CurrentMember Member member, Model model) {
+        model.addAttribute("findMember", member);
+        return "member/my-page";
+    }
 }
