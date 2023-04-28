@@ -31,4 +31,6 @@ public interface MemberMapper {
     @Select(value = "SELECT member_id, username, phoneNumber, email, zipcode, password, address, addressDetail FROM MEMBER WHERE email = #{username}")
     Member findByEmail(@Param(value = "username") String username);
 
+    @Update(value = "UPDATE MEMBER SET phoneNumber=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, addressDetail=#{member.addressDetail} WHERE member_id = #{member.id}")
+    void updateMember(@Param(value = "member") Member member);
 }

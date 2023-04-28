@@ -31,4 +31,24 @@ public class Member {
         this.addressDetail = form.getAddressDetail();
     }
 
+    public void updatePhoneNumber(String phone) {
+        this.phoneNumber = phone;
+    }
+
+    public void updateEmail(String email) {
+        this.email = email;
+    }
+
+    public void updateZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public void updateAddress(String address) {
+        this.address = address;
+    }
+
+    public void updateAddressDetail(String addressDetail) {
+        this.addressDetail = addressDetail;
+    }
+
 }

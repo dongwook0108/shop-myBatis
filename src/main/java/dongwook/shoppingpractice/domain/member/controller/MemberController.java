@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.domain.member.controller;
 
+import dongwook.shoppingpractice.domain.member.form.EditForm;
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
 import dongwook.shoppingpractice.domain.member.model.CurrentMember;
 import dongwook.shoppingpractice.domain.member.model.Member;
@@ -67,5 +68,19 @@ public class MemberController {
     public String myPage(@CurrentMember Member member, Model model) {
         model.addAttribute("findMember", member);
         return "member/my-page";
+    }
+
+    @GetMapping(value = "/my-page/edit")
+    public String myPageEditHome(@CurrentMember Member member, Model model) {
+        model.addAttribute(member);
+        model.addAttribute(new EditForm(member));
+        return "member/my-page-edit";
+    }
+
+    @PostMapping(value = "/my-page/edit")
+    public String myPageEdit(@CurrentMember Member member, EditForm editForm) {
+        memberService.editMember(member, editForm);
+
+        return "redirect:/member/my-page";
     }
 }

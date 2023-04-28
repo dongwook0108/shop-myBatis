@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.domain.member.service;
 
+import dongwook.shoppingpractice.domain.member.form.EditForm;
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
 import dongwook.shoppingpractice.domain.member.mapper.MemberMapper;
 import dongwook.shoppingpractice.domain.member.model.Member;
@@ -36,5 +37,16 @@ public class MemberService implements UserDetailsService {
 
     public boolean checkPassword(Member member, String password) {
         return passwordEncoder.matches(password, member.getPassword());
+    }
+
+    public void editMember(Member member, EditForm editForm) {
+
+        member.updatePhoneNumber(editForm.getPhoneNumber());
+        member.updateEmail(editForm.getEmail());
+        member.updateZipcode(editForm.getZipcode());
+        member.updateAddress(editForm.getAddress());
+        member.updateAddressDetail(editForm.getAddressDetail());
+
+        memberMapper.updateMember(member);
     }
 }
