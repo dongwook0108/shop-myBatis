@@ -19,13 +19,12 @@
                 <div class="bg-white tm-block h-100">
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
-                            <h2 class="tm-block-title d-inline-block">Products</h2>
+                            <h2 class="tm-block-title d-inline-block">상품 목록</h2>
 
                         </div>
                         <div class="col-md-4 col-sm-12 text-right">
-                            <a th:href="@{/admin/products/add}" class="btn btn-small btn-primary">Add
-                                New
-                                Product</a>
+                            <a th:href="@{/admin/products/add}" class="btn btn-small btn-primary">상품
+                                추가</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -33,10 +32,9 @@
                             <thead>
                             <tr class="tm-bg-gray">
                                 <th scope="col">&nbsp;</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col" class="text-center">Sold</th>
-                                <th scope="col" class="text-center">Stock</th>
-                                <th scope="col" class="text-center">Price</th>
+                                <th scope="col">상품명</th>
+                                <th scope="col" class="text-center">가격</th>
+                                <th scope="col" class="text-center">등록일</th>
                                 <th scope="col">&nbsp;</th>
                             </tr>
                             </thead>
@@ -48,10 +46,8 @@
                                 <td>
                                     <a th:href="@{/admin/products/{productId}(productId=${product.productId})}"
                                        th:text="${product.name}"></a></td>
-                                <!--                                <td class="tm-product-name"  th:text="${product.name}">1. In malesuada placerat (hover)</td>-->
-                                <td class="text-center" th:text="${product.stock}">145</td>
+                                <td class="text-center" th:text="${product.price}">145</td>
                                 <td class="text-center" th:text="${product.stock}">255</td>
-                                <td class="text-center" th:text="${product.price}">255</td>
                                 <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
                             </tr>
                             </tbody>
@@ -84,7 +80,7 @@
 
             <div class="col-xl-4 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                 <div class="bg-white tm-block h-100">
-                    <h2 class="tm-block-title d-inline-block">Product Categories</h2>
+                    <h2 class="tm-block-title d-inline-block">상품 카테고리</h2>
                     <table class="table table-hover table-striped mt-3">
                         <tbody>
                         <tr>
@@ -116,7 +112,7 @@
                         </tbody>
                     </table>
 
-                    <a href="#" class="btn btn-primary tm-table-mt">Add New Category</a>
+                    <a href="#" class="btn btn-primary tm-table-mt">새로운 품목 추가</a>
                 </div>
             </div>
         </div>
