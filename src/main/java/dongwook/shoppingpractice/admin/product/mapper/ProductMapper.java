@@ -14,9 +14,9 @@ public interface ProductMapper {
 
     // 쿼리만 ->
     @Insert(value =
-            "INSERT INTO PRODUCT(name, description, simpleDescription, stock, price) "
+            "INSERT INTO PRODUCT(name, description, simple_description, price, updated_date, created_date) "
                     +
-                    "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription}, #{product.stock},#{product.price})")
+                    "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.updatedDate}, #{product.createdDate})")
     void save(@Param(value = "product") ProductForm product);
     //  ->
 

@@ -40,15 +40,14 @@
                             </thead>
                             <tbody>
                             <tr th:each="product : ${productList}">
-                                <th scope="row">
-                                    <input type="checkbox" aria-label="Checkbox">
-                                </th>
+                                <td></td>
                                 <td>
                                     <a th:href="@{/admin/products/{productId}(productId=${product.productId})}"
                                        th:text="${product.name}"></a></td>
                                 <td class="text-center" th:text="${product.price}">145</td>
-                                <td class="text-center" th:text="${product.stock}">255</td>
-                                <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
+                                <td class="text-center" th:text="${product.simpleDescription}">255
+                                </td>
+                                <td></td>
                             </tr>
                             </tbody>
                         </table>
