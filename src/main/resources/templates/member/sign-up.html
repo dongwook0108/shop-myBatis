@@ -18,6 +18,7 @@
 </section>
 
 <main>
+    <nav th:replace="~{fragments.html::nav}"></nav>
 
     <section class="sign-in-form section-padding">
         <div class="container">
@@ -46,10 +47,12 @@
 
                     <div class="row">
                         <div class="col-lg-8 col-11 mx-auto">
-                            <form role="form" method="post" th:action="@{/member/sign-up}" th:object="${signUpForm}">
+                            <form role="form" method="post" th:action="@{/member/sign-up}"
+                                  th:object="${signUpForm}">
 
-                                <div th:if="${#fields.hasGlobalErrors()}">
-                                    <p class="field-error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메시지</p>
+                                <div th:if="${#fields.hasGlobalErrors()}">`
+                                    <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+                                       th:text="${err}">전체 오류 메시지</p>
                                 </div>
 
                                 <div class="form-floating">
@@ -58,7 +61,7 @@
                                            th:errorclass="field-error"
                                            th:field="*{username}" required>
                                     <label for="name">username</label>
-                                    <div class="field-error" th:errors="*{username}" />
+                                    <div class="field-error" th:errors="*{username}"></div>
                                 </div>
 
                                 <div class="form-floating  my-4">
@@ -68,7 +71,7 @@
                                            th:errorclass="field-error"
                                            required>
                                     <label for="phoneNumber">phone number</label>
-                                    <div class="field-error" th:errors="*{phoneNumber}" />
+                                    <div class="field-error" th:errors="*{phoneNumber}"></div>
                                 </div>
 
                                 <div class="form-floating  my-4">
@@ -82,7 +85,7 @@
                                 <div class="form-floating my-4">
                                     <input type="password" name="password" id="password" pattern="[0-9a-zA-Z]{4,10}"
                                            class="form-control" placeholder="Password" th:field="*{password}" required>
-                                    <div class="field-error" th:errors="*{password}" />
+                                    <div class="field-error" th:errors="*{password}"></div>
                                     <label for="password">Password</label>
                                     <p class="text-center">* shall include 0-9 a-z A-Z in 4 to 10 characters</p>
                                 </div>
@@ -92,7 +95,7 @@
                                            pattern="[0-9a-zA-Z]{4,10}" class="form-control" placeholder="Password"
                                            th:field="*{passwordConfirm}" required>
                                     <label for="confirm_password">Password Confirmation</label>
-                                    <div class="field-error" th:errors="*{passwordConfirm}" />
+                                    <div class="field-error" th:errors="*{passwordConfirm}"></div>
                                 </div>
                                 <div class="row">
                                     <div class="form-floating col-9  my-3">
@@ -100,7 +103,7 @@
                                                class="form-control" placeholder="Zipcode address" th:field="*{zipcode}"
                                                required>
                                         <label for="zipcode">Zipcode</label>
-                                        <div class="field-error" th:errors="*{zipcode}" />
+                                        <div class="field-error" th:errors="*{zipcode}"></div>
                                     </div>
                                     <input class="btn-light col-3  my-4" type="button"
                                            onclick="sample6_execDaumPostcode()"
@@ -110,15 +113,16 @@
                                     <input type="text" name="address" id="address"
                                            class="form-control" placeholder="Address" th:field="*{address}" required>
                                     <label for="address">Address</label>
-                                    <div class="field-error" th:errors="*{address}" />
+                                    <div class="field-error" th:errors="*{address}"></div>
                                 </div>
                                 <div class="form-floating  my-4">
                                     <input type="text" name="address_detail" id="address_detail"
                                            class="form-control" placeholder="Address Detail" th:field="*{addressDetail}"
                                            required>
                                     <label for="address_detail">Address Detail</label>
-                                    <div class="field-error" th:errors="*{addressDetail}" />
+                                    <div class="field-error" th:errors="*{addressDetail}"></div>
                                 </div>
+
                                 <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
                                     Create account
                                 </button>
@@ -138,9 +142,7 @@
     </section>
 
 </main>
-<th:block th:replace="fragments.html::footer">
-
-</th:block>
+<footer th:replace="~{fragments.html::footer}"></footer>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {

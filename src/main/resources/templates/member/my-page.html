@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head"></head>
+
+<body>
+
+<section class="preloader">
+    <div class="spinner">
+        <span class="sk-inner-circle"></span>
+    </div>
+</section>
+<!--<div th:if="${message}" th:text="${message}"></div>-->
+
+<main>
+    <nav th:replace="~{fragments.html::nav}"></nav>
+
+    <!--    <th:block th:if="${#authentication.getName().equals(findMember.getId())}">-->
+    <th:block th:if="${#authentication.getName().equals(findMember.email)}">
+        <section class="sign-in-form section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 mx-auto col-12">
+                        <div class="col-lg-8 mx-auto col-12">
+
+                            <h1 class="hero-title text-center mb-5">My-Page</h1>
+
+                            <div class="div-separator w-50 m-auto my-5"></div>
+
+                            <div class="row">
+                                <div class="col-lg-8 col-11 mx-auto">
+                                    <form role="form" method="post"
+                                          th:object="${findMember}"
+                                          th:action="@{/member/my-page/edit}">
+
+                                        <div class="form-floating">
+                                            <input type="text" name="username" id="username"
+                                                   class="form-control" placeholder="username"
+                                                   th:field="*{username}"
+                                                   readonly>
+                                            <label for="username">username</label>
+                                        </div>
+
+                                        <div class="form-floating  my-4">
+                                            <input type="text" name="phoneNumber" id="phoneNumber"
+                                                   class="form-control" placeholder="phone number"
+                                                   th:field="*{phoneNumber}"
+                                                   readonly>
+                                            <label for="phoneNumber">phone number</label>
+                                        </div>
+
+                                        <div class="form-floating  my-4">
+                                            <input type="email" name="email" id="email"
+                                                   class="form-control" placeholder="Email address"
+                                                   th:field="*{email}"
+                                                   readonly>
+                                            <label for="email">Email address</label>
+                                        </div>
+
+                                        <div class="form-floating  my-4">
+                                            <input type="text" name="zipcode" id="zipcode"
+                                                   class="form-control" placeholder="zipcode"
+                                                   th:field="*{zipcode}"
+                                                   readonly>
+                                            <label for="zipcode">zipcode</label>
+                                        </div>
+
+                                        <div class="form-floating  my-4">
+                                            <input type="text" name="address" id="address"
+                                                   class="form-control" placeholder="Address"
+                                                   th:field="*{address}"
+                                                   readonly>
+                                            <label for="address">Address</label>
+                                        </div>
+
+                                        <div class="form-floating  my-4">
+                                            <input type="text" name="address_detail"
+                                                   id="address_detail"
+                                                   class="form-control" placeholder="Address Detail"
+                                                   th:field="*{addressDetail}"
+                                                   readonly>
+                                            <label for="address_detail">Address Detail</label>
+                                        </div>
+
+                                    </form>
+                                    <div>
+                                        <!--버튼은 th:href 사용 불가-->
+                                        <button type="submit"
+                                                class="btn custom-btn form-control mt-4 mb-3"
+                                                th:onclick="|location.href='@{/member/my-page/edit}'|">
+                                            수정 하기
+                                        </button>
+
+                                        <button type="submit"
+                                                class="btn custom-btn form-control mt-4 mb-3"
+                                                th:onclick="|location.href='@{/}'|">
+                                            취소
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </th:block>
+
+    <th:block th:unless="${#authentication.getName().equals(findMember.email)}">
+        <h1>잘못된 페이지로 접근(my-page)</h1>
+        <div th:if="${message}" th:text="${message}"></div>
+    </th:block>
+
+</main>
+<th:block th:replace="fragments.html::footer"></th:block>
+
+</body>
+
+</html>

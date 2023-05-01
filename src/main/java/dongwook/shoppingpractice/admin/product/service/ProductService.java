@@ -1,0 +1,33 @@
+package dongwook.shoppingpractice.admin.product.service;
+
+import dongwook.shoppingpractice.admin.product.form.ProductEditForm;
+import dongwook.shoppingpractice.admin.product.form.ProductForm;
+import dongwook.shoppingpractice.admin.product.mapper.ProductMapper;
+import dongwook.shoppingpractice.admin.product.model.Product;
+import java.util.List;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class ProductService {
+
+    private final ProductMapper productMapper;
+
+    public void save(ProductForm form) {
+        productMapper.save(form);
+    }
+
+    public List<Product> productList() {
+        return productMapper.productList();
+    }
+
+    public Product findById(Long productId) {
+        return productMapper.findById(productId);
+    }
+
+    public void updateProduct(Product product, ProductEditForm editForm) {
+        product.updateProductName(editForm.getName());
+        productMapper.updateProduct(product);
+    }
+}
