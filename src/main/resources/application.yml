@@ -1,31 +1,6 @@
 spring:
-  h2:
-    console:
-      enabled: true
-
   datasource:
-    generate-unique-name: false
-    url: jdbc:h2:mem:test
-    username: sa
+    url: jdbc:mysql://localhost:3306/shopping-study
+    username: root
     password:
-    driver-class-name: org.h2.Driver
-
-  sql:
-    init:
-      schema-locations: classpath:schema.sql
-      mode: always
-
-# h2 database web -> properties
-#spring.h2.console.enabled=true
-#spring.datasource.generate-unique-name=false
-#spring.datasource.name=test
-
-# spring - h2 properties 설정법
-#spring.datasource.driverClassName=org.h2.Driver
-#spring.datasource.url=jdbc:h2:mem:test
-#spring.datasource.username=sa
-#spring.datasource.password=
-#spring.sql.init.mode=always
-#spring.sql.init.schema-locations=classpath:schema.sql
-#spring.sql.init.data-locations=classpath:data.sql
-#spring.devtools.add-properties = false
+    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver

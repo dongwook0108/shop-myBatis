@@ -3,7 +3,6 @@ package dongwook.shoppingpractice.infra.config.security;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -15,13 +14,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(csrf -> csrf.ignoringAntMatchers("/h2-console/**"))
-                .authorizeRequests()
-                .antMatchers("/", "/login", "/member/sign-up", "/member/**", "/h2-console/**").permitAll()
+        http.authorizeRequests()
+                .antMatchers("/", "/login", "/member/sign-up", "/products/**", "/api/**")
+                .permitAll()
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .headers(headers -> headers.frameOptions().sameOrigin())
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
@@ -32,14 +30,13 @@ public class SecurityConfig {
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/");
         return http.build();
-
     }
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> {
             web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-            web.ignoring().antMatchers("/fonts/**");
+            web.ignoring().antMatchers("/fonts/**", "/error");
         };
     }
 

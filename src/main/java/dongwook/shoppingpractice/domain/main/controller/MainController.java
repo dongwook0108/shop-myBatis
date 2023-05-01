@@ -1,6 +1,5 @@
 package dongwook.shoppingpractice.domain.main.controller;
 
-
 import dongwook.shoppingpractice.domain.member.model.CurrentMember;
 import dongwook.shoppingpractice.domain.member.model.Member;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-    @GetMapping()
+    @GetMapping
     public String index(@CurrentMember Member member, Model model) {
         if (member != null) {
             model.addAttribute(member);
@@ -20,7 +19,9 @@ public class MainController {
 
     @GetMapping(value = "/login")
     public String login(Model model) {
+
         return "sign-in";
     }
+
 
 }

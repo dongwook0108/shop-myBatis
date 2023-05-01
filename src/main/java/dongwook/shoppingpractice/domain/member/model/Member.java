@@ -2,17 +2,16 @@ package dongwook.shoppingpractice.domain.member.model;
 
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Getter
-@ToString
 @AllArgsConstructor
-@NoArgsConstructor
+@EqualsAndHashCode
 public class Member {
 
     private Long id;
+    private String role;
     private String username;
     private String phoneNumber;
     private String email;
@@ -21,7 +20,13 @@ public class Member {
     private String address;
     private String addressDetail;
 
+
     public Member(SignUpForm form) {
+        if (form.getEmail().contains("@dongwook.com")) {
+            this.role = MemberRole.ADMIN.name();
+        } else {
+            this.role = MemberRole.USER.name();
+        }
         this.username = form.getUsername();
         this.phoneNumber = form.getPhoneNumber();
         this.email = form.getEmail();
@@ -31,9 +36,15 @@ public class Member {
         this.addressDetail = form.getAddressDetail();
     }
 
-//    public void countId(Long memberId) {
-//        this.id = memberId;
-//    }
+    public void updatePhone(String phone) {
+        this.phoneNumber = phone;
+    }
 
+    public void updateEmail(String email) {
+        this.email = email;
+    }
 
+    public void updateZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
 }

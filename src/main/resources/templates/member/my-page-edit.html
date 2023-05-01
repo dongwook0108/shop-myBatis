@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head"></head>
+
+<style>
+  .field-error {
+    border-color: #dc3545;
+    color: #dc3545;
+  }
+</style>
+
+<body>
+
+<section class="preloader">
+    <div class="spinner">
+        <span class="sk-inner-circle"></span>
+    </div>
+</section>
+<!--<div th:if="${message}" th:text="${message}"></div>-->
+
+<main>
+    <nav th:replace="~{fragments.html::nav}"></nav>
+
+    <!--    <th:block th:if="${#authentication.getName().equals(modifyForm.name)}">-->
+    <th:block th:if="${#authentication.getName().equals(modifyForm.email)}">
+        <section class="sign-in-form section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-8 mx-auto col-12">
+
+                        <h1 class="hero-title text-center mb-5">My-Page</h1>
+
+                        <div class="div-separator w-50 m-auto my-5"></div>
+                        <!--                        th:action="@{/logout}"-->
+
+                        <div class="row">
+                            <div class="col-lg-8 col-11 mx-auto">
+                                <!--                                th:action="@{/logout}"-->
+
+                                <form role="form" method="post"
+                                      th:action="@{/member/my-page/edit}"
+                                      th:object="${modifyForm}">
+                                    <div th:if="${#fields.hasGlobalErrors()}">
+                                        <p class="field-error"
+                                           th:each="err : ${#fields.globalErrors()}"
+                                           th:text="${err}">전체 오류 메시지</p>
+                                    </div>
+                                    <input type="hidden" th:field="*{id}">
+                                    <div class="form-floating">
+                                        <input type="text" name="name" id="name"
+                                               class="form-control" placeholder="username"
+                                               th:errorclass="field-error"
+                                               th:field="*{name}"
+                                               readonly>
+                                        <label for="name">username</label>
+                                    </div>
+
+                                    <div class="form-floating  my-4">
+                                        <input type="text" name="phoneNumber" id="phoneNumber"
+                                               class="form-control" placeholder="phone number"
+                                               th:field="*{phoneNumber}"
+                                               th:errorclass="field-error">
+                                        <label for="phoneNumber">phone number</label>
+                                        <div class="field-error" th:errors="*{phoneNumber}"></div>
+                                    </div>
+
+                                    <div class="form-floating  my-4">
+                                        <input type="email" name="email" id="email"
+                                               class="form-control" placeholder="Email address"
+                                               th:field="*{email}"
+                                               th:errorclass="field-error">
+                                        <label for="email">Email address</label>
+                                        <div class="field-error" th:errors="*{email}"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-floating col-9  my-3">
+                                            <input type="text" name="zipcode" id="zipcode"
+                                                   class="form-control"
+                                                   placeholder="Zipcode address"
+                                                   th:field="*{zipcode}"
+                                                   required
+                                            >
+                                            <label for="zipcode">Zipcode</label>
+                                            <div class="field-error" th:errors="*{zipcode}"></div>
+                                        </div>
+                                        <input class="btn-light col-3  my-4" type="button"
+                                               onclick="sample6_execDaumPostcode()"
+                                               value="우편번호 찾기">
+                                    </div>
+                                    <div class="form-floating  my-4">
+                                        <input type="text" name="address" id="address"
+                                               class="form-control" placeholder="Address"
+                                               th:field="*{address}"
+                                               required
+                                        >
+                                        <label for="address">Address</label>
+                                        <div class="field-error" th:errors="*{address}"></div>
+                                    </div>
+                                    <div class="form-floating  my-4">
+                                        <input type="text" name="address_detail" id="address_detail"
+                                               class="form-control" placeholder="Address Detail"
+                                               th:field="*{addressDetail}"
+                                               required
+                                        >
+                                        <label for="address_detail">Address Detail</label>
+                                        <div class="field-error" th:errors="*{addressDetail}"></div>
+                                    </div>
+                                    <button type="submit"
+                                            class="btn custom-btn form-control mt-4 mb-3">
+                                        수정 완료
+                                    </button>
+
+                                    <button type="submit"
+                                            class="btn custom-btn form-control mt-4 mb-3">
+                                        취소
+                                    </button>
+                                </form>
+                                <!--                                 302 페이로드(값이 안 들어옴)-->
+                                <!--                                    <button type="submit" class="btn custom-btn form-control mt-4 mb-3"-->
+                                <!--                                            th:onclick="|location.href='@{/member/my-page/{memberId}/(memberId=${memberId})}'|">-->
+                                <!--                                        수정 완료-->
+                                <!--                                    </button>-->
+
+                                <!--                                    <button type="submit" class="btn custom-btn form-control mt-4 mb-3"-->
+                                <!--                                            th:onclick="|location.href='@{/member/my-page/{memberId}/(memberId=${memberId})}'|">-->
+                                <!--                                        취소-->
+                                <!--                                    </button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </th:block>
+
+    <th:block th:unless="${#authentication.getName().equals(modifyForm.email)}">
+        <h1>잘못된 페이지로 접근(my-page-edit)</h1>
+    </th:block>
+
+</main>
+<footer th:replace="~{fragments.html::footer}"></footer>
+
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                let addr = ''; // 주소 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zipcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("address_detail").focus();
+            }
+        }).open();
+    }
+</script>
+
+</body>
+</html>
