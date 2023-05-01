@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.domain.member.model;
 
+import dongwook.shoppingpractice.domain.member.form.EditForm;
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
