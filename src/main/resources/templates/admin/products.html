@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <nav th:replace="~{admin/fragments.html::nav}"
+                <nav th:replace="~{admin/fragments.html::nav-product}"
                      class="navbar navbar-expand-xl navbar-light bg-light">
                 </nav>
             </div>
@@ -33,21 +33,21 @@
                             <tr class="tm-bg-gray">
                                 <th scope="col">&nbsp;</th>
                                 <th scope="col">상품명</th>
+                                <th scope="col" class="text-center">간단한설명</th>
                                 <th scope="col" class="text-center">가격</th>
-                                <th scope="col" class="text-center">등록일</th>
-                                <th scope="col">&nbsp;</th>
+
                             </tr>
                             </thead>
                             <tbody>
                             <tr th:each="product : ${productList}">
                                 <td></td>
                                 <td>
-                                    <a th:href="@{/admin/products/{productId}(productId=${product.productId})}"
+                                    <a th:href="@{/admin/products/{productId}(productId=${product.id})}"
                                        th:text="${product.name}"></a></td>
-                                <td class="text-center" th:text="${product.price}">145</td>
                                 <td class="text-center" th:text="${product.simpleDescription}">255
                                 </td>
-                                <td></td>
+                                <td class="text-center" th:text="${product.price}">145</td>
+
                             </tr>
                             </tbody>
                         </table>
