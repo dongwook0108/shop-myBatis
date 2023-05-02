@@ -56,7 +56,6 @@ public interface MemberMapper {
     @Select(value = "SELECT count(*) as listCnt from member where email=#{email}")
     int getCountByEmail(@Param(value = "email") String email);
 
-    //    @Select(value = "select * from member ORDERS LIMIT 5 OFFSET 0;")
     @Select(value = "SELECT * FROM member ORDER BY member_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
     List<Member> getListPage(@Param(value = "page") PaginationVo paginationVo);
 

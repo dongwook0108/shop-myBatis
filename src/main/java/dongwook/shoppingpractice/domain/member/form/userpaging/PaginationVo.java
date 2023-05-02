@@ -60,8 +60,7 @@ public class PaginationVo {
 
     // 한 블럭의 끝 페이지 구하기
     private void setEndpage(final int startPage, final int pageCount, final int totalPageCount) {
-        this.endPage = ((startPage - 1) + pageCount) < totalPageCount ? (startPage - 1) + pageCount
-                : totalPageCount;
+        this.endPage = Math.min(((startPage - 1) + pageCount), totalPageCount);
     }
 
 

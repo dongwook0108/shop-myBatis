@@ -57,34 +57,61 @@
                 </ul>
 
                 <div id="pagination">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" th:href="@{'/admin/members?page=1'}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+
+                            <li class="page-item"
+                                th:each="pageNum : ${#numbers.sequence(pageVo.startPage, pageVo.endPage)}">
+                                <a class="page-link" th:href="@{'/admin/members?page='+${pageNum}}"
+                                   th:text="${pageNum}">1</a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link"
+                                   th:href="@{'/admin/members?page='+${pageVo.totalPageCount}}"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
                     <!-- 맨 처음 페이지로 이동하는 버튼 -->
-                    <span th:if="${pageVo.startPage > 1}">
-                        <a th:href="@{'/admin/members?page=1'}" th:text="'처음&emsp;'"></a>
-                    </span>
+                    <!--                    <span th:if="${pageVo.startPage > 1}">-->
+                    <!--                        <a th:href="@{'/admin/members?page=1'}" th:text="'처음&emsp;'"></a>-->
+                    <!--                    </span>-->
 
-                    <!-- 이전 블록으로 이동하는 버튼 -->
-                    <span th:if="${pageVo.isPrev == true}">
-                    	<a th:href="@{'/admin/members?page='+${pageVo.startPage - 1}}"
-                           th:text="'이전'"></a>
-                    </span>
+                    <!--                    &lt;!&ndash; 이전 블록으로 이동하는 버튼 &ndash;&gt;-->
+                    <!--                    <span th:if="${pageVo.isPrev == true}">-->
+                    <!--                    	<a th:href="@{'/admin/members?page='+${pageVo.startPage - 1}}"-->
+                    <!--                           th:text="'이전'"></a>-->
+                    <!--                    </span>-->
 
-                    <!-- 시퀀스 보여주는 값을 변경. -->
-                    <span th:each="pageNum : ${#numbers.sequence(pageVo.startPage, pageVo.endPage)}">
-                        <a class="div2" th:href="@{'/admin/members?page='+${pageNum}}"
-                           th:text="|&emsp;${pageNum}&emsp;|"></a>
-                    </span>
+                    <!--                    &lt;!&ndash; 시퀀스 보여주는 값을 변경. &ndash;&gt;-->
+                    <!--                    <span th:each="pageNum : ${#numbers.sequence(pageVo.startPage, pageVo.endPage)}">-->
+                    <!--                        <a class="div2" th:href="@{'/admin/members?page='+${pageNum}}"-->
+                    <!--                           th:text="|&emsp;${pageNum}&emsp;|"></a>-->
+                    <!--                    </span>-->
 
-                    <!-- 다음 블록으로 이동하는 버튼 -->
-                    <span th:if="${pageVo.isNext == true}">
-                	<a th:href="@{'/admin/members?page='+ ${pageVo.endPage + 1}}"
-                       th:text="'다음'"></a>
-                    </span>
+                    <!--                    &lt;!&ndash; 다음 블록으로 이동하는 버튼 &ndash;&gt;-->
+                    <!--                    <span th:if="${pageVo.isNext == true}">-->
+                    <!--                	<a th:href="@{'/admin/members?page='+ ${pageVo.endPage + 1}}"-->
+                    <!--                       th:text="'다음'"></a>-->
+                    <!--                    </span>-->
 
                     <!-- 맨 뒷 페이지로 이동하는 버튼 -->
-                    <span th:if="${pageVo.endPage < pageVo.totalPageCount}">
-                	<a th:href="@{'/admin/members?page='+${pageVo.totalPageCount}}"
-                       th:text="|&emsp;끝|"></a>
-                    </span>
+                    <!--                    <span th:if="${pageVo.endPage < pageVo.totalPageCount}">-->
+                    <!--                	<a th:href="@{'/admin/members?page='+${pageVo.totalPageCount}}"-->
+                    <!--                       th:text="|&emsp;끝|"></a>-->
+                    <!--                    </span>-->
                 </div>
                 <ul class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
                 </ul>
