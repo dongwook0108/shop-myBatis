@@ -79,7 +79,7 @@ public class MemberService implements UserDetailsService {
 
 
     //-----------------paging---------------
-//     페이징을 위한 전체 데이터 개수 파악
+    // 페이징을 위한 전체 데이터 개수 파악
     public int getCount() {
         return this.memberMapper.getCount();
     }
