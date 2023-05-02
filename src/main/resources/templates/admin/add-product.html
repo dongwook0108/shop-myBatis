@@ -21,7 +21,7 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Add Product</h2>
+                        <h2 class="tm-block-title d-inline-block">상품 등록</h2>
                     </div>
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
@@ -30,8 +30,7 @@
                               th:object="${productForm}" class="tm-edit-product-form">
                             <div class="input-group mb-3">
                                 <label for="name"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
-                                    Name
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
                                 </label>
                                 <input id="name" name="name" type="text"
                                        th:field="*{name}"
@@ -39,7 +38,8 @@
                             </div>
                             <div class="input-group mb-3">
                                 <label for="simpleDescription"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">simpleDescription</label>
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한
+                                    설명</label>
                                 <textarea
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         rows="1"
@@ -48,7 +48,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <label for="description"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Description</label>
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세설명</label>
                                 <textarea
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         rows="3"
@@ -77,16 +77,8 @@
                             <!--                                       data-large-mode="true">-->
                             <!--                            </div>-->
                             <div class="input-group mb-3">
-                                <label for="stock"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Stock
-                                </label>
-                                <input id="stock" name="stock" type="text"
-                                       th:field="*{stock}"
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
-                            </div>
-                            <div class="input-group mb-3">
                                 <label for="price"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Price
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
                                 </label>
                                 <input id="price" name="Price" type="text"
                                        th:field="*{price}"
@@ -94,7 +86,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                    <button type="submit" class="btn btn-primary">Add
+                                    <button type="submit" class="btn btn-primary">등록
                                     </button>
                                 </div>
                             </div>
@@ -114,7 +106,7 @@
                         <div class="custom-file mt-3 mb-3">
                             <input id="fileInput" type="file" style="display:none;"/>
                             <input type="button" class="btn btn-primary d-block mx-auto"
-                                   value="Upload ..."
+                                   value="사진 등록"
                                    onclick="document.getElementById('fileInput').click();"
                             />
                         </div>

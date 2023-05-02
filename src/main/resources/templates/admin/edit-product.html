@@ -17,7 +17,7 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Edit Product</h2>
+                        <h2 class="tm-block-title d-inline-block">상품 수정</h2>
                     </div>
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
@@ -28,8 +28,7 @@
                               class="tm-edit-product-form">
                             <div class="input-group mb-3">
                                 <label for="name"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
-                                    Name
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
                                 </label>
                                 <input placeholder="Product name" value="In malesuada placerat"
                                        id="name" name="name" type="text"
@@ -38,7 +37,8 @@
                             </div>
                             <div class="input-group mb-3">
                                 <label for="simpleDescription"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">simpleDescription</label>
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략
+                                    설명</label>
                                 <textarea
                                         th:text="${product.simpleDescription}"
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
@@ -46,7 +46,8 @@
                             </div>
                             <div class="input-group mb-3">
                                 <label for="description"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Description</label>
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세
+                                    설명</label>
                                 <textarea
                                         th:text="${product.description}"
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
@@ -73,19 +74,8 @@
                             <!--                                       data-large-mode="true">-->
                             <!--                            </div>-->
                             <div class="input-group mb-3">
-                                <label for="stock"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Units
-                                    In
-                                    Stock
-                                </label>
-                                <input placeholder="Stock" value="255" id="stock" name="stock"
-                                       th:value="${product.stock}"
-                                       type="text"
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
-                            </div>
-                            <div class="input-group mb-3">
                                 <label for="price"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Price
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
                                 </label>
                                 <input placeholder="price" value="255" id="price" name="price"
                                        th:value="${product.price}"
@@ -94,7 +84,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                    <button type="submit" class="btn btn-primary">Update
+                                    <button type="submit" class="btn btn-primary">수정하기
                                     </button>
                                 </div>
                             </div>
