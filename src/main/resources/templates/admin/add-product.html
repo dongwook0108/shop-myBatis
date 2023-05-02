@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="col-12">
-                <nav th:replace="~{admin/fragments.html::nav}"
+                <nav th:replace="~{admin/fragments.html::nav-product}"
                      class="navbar navbar-expand-xl navbar-light bg-light">
 
                 </nav>
@@ -55,27 +55,7 @@
                                         th:field="*{description}"
                                         required></textarea>
                             </div>
-                            <!--                            <div class="input-group mb-3">-->
-                            <!--                                <label for="category"-->
-                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Category</label>-->
-                            <!--                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7"-->
-                            <!--                                        id="category">-->
-                            <!--                                    <option selected>Select one</option>-->
-                            <!--                                    <option value="1">Cras efficitur lacus</option>-->
-                            <!--                                    <option value="2">Pellentesque molestie</option>-->
-                            <!--                                    <option value="3">Sed feugiat nulla</option>-->
-                            <!--                                </select>-->
-                            <!--                            </div>-->
-                            <!--                            <div class="input-group mb-3">-->
-                            <!--                                <label for="expire_date"-->
-                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Expire-->
-                            <!--                                    Date-->
-                            <!--                                </label>-->
-                            <!--                                <input id="expire_date" name="expire_date" type="date"-->
-                            <!--                                       th:field="*{expireDate}"-->
-                            <!--                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"-->
-                            <!--                                       data-large-mode="true">-->
-                            <!--                            </div>-->
+
                             <div class="input-group mb-3">
                                 <label for="price"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
