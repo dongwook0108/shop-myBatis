@@ -15,7 +15,8 @@ public class ProductService {
     private final ProductMapper productMapper;
 
     public void save(ProductForm form) {
-        productMapper.save(form);
+        Product product = new Product(form);
+        productMapper.save(product);
     }
 
     public List<Product> productList() {

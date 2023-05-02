@@ -1,11 +1,11 @@
 package dongwook.shoppingpractice.admin.product.form;
 
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
 public class ProductForm {
 
-    private String productId;
 
     private String name;
 
@@ -15,11 +15,13 @@ public class ProductForm {
 
     private int price;
 
-    private int stock;
+    private LocalDateTime createdDate;
 
-//    private LocalDateTime expireDate;
+    private LocalDateTime updatedDate;
 
-//    private LocalDateTime registerAt;
+    private String updateBy;
+
+    private String createdBy;
 
 
 }

@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.domain.member.model;
 
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,6 +21,14 @@ public class Member {
     private String address;
     private String addressDetail;
 
+    private LocalDateTime updatedDate;
+
+    private LocalDateTime createdDate;
+
+    private String updatedBy;
+
+    private String createdBt;
+
 
     public Member(SignUpForm form) {
         if (form.getEmail().contains("@dongwook.com")) {
@@ -34,6 +43,8 @@ public class Member {
         this.password = form.getPassword();
         this.address = form.getAddress();
         this.addressDetail = form.getAddressDetail();
+        this.createdDate = LocalDateTime.now();
+
     }
 
     public void updatePhone(String phone) {
