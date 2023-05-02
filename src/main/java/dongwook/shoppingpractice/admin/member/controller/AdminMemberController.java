@@ -1,14 +1,19 @@
 package dongwook.shoppingpractice.admin.member.controller;
 
+import dongwook.shoppingpractice.domain.member.form.AdminModifyForm;
+import dongwook.shoppingpractice.domain.member.form.ModifyForm;
 import dongwook.shoppingpractice.domain.member.form.userpaging.PaginationVo;
+import dongwook.shoppingpractice.domain.member.model.CurrentMember;
 import dongwook.shoppingpractice.domain.member.model.Member;
 import dongwook.shoppingpractice.domain.member.service.MemberService;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -24,6 +29,11 @@ public class AdminMemberController {
         return "admin/index";
     }
 
+    @PostMapping("/member/edit")
+    public String adminMemberEdit(@CurrentMember Member member, @Valid AdminModifyForm modifyForm) {
+        memberService.AdminModifyMember(member, modifyForm);
+        return "redirect:/admin/members";
+    }
 
     //        paging -----------------------
     @GetMapping("/members")
@@ -42,7 +52,6 @@ public class AdminMemberController {
             count = memberService.getCount();
             paginationVo = new PaginationVo(count, page, size); // 모든 게시글 개수 구하기.
             memberList = memberService.getListPage(paginationVo);
-
         }
 
         model.addAttribute("memberList", memberList);
@@ -50,10 +59,5 @@ public class AdminMemberController {
 
         return "admin/accounts";
     }
-
-//    @GetMapping("/products")
-//    private String products() {
-//        return "admin/products";
-//    }
 
 }
