@@ -20,14 +20,14 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">회원 목록</h2>
-                        <div>
+                        <h2 style="padding: 5px" class="tm-block-title d-inline-block">회원 목록</h2>
+                        <div style="padding: 2px; margin-bottom: 20px">
                             <form th:action="@{/admin/members}" method="get">
                                 <label for="email"></label>
                                 <label for="emailSearch"></label><input type="text" id="emailSearch"
                                                                         name="email"
                                                                         placeholder="Search Eamil">
-                                <button type="submit">Search</button>
+                                <button type="submit" style="border-radius: 5px">검색하기</button>
                             </form>
                         </div>
 
