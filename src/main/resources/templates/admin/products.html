@@ -32,8 +32,9 @@
                             <tr class="tm-bg-gray">
                                 <th scope="col">&nbsp;</th>
                                 <th scope="col">상품명</th>
-                                <th scope="col" class="text-center">간단한설명</th>
                                 <th scope="col" class="text-center">가격</th>
+                                <th scope="col" class="text-center">간략한 설명</th>
+                                <th scope="col" class="text-center">등록일</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,9 +43,9 @@
                                 <td>
                                     <a th:href="@{/admin/products/{productId}(productId=${product.id})}"
                                        th:text="${product.name}"></a></td>
-                                <td class="text-center" th:text="${product.simpleDescription}">255
-                                </td>
-                                <td class="text-center" th:text="${product.price}">145</td>
+                                <td class="text-center" th:text="${product.price}"></td>
+                                <td class="text-center" th:text="${product.simpleDescription}"></td>
+                                <td class="text-center" th:text="${product.createdDate}"></td>
                             </tr>
                             </tbody>
                         </table>

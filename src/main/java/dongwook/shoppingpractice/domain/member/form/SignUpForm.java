@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.domain.member.form;
 
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.Data;
@@ -29,5 +30,13 @@ public class SignUpForm {
     private String address;
     @NotEmpty(message = NOTNULL)
     private String addressDetail;
+
+    private LocalDateTime updatedDate;
+
+    private LocalDateTime createdDate;
+
+    private String updatedBy;
+
+    private String createdBt;
 
 }
