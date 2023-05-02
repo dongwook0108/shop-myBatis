@@ -20,9 +20,8 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
                             <h2 class="tm-block-title d-inline-block">상품 목록</h2>
-
                         </div>
-                        <div class="col-md-4 col-sm-12 text-right">
+                        <div class="col-md-4 col-sm-12 tm-table-actions-col-right">
                             <a th:href="@{/admin/products/add}" class="btn btn-small btn-primary">상품
                                 추가</a>
                         </div>
@@ -35,7 +34,6 @@
                                 <th scope="col">상품명</th>
                                 <th scope="col" class="text-center">간단한설명</th>
                                 <th scope="col" class="text-center">가격</th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -47,7 +45,6 @@
                                 <td class="text-center" th:text="${product.simpleDescription}">255
                                 </td>
                                 <td class="text-center" th:text="${product.price}">145</td>
-
                             </tr>
                             </tbody>
                         </table>
