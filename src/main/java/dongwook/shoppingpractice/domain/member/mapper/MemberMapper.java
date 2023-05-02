@@ -16,12 +16,12 @@ import org.apache.ibatis.annotations.Update;
 public interface MemberMapper {
 
     @Insert(value =
-            "INSERT INTO MEMBER(username, role, phone, email, zipcode, password, address, addressDetail) "
+            "INSERT INTO MEMBER(username, role, phoneNumber, email, zipcode, password, address, addressDetail) "
                     +
                     "VALUES(#{member.username}, #{member.role},  #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail})")
     void save(@Param(value = "member") Member member);
 
-    @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phone = #{phoneNumber})")
+    @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phoneNumber = #{phoneNumber})")
     boolean existsByPhone(@Param(value = "phoneNumber") String phoneNumber);
 
     @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE email = #{email})")
@@ -30,7 +30,7 @@ public interface MemberMapper {
     @Results(id = "MemberMap", value = {
             @Result(property = "id", column = "member_id"),
             @Result(property = "username", column = "username"),
-            @Result(property = "phoneNumber", column = "phone"),
+            @Result(property = "phoneNumber", column = "phoneNumber"),
             @Result(property = "email", column = "email"),
             @Result(property = "zipcode", column = "zipcode"),
             @Result(property = "password", column = "password"),
