@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.domain.member.service;
 
+import dongwook.shoppingpractice.domain.member.form.AdminModifyForm;
 import dongwook.shoppingpractice.domain.member.form.ModifyForm;
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
 import dongwook.shoppingpractice.domain.member.form.userpaging.PaginationVo;
@@ -96,5 +97,17 @@ public class MemberService implements UserDetailsService {
 
     public int getCountByEmail(String email) {
         return memberMapper.getCountByEmail(email);
+    }
+
+    public void AdminModifyMember(Member member, AdminModifyForm modifyForm) {
+        if (!member.getPhoneNumber().equals(modifyForm.getPhoneNumber())) {
+            member.updatePhone(modifyForm.getPhoneNumber());
+        }
+
+        if (!member.getEmail().equals(modifyForm.getEmail())) {
+            member.updateEmail(modifyForm.getEmail());
+        }
+
+        memberMapper.updateMember(member);
     }
 }
