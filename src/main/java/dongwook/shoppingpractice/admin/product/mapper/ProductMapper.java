@@ -25,7 +25,7 @@ public interface ProductMapper {
 
 
     @Results(id = "productMap", value = {
-            @Result(property = "id", column = "id"),
+            @Result(property = "id", column = "product_id"),
             @Result(property = "name", column = "name"),
             @Result(property = "description", column = "description"),
             @Result(property = "simpleDescription", column = "simple_description"),
@@ -38,7 +38,7 @@ public interface ProductMapper {
     @Select(value = "SELECT * FROM PRODUCT")
     List<Product> productList();
 
-    @Select(value = "SELECT * FROM PRODUCT where id = #{id}")
+    @Select(value = "SELECT * FROM PRODUCT where product_id = #{productId}")
     Product findById(@Param(value = "productId") Long productId);
 
     @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simpleDescription=#{product.simpleDescription}, stock=#{product.stock} , price=#{product.price} WHERE product_id = #{productId} ")

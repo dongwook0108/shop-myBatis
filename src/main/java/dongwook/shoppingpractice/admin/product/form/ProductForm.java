@@ -5,8 +5,6 @@ import lombok.Data;
 
 @Data
 public class ProductForm {
-
-
     private String name;
 
     private String simpleDescription;
