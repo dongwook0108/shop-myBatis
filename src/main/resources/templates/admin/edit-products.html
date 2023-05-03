@@ -17,89 +17,101 @@
             <div class="bg-white tm-block">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Edit Product</h2>
+                        <h2 class="tm-block-title d-inline-block">상품 수정</h2>
                     </div>
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-
-
-
-
+                        <!--                        <div>-->
+                        <!--                            <label for="itemId">상품 ID</label>-->
+                        <!--                            <input type="text" id="itemId" name="itemId" class="form-control"-->
+                        <!--                                   value="1" th:value="${product.id}" readonly>-->
+                        <!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <label for="itemName">상품명</label>-->
+                        <!--                            <input type="text" id="itemName" name="itemName" class="form-control"-->
+                        <!--                                   value="상품A" th:value="${product.name}" readonly>-->
+                        <!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <label for="price">가격</label>-->
+                        <!--                            <input type="text" id="price" name="price" class="form-control"-->
+                        <!--                                   value="10000" th:value="${product.simpleDescription}" readonly>-->
+                        <!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <label for="quantity">수량</label>-->
+                        <!--                            <input type="text" id="quantity" name="quantity" class="form-control"-->
+                        <!--                                   value="10" th:value="${product.description}" readonly>-->
+                        <!--                        </div>-->
+                        <!--                        <div>-->
+                        <!--                            <label for="createdDate">수량</label>-->
+                        <!--                            <input type="text" id="createdDate" name="quantity" class="form-control"-->
+                        <!--                                   value="10" th:value="${product.createdDate}" readonly>-->
+                        <!--                        </div>-->
                         <div class="input-group mb-3">
                             <label for="name"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
-                                Name
+                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
                             </label>
                             <input value="In malesuada placerat" readonly
                                    id="name" name="name" type="text"
                                    th:value="${product.name}"
                                    class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
+
                         <div class="input-group mb-3">
                             <label for="simpleDescription"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">simpleDescription</label>
+                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한 설명</label>
                             <textarea
+                                    id="simpleDescription"
                                     th:text="${product.simpleDescription}" readonly
                                     class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                     rows="1"></textarea>
                         </div>
+
                         <div class="input-group mb-3">
                             <label for="description"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Description</label>
+                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세 설명</label>
                             <textarea
+                                    id="description"
                                     th:text="${product.description}" readonly
                                     class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                     rows="3"></textarea>
                         </div>
 
-
-                        <div class="input-group mb-3">
-                            <label for="stock"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Units
-                                In
-                                Stock
-                            </label>
-                            <input value="255" id="stock" name="stock"
-                                   th:value="${product.stock}"
-                                   type="text"
-                                   class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
-                                   readonly
-                            >
-                        </div>
                         <div class="input-group mb-3">
                             <label for="price"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Price
+                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
                             </label>
                             <input value="255" id="price" name="price"
                                    th:value="${product.price}"
                                    type="text" readonly
                                    class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                         </div>
+
                         <div class="input-group mb-3">
-                            <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                <div class="row">
-                                    <div class="input-group mb-3">
-                                        <span class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                            <button type="submit" class="btn btn-primary"
-                                                    th:onclick="|location.href='@{/admin/products}'|"
-                                            >목록으로
-                                            </button>
-                                        </span>
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <span class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                            <button type="submit" class="btn btn-primary"
-                                                    th:onclick="|location.href='@{/admin/products/{productId}/edit(productId=${product.productId})}'|"
-                                            >상품수정
-                                            </button>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+                            <label for="createdDate"
+                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">등록일
+                            </label>
+                            <input type="text" id="createdDate" name="quantity"
+                                   class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
+                                   value="10" th:value="${product.createdDate}" readonly>
                         </div>
 
+                        <div class="d-flex mb-3">
+                            <div class="mr-auto">
+                                <button class="btn btn-primary" type="submit"
+                                        th:onclick="|location.href='@{/admin/products}'|">
+                                    목록으로
+                                </button>
+                            </div>
+                            <div class="ml-auto">
+                                <button class="btn btn-primary" type="submit"
+                                        th:onclick="|location.href='@{/admin/products/{productId}/edit(productId=${product.id})}'|">
+                                    수정하기
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
                         <img src="/images/product-image.jpg" alt="Profile Image"
                              class="img-fluid mx-auto d-block">
@@ -115,7 +127,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
