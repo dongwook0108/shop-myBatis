@@ -39,5 +39,4 @@ public class SecurityConfig {
             web.ignoring().antMatchers("/fonts/**", "/error");
         };
     }
-
 }

@@ -1,6 +1,6 @@
 package dongwook.shoppingpractice.admin.product.mapper;
 
-import dongwook.shoppingpractice.admin.product.form.ProductForm;
+import dongwook.shoppingpractice.admin.product.form.ProductEditForm;
 import dongwook.shoppingpractice.admin.product.model.Product;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
@@ -15,16 +15,14 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface ProductMapper {
 
-    // 쿼리만 ->
     @Insert(value =
             "INSERT INTO PRODUCT(name, description, simple_description, price, created_date) "
                     +
                     "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.createdDate})")
     void save(@Param(value = "product") Product product);
-    //  ->
 
 
-    @Results(id = "productMap", value = {
+    @Results(id = "ProductMap", value = {
             @Result(property = "id", column = "product_id"),
             @Result(property = "name", column = "name"),
             @Result(property = "description", column = "description"),
@@ -38,9 +36,10 @@ public interface ProductMapper {
     @Select(value = "SELECT * FROM PRODUCT")
     List<Product> productList();
 
+    @ResultMap(value = "ProductMap")
     @Select(value = "SELECT * FROM PRODUCT where product_id = #{productId}")
     Product findById(@Param(value = "productId") Long productId);
 
-    @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simpleDescription=#{product.simpleDescription}, stock=#{product.stock} , price=#{product.price} WHERE product_id = #{productId} ")
+    @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate} WHERE product_id = #{product.id} ")
     void updateProduct(@Param(value = "product") Product product);
 }
