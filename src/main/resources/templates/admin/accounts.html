@@ -175,6 +175,22 @@
 <script src="/js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
 
+<!--<script>-->
+<!--    const memberName = document.querySelector("#name");-->
+<!--    const memberEmail = document.querySelector("#email");-->
+<!--    const memberPhone = document.querySelector("#phoneNumber");-->
+<!--    const detailPage = document.querySelector("#detail-page");-->
+
+<!--    function requestMemberDetail(memberId) {-->
+<!--        $.ajax("/api/member-detail?id=" + memberId)-->
+<!--        .done((data) => {-->
+<!--            detailPage.style.display = "block";-->
+<!--            memberName.value = data.username;-->
+<!--            memberEmail.value = data.email;-->
+<!--            memberPhone.value = data.phoneNumber;-->
+<!--        })-->
+<!--    }-->
+<!--</script>-->
 <script>
     const memberName = document.querySelector("#name");
     const memberEmail = document.querySelector("#email");
@@ -187,10 +203,22 @@
             detailPage.style.display = "block";
             memberName.value = data.username;
             memberEmail.value = data.email;
-            memberPhone.value = data.phoneNumber;
+            memberPhone.value = formatPhoneNumber(data.phoneNumber);
         })
     }
+
+    function formatPhoneNumber(phoneNumber) {
+        const numberOnly = phoneNumber.replace(/[^\d]/g, ''); // 숫자만 추출
+        if (numberOnly.length === 10) { // 10자리인 경우
+            return numberOnly.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'); // 3-3-4 형태로 변환
+        } else if (numberOnly.length === 11) { // 11자리인 경우
+            return numberOnly.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'); // 3-4-4 형태로 변환
+        } else { // 그 외의 경우
+            return phoneNumber; // 원본 전화번호 반환
+        }
+    }
 </script>
+
 </body>
 
 </html>
