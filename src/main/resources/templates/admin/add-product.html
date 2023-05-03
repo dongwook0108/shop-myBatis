@@ -41,6 +41,7 @@
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한
                                     설명</label>
                                 <textarea
+                                        id="simpleDescription"
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         rows="1"
                                         th:field="*{simpleDescription}"
@@ -50,18 +51,18 @@
                                 <label for="description"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세설명</label>
                                 <textarea
+                                        id="description"
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         rows="3"
                                         th:field="*{description}"
                                         required></textarea>
                             </div>
-
                             <div class="input-group mb-3">
                                 <label for="price"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
                                 </label>
                                 <input id="price" name="Price" type="text"
-                                       th:field="*{price}"
+                                       th:value="*{#numbers.formatDecimal(price, 2, 'COMMA', 0, 'POINT')}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                             </div>
                             <div class="input-group mb-3">

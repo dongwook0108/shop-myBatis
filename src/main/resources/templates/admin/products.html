@@ -45,7 +45,10 @@
                                 <td>
                                     <a th:href="@{/admin/products/{productId}(productId=${product.id})}"
                                        th:text="${product.name}"></a></td>
-                                <td class="text-center" th:text="${product.price}"></td>
+                                <td class="text-center"
+                                    th:text="${#numbers.formatDecimal(product.price, 2, 'COMMA', 0, 'POINT')} + '원'"></td>
+
+
                                 <td class="text-center" th:text="${product.simpleDescription}"></td>
                                 <td class="text-center" th:text="${product.createdDate}"></td>
                             </tr>

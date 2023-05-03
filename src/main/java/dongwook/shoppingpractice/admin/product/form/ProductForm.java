@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.admin.product.form;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Data;
 
@@ -12,7 +13,7 @@ public class ProductForm {
 
     private String description;
 
-    private Integer price;
+    private BigDecimal price;
 
     private LocalDateTime createdDate;
 
