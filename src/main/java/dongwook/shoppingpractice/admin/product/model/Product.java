@@ -2,6 +2,7 @@ package dongwook.shoppingpractice.admin.product.model;
 
 import dongwook.shoppingpractice.admin.product.form.ProductEditForm;
 import dongwook.shoppingpractice.admin.product.form.ProductForm;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class Product {
     private String name;
     private String description;
     private String simpleDescription;
-    private Integer price;
+    private BigDecimal price;
 
     private LocalDateTime updatedDate;
     private LocalDateTime createdDate;
@@ -48,7 +49,7 @@ public class Product {
         this.name = name;
     }
 
-    public void updatePrice(Integer price) {
+    public void updatePrice(BigDecimal price) {
         this.price = price;
     }
 
