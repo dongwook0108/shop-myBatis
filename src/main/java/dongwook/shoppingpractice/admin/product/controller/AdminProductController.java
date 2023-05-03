@@ -41,28 +41,30 @@ public class AdminProductController {
     }
 
     @GetMapping("/{productId}")
-    public String productEditHome(@PathVariable Long productId, Model model) {
+    public String product(@PathVariable Long productId, Model model) {
         Product product = productService.findById(productId);
         model.addAttribute("product", product);
         return "admin/edit-products";
     }
 
+
     @GetMapping("/{productId}/edit")
-    public String productEditPage(
-            @PathVariable Long productId,
-            Model model
-    ) {
+    public String productEditPage(@PathVariable Long productId, Model model) {
         Product product = productService.findById(productId);
-        model.addAttribute("product", product);
+        model.addAttribute(product);
+        model.addAttribute(new ProductEditForm());
         return "admin/edit-product";
     }
 
     @PostMapping("/{productId}/edit")
-    public String productEdit(MultipartFile multipartFile, Product product, Model model) {
-        model.addAttribute(new ProductEditForm());
-//        productService.updateProduct(product);
-        return "redirect:/admin/products";
+    public String productEdit(@PathVariable Long productId, ProductEditForm editForm) {
+
+        Product product = productService.findById(productId);
+        System.out.println("product = " + product);
+
+        productService.updateProduct(product, editForm);
+        System.out.println("editForm = " + editForm);
+
+        return "redirect:/admin/products/{productId}";
     }
-
-
 }

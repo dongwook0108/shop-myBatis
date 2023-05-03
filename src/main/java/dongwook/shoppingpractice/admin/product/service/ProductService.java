@@ -27,8 +27,14 @@ public class ProductService {
         return productMapper.findById(productId);
     }
 
+
     public void updateProduct(Product product, ProductEditForm editForm) {
-        product.updateProductName(editForm.getName());
+//        Product product = new Product(editForm);
+        product.updateName(editForm.getName());
+        product.updatePrice(editForm.getPrice());
+        product.updateSimpleDescription(editForm.getSimpleDescription());
+        product.updateDescription(editForm.getDescription());
+
         productMapper.updateProduct(product);
     }
 }

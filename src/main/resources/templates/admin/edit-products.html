@@ -2,8 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{admin/fragments.html::header}"></head>
 
-<body class="bg02">
+<body class="">
 <div class="container">
+
     <div class="row">
         <div class="col-12">
             <nav th:replace="~{admin/fragments.html::nav-product}"
@@ -11,6 +12,7 @@
             </nav>
         </div>
     </div>
+
     <!-- row -->
     <div class="row tm-mt-big">
         <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
@@ -22,40 +24,18 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <!--                        <div>-->
-                        <!--                            <label for="itemId">상품 ID</label>-->
-                        <!--                            <input type="text" id="itemId" name="itemId" class="form-control"-->
-                        <!--                                   value="1" th:value="${product.id}" readonly>-->
-                        <!--                        </div>-->
-                        <!--                        <div>-->
-                        <!--                            <label for="itemName">상품명</label>-->
-                        <!--                            <input type="text" id="itemName" name="itemName" class="form-control"-->
-                        <!--                                   value="상품A" th:value="${product.name}" readonly>-->
-                        <!--                        </div>-->
-                        <!--                        <div>-->
-                        <!--                            <label for="price">가격</label>-->
-                        <!--                            <input type="text" id="price" name="price" class="form-control"-->
-                        <!--                                   value="10000" th:value="${product.simpleDescription}" readonly>-->
-                        <!--                        </div>-->
-                        <!--                        <div>-->
-                        <!--                            <label for="quantity">수량</label>-->
-                        <!--                            <input type="text" id="quantity" name="quantity" class="form-control"-->
-                        <!--                                   value="10" th:value="${product.description}" readonly>-->
-                        <!--                        </div>-->
-                        <!--                        <div>-->
-                        <!--                            <label for="createdDate">수량</label>-->
-                        <!--                            <input type="text" id="createdDate" name="quantity" class="form-control"-->
-                        <!--                                   value="10" th:value="${product.createdDate}" readonly>-->
-                        <!--                        </div>-->
+
                         <div class="input-group mb-3">
                             <label for="name"
                                    class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
                             </label>
-                            <input value="In malesuada placerat" readonly
+                            <input readonly
                                    id="name" name="name" type="text"
                                    th:value="${product.name}"
                                    class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                         </div>
+
+                        <!--                        textarea -> th:value 사용 x -> th:text 사용 !!!-->
 
                         <div class="input-group mb-3">
                             <label for="simpleDescription"
@@ -64,7 +44,8 @@
                                     id="simpleDescription"
                                     th:text="${product.simpleDescription}" readonly
                                     class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                    rows="1"></textarea>
+                                    rows="1">
+                            </textarea>
                         </div>
 
                         <div class="input-group mb-3">
@@ -128,6 +109,7 @@
 <!-- https://jqueryui.com/download/ -->
 <script src="js/bootstrap.min.js"></script>
 <!-- https://getbootstrap.com/ -->
+
 <script>
     $(function () {
         $('#expire_date').datepicker();

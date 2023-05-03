@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{admin/fragments.html::header}"></head>
 
-<body class="bg02">
+<body class="">
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -11,6 +11,7 @@
             </nav>
         </div>
     </div>
+
     <!-- row -->
     <div class="row tm-mt-big">
         <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
@@ -26,10 +27,11 @@
                     </div>
                 </div>
 
+
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form method="post"
-                              th:action="@{/admin/products/{prodcutId}(productId=${product.id})}"
+                        <form method="post" role="form"
+                              th:action="@{/admin/products/{productId}/edit(productId=${product.id})}"
                               th:object="${product}"
                               class="tm-edit-product-form">
                             <div class="input-group mb-3">
@@ -41,22 +43,50 @@
                                        th:value="${product.name}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
+
                             <div class="input-group mb-3">
                                 <label for="simpleDescription"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략
-                                    설명</label>
-                                <textarea th:text="${product.simpleDescription}"
-                                          class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                          rows="1"></textarea>
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">간략한
+                                    설명
+                                </label>
+                                <input placeholder="simpleDescription" value="In malesuada placerat"
+                                       id="simpleDescription" name="simpleDescription" type="text"
+                                       th:value="${product.simpleDescription}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
+
                             <div class="input-group mb-3">
                                 <label for="description"
-                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세
-                                    설명</label>
-                                <textarea th:text="${product.description}"
-                                          class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                          rows="3"></textarea>
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상세
+                                    설명
+                                </label>
+                                <input placeholder="description" value="In malesuada placerat"
+                                       id="description" name="description" type="text"
+                                       th:value="${product.description}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
+
+                            <!--                            <div class="input-group mb-3">-->
+                            <!--                                <label for="simpleDescription"-->
+                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한-->
+                            <!--                                    설명</label>-->
+                            <!--                                <textarea id="simpleDescription"-->
+                            <!--                                          th:text="${product.simpleDescription}"-->
+                            <!--                                          th:value="${product.simpleDescription}"-->
+                            <!--                                          class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"-->
+                            <!--                                          rows="1"></textarea>-->
+                            <!--                            </div>-->
+                            <!--                            <div class="input-group mb-3">-->
+                            <!--                                <label for="description"-->
+                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세-->
+                            <!--                                    설명</label>-->
+                            <!--                                <textarea id="description"-->
+                            <!--                                          th:text="${product.description}"-->
+                            <!--                                          th:value="${product.description}"-->
+                            <!--                                          class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"-->
+                            <!--                                          rows="3"></textarea>-->
+                            <!--                            </div>-->
+
                             <div class="input-group mb-3">
                                 <label for="price"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격</label>
@@ -65,12 +95,13 @@
                                        type="text"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                             </div>
+
                             <div class="d-flex justify-content-end">
-                                <button class="btn btn-primary" type="submit"
-                                        th:onclick="|location.href='@{/admin/products/{productId}/edit(productId=${product.id})}'|">
+                                <button class="btn btn-primary" type="submit">
                                     수정완료
                                 </button>
                             </div>
+
                         </form>
                     </div>
 
