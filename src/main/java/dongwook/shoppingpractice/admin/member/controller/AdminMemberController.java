@@ -1,7 +1,6 @@
 package dongwook.shoppingpractice.admin.member.controller;
 
 import dongwook.shoppingpractice.domain.member.form.AdminModifyForm;
-import dongwook.shoppingpractice.domain.member.form.ModifyForm;
 import dongwook.shoppingpractice.domain.member.form.userpaging.PaginationVo;
 import dongwook.shoppingpractice.domain.member.model.CurrentMember;
 import dongwook.shoppingpractice.domain.member.model.Member;
