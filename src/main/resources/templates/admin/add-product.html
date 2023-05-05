@@ -26,7 +26,8 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form role="form" method="post" th:action="@{/admin/products/add}"
+                        <form enctype="multipart/form-data" role="form" method="post"
+                              th:action="@{/admin/products/add}"
                               th:object="${productForm}" class="tm-edit-product-form">
                             <div class="input-group mb-3">
                                 <label for="name"
@@ -65,12 +66,25 @@
                                        th:value="*{#numbers.formatDecimal(price, 2, 'COMMA', 0, 'POINT')}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                             </div>
+
+                            <!--                            <div class="input-group mb-3">-->
+                            <!--                                <label for="file"-->
+                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이미지 등록-->
+                            <!--                                </label>-->
+                            <!--                                <input id="file" name="file" type="file"-->
+                            <!--                                       th:field="*{name}"-->
+                            <!--                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"-->
+                            <!--                                       />-->
+
+                            <!--                            </div>-->
+
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
                                     <button type="submit" class="btn btn-primary">등록
                                     </button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                     <!--                    <form th:action method="post" enctype="multipart/form-data">-->
@@ -79,19 +93,24 @@
                     <!--                        </ul>-->
                     <!--                        <input type="submit"/>-->
                     <!--                    </form>-->
-                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
-                        <div class="tm-product-img-dummy mx-auto">
-                            <i class="fas fa-5x fa-cloud-upload-alt"
-                               onclick="document.getElementById('fileInput').click();"></i>
-                        </div>
-                        <div class="custom-file mt-3 mb-3">
-                            <input id="fileInput" type="file" style="display:none;"/>
-                            <input type="button" class="btn btn-primary d-block mx-auto"
-                                   value="사진 등록"
-                                   onclick="document.getElementById('fileInput').click();"
-                            />
-                        </div>
-                    </div>
+                    <!--                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">-->
+                    <!--                        <div class="tm-product-img-dummy mx-auto">-->
+                    <!--                            <i class="fas fa-5x fa-cloud-upload-alt"-->
+                    <!--                               onclick="document.getElementById('fileInput').click();"></i>-->
+                    <!--                        </div>-->
+                    <!--                        <form th:action method="post" enctype="multipart/form-data">-->
+                    <!--                            <ul>-->
+                    <!--                                <li>파일<input type="file" name="file"></li>-->
+                    <!--                            </ul>-->
+                    <!--                        </form>-->
+                    <!--                        <div class="custom-file mt-3 mb-3">-->
+                    <!--                            <input id="fileInput" type="file" style="display:none;"/>-->
+                    <!--                            <input type="button" class="btn btn-primary d-block mx-auto"-->
+                    <!--                                   value="사진 등록"-->
+                    <!--                                   onclick="document.getElementById('fileInput').click();"-->
+                    <!--                            />-->
+                    <!--                        </div>-->
+                </div>
                 </div>
             </div>
         </div>

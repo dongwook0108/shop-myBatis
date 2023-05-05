@@ -2,6 +2,8 @@ package dongwook.shoppingpractice.admin.product.mapper;
 
 import dongwook.shoppingpractice.admin.product.form.ProductEditForm;
 import dongwook.shoppingpractice.admin.product.model.Product;
+import dongwook.shoppingpractice.domain.member.form.userpaging.PaginationVo;
+import dongwook.shoppingpractice.domain.member.model.Member;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -42,4 +44,21 @@ public interface ProductMapper {
 
     @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate} WHERE product_id = #{product.id} ")
     void updateProduct(@Param(value = "product") Product product);
+
+//    paging
+
+    @Select(value = "SELECT count(*) as listCnt from product")
+    int getCount();
+
+    @Select(value = "SELECT count(*) as listCnt from product where name=#{name}")
+    int getCountByName(@Param(value = "name") String name);
+
+    @ResultMap(value = "ProductMap")
+    @Select(value = "SELECT * FROM product ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
+    List<Product> getListPage(@Param(value = "page") PaginationVo paginationVo);
+
+
+    @Select(value = "SELECT * FROM product where email like concat('%',#{name},'%') ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
+    List<Product> getListPageByName(@Param(value = "page") PaginationVo paginationVo,
+            @Param(value = "name") String name);
 }
