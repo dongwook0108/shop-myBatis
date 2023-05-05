@@ -4,6 +4,8 @@ import dongwook.shoppingpractice.admin.product.form.ProductEditForm;
 import dongwook.shoppingpractice.admin.product.form.ProductForm;
 import dongwook.shoppingpractice.admin.product.mapper.ProductMapper;
 import dongwook.shoppingpractice.admin.product.model.Product;
+import dongwook.shoppingpractice.domain.member.form.userpaging.PaginationVo;
+import dongwook.shoppingpractice.domain.member.model.Member;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,25 @@ public class ProductService {
         product.updateDescription(editForm.getDescription());
 
         productMapper.updateProduct(product);
+    }
+
+    //-----------------paging---------------
+    // 페이징을 위한 전체 데이터 개수 파악
+    public int getCount() {
+        return this.productMapper.getCount();
+    }
+
+
+    // 페이징을 위한 getListPage 메소드 추가
+    public List<Product> getListPage(final PaginationVo paginationVo) {
+        return productMapper.getListPage(paginationVo);
+    }
+
+    public List<Product> getListPageByName(final PaginationVo paginationVo, String name) {
+        return productMapper.getListPageByName(paginationVo, name);
+    }
+
+    public int getCountByName(String name) {
+        return productMapper.getCountByName(name);
     }
 }
