@@ -31,7 +31,7 @@
 
                             <thead>
                             <tr class="tm-bg-gray">
-                                <th scope="col">&nbsp;</th>
+                                <th scope="col">Id</th>
                                 <th scope="col">상품명</th>
                                 <th scope="col" class="text-center">가격</th>
                                 <th scope="col" class="text-center">간략한 설명</th>
@@ -41,7 +41,7 @@
                             <tbody>
                             <tr th:each="product : ${products}">
                                 <div id="pagination">
-                                    <td></td>
+                                    <td th:text="${product.id}"></td>
                                     <td>
                                         <a th:href="@{/admin/products/{productId}(productId=${product.id})}"
                                            th:text="${product.name}"></a></td>
