@@ -1,0 +1,62 @@
+package dongwook.shoppingpractice.member.controller;
+
+import dongwook.shoppingpractice.member.form.AdminModifyForm;
+import dongwook.shoppingpractice.member.form.userpaging.PaginationVo;
+import dongwook.shoppingpractice.member.model.CurrentMember;
+import dongwook.shoppingpractice.member.model.Member;
+import dongwook.shoppingpractice.member.service.MemberService;
+import java.util.List;
+import javax.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+@RequiredArgsConstructor
+@RequestMapping(value = "/admin")
+public class AdminMemberController {
+
+    private final MemberService memberService;
+
+    @GetMapping
+    public String adminHome() {
+        return "admin/index";
+    }
+
+    @PostMapping("/member/edit")
+    public String adminMemberEdit(@CurrentMember Member member, @Valid AdminModifyForm modifyForm) {
+        memberService.AdminModifyMember(member, modifyForm);
+        return "redirect:/admin/members";
+    }
+
+    //        paging -----------------------
+    @GetMapping("/members")
+    public String selectListAndPage(Model model,
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "size", defaultValue = "5") int size,
+            @RequestParam(value = "email", required = false) String email) {
+        List<Member> memberList;
+        PaginationVo paginationVo;
+        int count;
+        if (StringUtils.hasText(email)) {
+            count = memberService.getCountByEmail(email);
+            paginationVo = new PaginationVo(count, page, size);
+            memberList = memberService.getListPageByEmail(paginationVo, email);
+        } else {
+            count = memberService.getCount();
+            paginationVo = new PaginationVo(count, page, size); // 모든 게시글 개수 구하기.
+            memberList = memberService.getListPage(paginationVo);
+        }
+
+        model.addAttribute("memberList", memberList);
+        model.addAttribute("pageVo", paginationVo);
+
+        return "admin/accounts";
+    }
+
+}

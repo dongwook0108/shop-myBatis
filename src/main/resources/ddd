@@ -1,0 +1,47 @@
+
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── dongwook
+    │   │       └── shoppingpractice
+    │   │                      │
+    │   │                      ├── domain
+    │   │                      │   ├── member
+    │   │                      │   │   ├── api
+    │   │                      │   │   ├── application
+    │   │                      │   │   ├── dao
+    │   │                      │   │   ├── domain
+    │   │                      │   │   ├── dto
+    │   │                      │   │   └── exception
+    │   │                      │   ├── product
+    │   │                      │   │   ├── api
+    │   │                      │   │   ├── application
+    │   │                      │   │   ├── dao
+    │   │                      │   │   ├── domain
+    │   │                      │   │   ├── dto
+    │   │                      │   │   └── exception
+    │   │                      │   └── model
+    │   │                      │       ├── Address.java
+    │   │                      │       ├── Email.java
+    │   │                      │       └── Name.java
+    │   │                      ├── global
+    │   │                      │   ├── common
+    │   │                      │   │   ├── request
+    │   │                      │   │   └── response
+    │   │                      │   ├── config
+    │   │                      │   │   ├── SwaggerConfig.java
+    │   │                      │   │   ├── properties
+    │   │                      │   │   ├── resttemplate
+    │   │                      │   │   └── security
+    │   │                      │   ├── error
+    │   │                      │   │   ├── ErrorResponse.java
+    │   │                      │   │   ├── GlobalExceptionHandler.java
+    │   │                      │   │   └── exception
+    │   │                      │   └── util
+    │   │                      └── infra
+    │   │                          ├── email
+    │   │                          └── sms
+    │   │                              ├── AmazonSmsClient.java
+    │   │                              ├── SmsClient.java
+    │   │                              └── dto
+    │   └── resources
