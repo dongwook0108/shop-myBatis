@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.domain.member.service;
 
 import dongwook.shoppingpractice.domain.member.form.SignUpForm;
-import dongwook.shoppingpractice.domain.member.mapper.MemberMapper;
+import dongwook.shoppingpractice.mapper.MemberMapper;
 import dongwook.shoppingpractice.domain.member.model.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
