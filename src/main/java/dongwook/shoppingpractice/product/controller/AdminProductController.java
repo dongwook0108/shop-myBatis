@@ -23,32 +23,6 @@ public class AdminProductController {
 
     private final ProductService productService;
 
-//    @GetMapping()
-//    public String productPage(Model model) {
-//        List<Product> productList = productService.productList();
-//        model.addAttribute("productList", productList);
-//        return "admin/products";
-//    }
-
-//    @GetMapping()
-//    public String productPage(Model model,
-//            @RequestParam(value = "page", defaultValue = "1") int page,
-//            @RequestParam(value = "size", defaultValue = "5") int size) {
-//
-//        PaginationVo paginationVo;
-//        int count;
-//        List<Product> productList;
-//
-//
-//        count = productService.getCount();
-//        paginationVo = new PaginationVo(count, page, size); // 모든 게시글 개수 구하기.
-//        productList = productService.getListPage(paginationVo);
-//
-//        model.addAttribute("products", productList);
-//        model.addAttribute("pageVo", paginationVo);
-//        return "admin/products";
-//    }
-
     @GetMapping()
     public String selectListAndPage(Model model,
             @RequestParam(value = "page", defaultValue = "1") int page,
@@ -98,7 +72,7 @@ public class AdminProductController {
     public String productEditPage(@PathVariable Long productId, Model model) {
         Product product = productService.findById(productId);
         model.addAttribute(product);
-        model.addAttribute(new ProductEditForm());
+        model.addAttribute(new ProductEditForm(product));
         return "admin/edit-product";
     }
 
@@ -108,7 +82,7 @@ public class AdminProductController {
         Product product = productService.findById(productId);
         System.out.println("product = " + product);
 
-        productService.updateProduct(product, editForm);
+        productService.updateProduct(productId, editForm);
         System.out.println("editForm = " + editForm);
 
         return "redirect:/admin/products/{productId}";
