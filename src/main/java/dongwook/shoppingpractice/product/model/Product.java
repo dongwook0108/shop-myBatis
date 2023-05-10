@@ -36,29 +36,11 @@ public class Product {
         this.createdDate = LocalDateTime.now();
     }
 
-    public Product(ProductEditForm form) {
-        this.id = form.getId();
+    public void updateProduct(ProductEditForm form) {
         this.name = form.getName();
-        this.description = form.getDescription();
-        this.simpleDescription = form.getSimpleDescription();
         this.price = form.getPrice();
+        this.simpleDescription = form.getSimpleDescription();
+        this.description = form.getDescription();
         this.updatedDate = LocalDateTime.now();
     }
-
-    public void updateName(String name) {
-        this.name = name;
-    }
-
-    public void updatePrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public void updateSimpleDescription(String simpleDescription) {
-        this.simpleDescription = simpleDescription;
-    }
-
-    public void updateDescription(String description) {
-        this.description = description;
-    }
-
 }

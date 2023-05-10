@@ -29,13 +29,9 @@ public class ProductService {
     }
 
 
-    public void updateProduct(Product product, ProductEditForm editForm) {
-//        Product product = new Product(editForm);
-        product.updateName(editForm.getName());
-        product.updatePrice(editForm.getPrice());
-        product.updateSimpleDescription(editForm.getSimpleDescription());
-        product.updateDescription(editForm.getDescription());
-
+    public void updateProduct(Long productId, ProductEditForm editForm) {
+        Product product = productMapper.findById(productId);
+        product.updateProduct(editForm);
         productMapper.updateProduct(product);
     }
 
