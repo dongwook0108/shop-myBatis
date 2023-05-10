@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.domain.main.controller;
+package dongwook.shoppingpractice.main.controller;
 
 import dongwook.shoppingpractice.member.model.CurrentMember;
 import dongwook.shoppingpractice.member.model.Member;
