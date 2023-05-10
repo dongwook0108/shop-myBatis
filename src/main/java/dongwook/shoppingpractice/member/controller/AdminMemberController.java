@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -59,4 +60,12 @@ public class AdminMemberController {
         return "admin/accounts";
     }
 
+    @PostMapping("/update-member")
+    public String editMemberFromAdmin(AdminModifyForm form, RedirectAttributes redirectAttributes) {
+        System.out.println("form = " + form);
+        memberService.updateMemberFromAdmin(form);
+        redirectAttributes.addFlashAttribute("message", "수정 완료");
+        return "redirect:/admin/members";
+
+    }
 }

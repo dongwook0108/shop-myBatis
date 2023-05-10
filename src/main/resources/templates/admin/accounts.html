@@ -23,6 +23,9 @@
                 <div class="row">
                     <div class="col-12">
                         <h2 style="padding: 5px" class="tm-block-title d-inline-block">회원 목록</h2>
+
+                        <div th:if="${message}" th:text="${message}"></div>
+
                         <div style="padding: 2px; margin-bottom: 20px">
 
                             <form th:action="@{/admin/members}" method="get">
@@ -130,14 +133,20 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <form th:action="@{/admin/member/edit}" method="post"
+                        <form th:action="@{/admin/update-member}" method="post"
                               class="tm-signup-form">
                             <div class="form-group">
-                                <label for="name">이름</label>
-                                <input id="name" name="name"
-                                       type="text"
+                                <input id="member-id" name="id"
+                                       type="hidden"
                                        class="form-control validate"
                                        readonly
+                                >
+                            </div>
+                            <div class="form-group">
+                                <label for="username">이름</label>
+                                <input id="username" name="username"
+                                       type="text"
+                                       class="form-control validate"
                                 >
                             </div>
                             <div class="form-group">
@@ -170,29 +179,9 @@
     </div>
 </div>
 
-<script src="/js/jquery-3.3.1.min.js"></script>
-<!-- https://jquery.com/download/ -->
-<script src="/js/bootstrap.min.js"></script>
-<!-- https://getbootstrap.com/ -->
-
-<!--<script>-->
-<!--    const memberName = document.querySelector("#name");-->
-<!--    const memberEmail = document.querySelector("#email");-->
-<!--    const memberPhone = document.querySelector("#phoneNumber");-->
-<!--    const detailPage = document.querySelector("#detail-page");-->
-
-<!--    function requestMemberDetail(memberId) {-->
-<!--        $.ajax("/api/member-detail?id=" + memberId)-->
-<!--        .done((data) => {-->
-<!--            detailPage.style.display = "block";-->
-<!--            memberName.value = data.username;-->
-<!--            memberEmail.value = data.email;-->
-<!--            memberPhone.value = data.phoneNumber;-->
-<!--        })-->
-<!--    }-->
-<!--</script>-->
 <script>
-    const memberName = document.querySelector("#name");
+    const memberIdInput = document.querySelector("#member-id");
+    const memberName = document.querySelector("#username");
     const memberEmail = document.querySelector("#email");
     const memberPhone = document.querySelector("#phoneNumber");
     const detailPage = document.querySelector("#detail-page");
@@ -201,6 +190,7 @@
         $.ajax("/api/member-detail?id=" + memberId)
         .done((data) => {
             detailPage.style.display = "block";
+            memberIdInput.value = data.id;
             memberName.value = data.username;
             memberEmail.value = data.email;
             memberPhone.value = formatPhoneNumber(data.phoneNumber);

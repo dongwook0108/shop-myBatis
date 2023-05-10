@@ -45,7 +45,7 @@ public interface MemberMapper {
     @Select(value = "SELECT * FROM MEMBER WHERE member_id = #{memberId}")
     Member findById(@Param(value = "memberId") Long memberId);
 
-    @Update(value = "UPDATE MEMBER SET phoneNumber=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, addressDetail=#{member.addressDetail} WHERE member_id = #{member.id} ")
+    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phoneNumber=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, addressDetail=#{member.addressDetail} WHERE member_id = #{member.id} ")
     void updateMember(@Param(value = "member") Member member);
 
 //    --------------------------페이징 -------------------------

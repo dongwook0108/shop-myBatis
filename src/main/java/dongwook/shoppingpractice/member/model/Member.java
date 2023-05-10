@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.member.model;
 
+import dongwook.shoppingpractice.member.form.AdminModifyForm;
 import dongwook.shoppingpractice.member.form.SignUpForm;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -57,5 +58,11 @@ public class Member {
 
     public void updateZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public void updateMember(AdminModifyForm form) {
+        this.username = form.getUsername();
+        this.phoneNumber = form.getPhoneNumber();
+        this.email = form.getEmail();
     }
 }
