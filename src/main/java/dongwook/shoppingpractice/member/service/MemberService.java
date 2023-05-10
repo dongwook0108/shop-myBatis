@@ -110,4 +110,10 @@ public class MemberService implements UserDetailsService {
 
         memberMapper.updateMember(member);
     }
+
+    public void updateMemberFromAdmin(AdminModifyForm form) {
+        Member member = memberMapper.findById(form.getId());
+        member.updateMember(form);
+        memberMapper.updateMember(member);
+    }
 }
