@@ -18,4 +18,6 @@ public class AdminModifyForm {
 //    @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "올바른 이메일이 아닙니다.")
     private String email;
 
+    private boolean active;
+
 }
