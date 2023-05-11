@@ -67,6 +67,6 @@ public interface MemberMapper {
     List<Member> getListPageByEmail(@Param(value = "page") PaginationVo paginationVo,
             @Param(value = "email") String email);
 
-    @Update(value = "UPDATE MEMBER SET active=#{active} WHERE member_id=#{id}")
-    void deleteMember(@Param("member") Member member);
+    @Update(value = "UPDATE MEMBER SET active=#{member.active} WHERE member_id=#{member.id}")
+    void deleteMember(@Param(value = "member") Member member);
 }
