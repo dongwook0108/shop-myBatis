@@ -36,7 +36,7 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Member member = memberMapper.findByEmail(email);
-        if (member == null) {
+        if (member == null || !member.isActive()) {
             throw new UsernameNotFoundException(email);
         }
         return new UserMember(member);
