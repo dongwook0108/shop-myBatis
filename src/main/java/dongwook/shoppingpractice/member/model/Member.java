@@ -68,7 +68,7 @@ public class Member {
         this.email = form.getEmail();
     }
 
-
     public void deleteMember(AdminModifyForm form) {
+        this.active = false;
     }
 }

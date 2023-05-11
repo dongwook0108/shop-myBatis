@@ -2,11 +2,9 @@ package dongwook.shoppingpractice.member.controller;
 
 import dongwook.shoppingpractice.member.form.AdminModifyForm;
 import dongwook.shoppingpractice.member.form.userpaging.PaginationVo;
-import dongwook.shoppingpractice.member.model.CurrentMember;
 import dongwook.shoppingpractice.member.model.Member;
 import dongwook.shoppingpractice.member.service.MemberService;
 import java.util.List;
-import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,4 +66,9 @@ public class AdminMemberController {
         return "redirect:/admin/members";
     }
 
+    @PostMapping("/delete-member")
+    public String deleteMemberFromAdmin(AdminModifyForm form) {
+        memberService.deleteMemberFromAdmin(form);
+        return "redirect:/admin/members";
+    }
 }

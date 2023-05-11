@@ -117,4 +117,10 @@ public class MemberService implements UserDetailsService {
         memberMapper.updateMember(member);
     }
 
+    public void deleteMemberFromAdmin(AdminModifyForm form) {
+        Member member = memberMapper.findById(form.getId());
+        member.deleteMember(form);
+        memberMapper.deleteMember(member);
+    }
+
 }
