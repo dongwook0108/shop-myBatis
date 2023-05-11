@@ -27,12 +27,6 @@ public class AdminMemberController {
         return "admin/index";
     }
 
-//    @PostMapping("/member/edit")
-//    public String adminMemberEdit(@CurrentMember Member member, @Valid AdminModifyForm modifyForm) {
-//        memberService.AdminModifyMember(member, modifyForm);
-//        return "redirect:/admin/members";
-//    }
-
     //        paging -----------------------
     @GetMapping("/members")
     public String selectListAndPage(Model model,

@@ -99,18 +99,6 @@ public class MemberService implements UserDetailsService {
         return memberMapper.getCountByEmail(email);
     }
 
-//    public void AdminModifyMember(Member member, AdminModifyForm modifyForm) {
-//        if (!member.getPhoneNumber().equals(modifyForm.getPhoneNumber())) {
-//            member.updatePhone(modifyForm.getPhoneNumber());
-//        }
-//
-//        if (!member.getEmail().equals(modifyForm.getEmail())) {
-//            member.updateEmail(modifyForm.getEmail());
-//        }
-//
-//        memberMapper.updateMember(member);
-//    }
-
     public void updateMemberFromAdmin(AdminModifyForm form) {
         Member member = memberMapper.findById(form.getId());
         member.updateMember(form);
