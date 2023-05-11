@@ -30,6 +30,8 @@ public class Member {
 
     private String createdBt;
 
+    private boolean active;
+
 
     public Member(SignUpForm form) {
         if (form.getEmail().contains("@dongwook.com")) {
@@ -45,7 +47,7 @@ public class Member {
         this.address = form.getAddress();
         this.addressDetail = form.getAddressDetail();
         this.createdDate = LocalDateTime.now();
-
+        this.active = true;
     }
 
     public void updatePhone(String phone) {
@@ -64,5 +66,9 @@ public class Member {
         this.username = form.getUsername();
         this.phoneNumber = form.getPhoneNumber();
         this.email = form.getEmail();
+    }
+
+
+    public void deleteMember(AdminModifyForm form) {
     }
 }

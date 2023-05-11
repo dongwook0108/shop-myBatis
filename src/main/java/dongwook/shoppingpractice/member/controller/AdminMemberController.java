@@ -29,11 +29,11 @@ public class AdminMemberController {
         return "admin/index";
     }
 
-    @PostMapping("/member/edit")
-    public String adminMemberEdit(@CurrentMember Member member, @Valid AdminModifyForm modifyForm) {
-        memberService.AdminModifyMember(member, modifyForm);
-        return "redirect:/admin/members";
-    }
+//    @PostMapping("/member/edit")
+//    public String adminMemberEdit(@CurrentMember Member member, @Valid AdminModifyForm modifyForm) {
+//        memberService.AdminModifyMember(member, modifyForm);
+//        return "redirect:/admin/members";
+//    }
 
     //        paging -----------------------
     @GetMapping("/members")
@@ -66,6 +66,6 @@ public class AdminMemberController {
         memberService.updateMemberFromAdmin(form);
         redirectAttributes.addFlashAttribute("message", "수정 완료");
         return "redirect:/admin/members";
-
     }
+
 }

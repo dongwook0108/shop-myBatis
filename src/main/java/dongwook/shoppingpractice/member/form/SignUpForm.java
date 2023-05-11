@@ -39,4 +39,6 @@ public class SignUpForm {
 
     private String createdBt;
 
+    private boolean active;
+
 }
