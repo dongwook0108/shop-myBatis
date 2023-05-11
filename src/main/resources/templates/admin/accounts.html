@@ -130,7 +130,7 @@
                         <h2 class="tm-block-title">회원 수정</h2>
                         <form th:action="@{/admin/delete-member}" method="post">
                             <div class="form-group">
-                                <input id="member-id" name="id"
+                                <input id="id" name="id"
                                        type="hidden">
                             </div>
                             <button type="submit" class="btn btn-danger">삭제</button>
@@ -184,7 +184,12 @@
 </div>
 
 <script>
-    const memberIdInput = document.querySelector("#member-id");
+    const memberIdInputDelete = document.querySelector(
+            "form[action='/admin/delete-member'] input[name='id']");
+    const memberIdInputUpdate = document.querySelector(
+            "form[action='/admin/update-member'] input[name='id']");
+
+    // const memberIdInput = document.querySelector("#member-id");
     const memberName = document.querySelector("#username");
     const memberEmail = document.querySelector("#email");
     const memberPhone = document.querySelector("#phoneNumber");
@@ -194,7 +199,8 @@
         $.ajax("/api/member-detail?id=" + memberId)
         .done((data) => {
             detailPage.style.display = "block";
-            memberIdInput.value = data.id;
+            memberIdInputDelete.value = data.id;
+            memberIdInputUpdate.value = data.id;
             memberName.value = data.username;
             memberEmail.value = data.email;
             memberPhone.value = formatPhoneNumber(data.phoneNumber);
