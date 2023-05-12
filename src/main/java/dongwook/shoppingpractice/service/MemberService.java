@@ -1,10 +1,10 @@
 package dongwook.shoppingpractice.service;
 
 import dongwook.shoppingpractice.mapper.MemberMapper;
-import dongwook.shoppingpractice.dto.member.AdminModifyForm;
-import dongwook.shoppingpractice.dto.member.ModifyForm;
-import dongwook.shoppingpractice.dto.member.SignUpForm;
-import dongwook.shoppingpractice.dto.common.PaginationVo;
+import dongwook.shoppingpractice.form.member.AdminModifyForm;
+import dongwook.shoppingpractice.form.member.ModifyForm;
+import dongwook.shoppingpractice.form.member.SignUpForm;
+import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.member.model.Member;
 import dongwook.shoppingpractice.member.model.UserMember;
 import java.util.List;
