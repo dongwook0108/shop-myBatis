@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.member.model;
 
-import dongwook.shoppingpractice.member.form.AdminModifyForm;
-import dongwook.shoppingpractice.member.form.SignUpForm;
+import dongwook.shoppingpractice.dto.member.AdminModifyForm;
+import dongwook.shoppingpractice.dto.member.SignUpForm;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

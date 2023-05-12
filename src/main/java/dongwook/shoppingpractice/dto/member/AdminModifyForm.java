@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.member.form;
+package dongwook.shoppingpractice.dto.member;
 import lombok.Data;
 
 @Data
