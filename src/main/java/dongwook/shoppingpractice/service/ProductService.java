@@ -1,8 +1,8 @@
 package dongwook.shoppingpractice.service;
 
 import dongwook.shoppingpractice.dto.common.PaginationVo;
-import dongwook.shoppingpractice.product.form.ProductEditForm;
-import dongwook.shoppingpractice.product.form.ProductForm;
+import dongwook.shoppingpractice.dto.product.ProductEditForm;
+import dongwook.shoppingpractice.dto.product.ProductForm;
 import dongwook.shoppingpractice.mapper.ProductMapper;
 import dongwook.shoppingpractice.product.model.Product;
 import java.util.List;
