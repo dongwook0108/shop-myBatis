@@ -71,10 +71,10 @@
                                     </li>
 
                                     <li class="page-item"
-                                        th:each="pageNum : ${#numbers.sequence(pageVo.startPage, pageVo.endPage)}">
+                                        th:each="pageNum : ${#numbers.sequence(1, pageVo.totalPageCount)}">
                                         <a class="page-link"
                                            th:href="@{'/admin/products?page='+${pageNum}}"
-                                           th:text="${pageNum}">1</a>
+                                           th:text="${pageNum}"></a>
                                     </li>
 
                                     <li class="page-item">
@@ -89,6 +89,7 @@
                             </nav>
                         </div>
                     </div>
+
                 </div>
             </div>
 
