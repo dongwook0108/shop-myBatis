@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.controller;
 
 import dongwook.shoppingpractice.product.model.Product;
-import dongwook.shoppingpractice.product.service.ProductService;
+import dongwook.shoppingpractice.service.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

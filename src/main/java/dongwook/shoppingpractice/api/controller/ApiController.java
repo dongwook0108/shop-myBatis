@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.api.controller;
 
 import dongwook.shoppingpractice.member.model.Member;
-import dongwook.shoppingpractice.member.service.MemberService;
+import dongwook.shoppingpractice.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
