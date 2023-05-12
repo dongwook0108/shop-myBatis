@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.product.form;
+package dongwook.shoppingpractice.dto.product;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

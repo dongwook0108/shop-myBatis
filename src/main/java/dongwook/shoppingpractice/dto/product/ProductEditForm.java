@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.product.form;
+package dongwook.shoppingpractice.dto.product;
 
 import dongwook.shoppingpractice.product.model.Product;
 import java.math.BigDecimal;

@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.product.model;
 
-import dongwook.shoppingpractice.product.form.ProductEditForm;
-import dongwook.shoppingpractice.product.form.ProductForm;
+import dongwook.shoppingpractice.dto.product.ProductEditForm;
+import dongwook.shoppingpractice.dto.product.ProductForm;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
