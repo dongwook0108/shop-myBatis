@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.member.controller;
+package dongwook.shoppingpractice.controller;
 
 import dongwook.shoppingpractice.member.form.ModifyForm;
 import dongwook.shoppingpractice.member.form.SignUpForm;

@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.product.controller;
+package dongwook.shoppingpractice.controller;
 
 import dongwook.shoppingpractice.product.model.Product;
 import dongwook.shoppingpractice.product.service.ProductService;
