@@ -1,8 +1,8 @@
 package dongwook.shoppingpractice.domain.member.service;
 
-import dongwook.shoppingpractice.domain.member.form.SignUpForm;
+import dongwook.shoppingpractice.form.member.SignUpForm;
 import dongwook.shoppingpractice.mapper.MemberMapper;
-import dongwook.shoppingpractice.domain.member.model.Member;
+import dongwook.shoppingpractice.model.member.Member;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
