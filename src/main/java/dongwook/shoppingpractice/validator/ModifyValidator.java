@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.member.validator;
+package dongwook.shoppingpractice.validator;
 
 import dongwook.shoppingpractice.mapper.MemberMapper;
 import dongwook.shoppingpractice.form.member.ModifyForm;
