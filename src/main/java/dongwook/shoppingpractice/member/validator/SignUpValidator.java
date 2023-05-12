@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.member.validator;
 
 import dongwook.shoppingpractice.mapper.MemberMapper;
-import dongwook.shoppingpractice.member.form.SignUpForm;
+import dongwook.shoppingpractice.dto.member.SignUpForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

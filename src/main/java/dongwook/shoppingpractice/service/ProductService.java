@@ -1,6 +1,6 @@
 package dongwook.shoppingpractice.service;
 
-import dongwook.shoppingpractice.member.form.userpaging.PaginationVo;
+import dongwook.shoppingpractice.dto.common.PaginationVo;
 import dongwook.shoppingpractice.product.form.ProductEditForm;
 import dongwook.shoppingpractice.product.form.ProductForm;
 import dongwook.shoppingpractice.mapper.ProductMapper;
