@@ -36,8 +36,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-jdbc' // Jdbc, Driver
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-//    runtimeOnly 'com.h2database:h2:1.4.200'
-//    testImplementation 'com.h2database:h2:1.4.200'
+    runtimeOnly 'com.h2database:h2:1.4.200'
+    testImplementation 'com.h2database:h2:1.4.200'
 
 
     //테스트에서 lombok 사용
@@ -52,10 +52,9 @@ dependencies {
 
 
 //    //테스트 하고 지움
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-//    implementation 'org.springframework.boot:spring-boot-starter-web'
-//    runtimeOnly 'com.h2database:h2'
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

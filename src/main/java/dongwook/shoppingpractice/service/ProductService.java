@@ -1,10 +1,12 @@
 package dongwook.shoppingpractice.service;
 
+import dongwook.shoppingpractice.common.exception.ProductSaveException;
 import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.mapper.ProductMapper;
 import dongwook.shoppingpractice.model.Product;
+import java.math.BigDecimal;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,15 @@ public class ProductService {
 
     public void save(ProductForm form) {
         Product product = new Product(form);
+
+        if (form.getPrice().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new ProductSaveException("가격은 0원 초과이어야 합니다.");
+        }
+
+        if (form.getSimpleDescription() == null || form.getDescription() == null) {
+            throw new ProductSaveException("제품 설명 부분은 비어있을 수 없습니다.");
+        }
+
         productMapper.save(product);
     }
 
