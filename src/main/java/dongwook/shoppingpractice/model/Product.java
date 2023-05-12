@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.product.model;
+package dongwook.shoppingpractice.model;
 
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;

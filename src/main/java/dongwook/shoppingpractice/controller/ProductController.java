@@ -1,6 +1,6 @@
 package dongwook.shoppingpractice.controller;
 
-import dongwook.shoppingpractice.product.model.Product;
+import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.service.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

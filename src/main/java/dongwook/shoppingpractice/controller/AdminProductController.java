@@ -3,7 +3,7 @@ package dongwook.shoppingpractice.controller;
 import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
-import dongwook.shoppingpractice.product.model.Product;
+import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.service.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

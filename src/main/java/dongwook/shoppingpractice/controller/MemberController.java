@@ -2,8 +2,8 @@ package dongwook.shoppingpractice.controller;
 
 import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
-import dongwook.shoppingpractice.member.model.CurrentMember;
-import dongwook.shoppingpractice.member.model.Member;
+import dongwook.shoppingpractice.model.member.CurrentMember;
+import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.MemberService;
 import dongwook.shoppingpractice.member.validator.ModifyValidator;
 import dongwook.shoppingpractice.member.validator.SignUpValidator;

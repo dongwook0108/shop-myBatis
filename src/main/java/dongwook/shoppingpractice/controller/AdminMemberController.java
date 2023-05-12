@@ -2,7 +2,7 @@ package dongwook.shoppingpractice.controller;
 
 import dongwook.shoppingpractice.form.member.AdminModifyForm;
 import dongwook.shoppingpractice.form.common.PaginationVo;
-import dongwook.shoppingpractice.member.model.Member;
+import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.MemberService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
