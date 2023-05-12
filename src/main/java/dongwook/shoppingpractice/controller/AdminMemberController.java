@@ -3,7 +3,7 @@ package dongwook.shoppingpractice.controller;
 import dongwook.shoppingpractice.member.form.AdminModifyForm;
 import dongwook.shoppingpractice.member.form.userpaging.PaginationVo;
 import dongwook.shoppingpractice.member.model.Member;
-import dongwook.shoppingpractice.member.service.MemberService;
+import dongwook.shoppingpractice.service.MemberService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -4,7 +4,7 @@ import dongwook.shoppingpractice.member.form.ModifyForm;
 import dongwook.shoppingpractice.member.form.SignUpForm;
 import dongwook.shoppingpractice.member.model.CurrentMember;
 import dongwook.shoppingpractice.member.model.Member;
-import dongwook.shoppingpractice.member.service.MemberService;
+import dongwook.shoppingpractice.service.MemberService;
 import dongwook.shoppingpractice.member.validator.ModifyValidator;
 import dongwook.shoppingpractice.member.validator.SignUpValidator;
 import javax.validation.Valid;

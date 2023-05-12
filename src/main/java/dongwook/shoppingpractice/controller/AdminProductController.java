@@ -4,7 +4,7 @@ import dongwook.shoppingpractice.member.form.userpaging.PaginationVo;
 import dongwook.shoppingpractice.product.form.ProductEditForm;
 import dongwook.shoppingpractice.product.form.ProductForm;
 import dongwook.shoppingpractice.product.model.Product;
-import dongwook.shoppingpractice.product.service.ProductService;
+import dongwook.shoppingpractice.service.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

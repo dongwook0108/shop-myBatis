@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.member.service;
+package dongwook.shoppingpractice.service;
 
 import dongwook.shoppingpractice.mapper.MemberMapper;
 import dongwook.shoppingpractice.member.form.AdminModifyForm;

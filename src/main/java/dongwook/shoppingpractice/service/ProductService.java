@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.product.service;
+package dongwook.shoppingpractice.service;
 
 import dongwook.shoppingpractice.member.form.userpaging.PaginationVo;
 import dongwook.shoppingpractice.product.form.ProductEditForm;
