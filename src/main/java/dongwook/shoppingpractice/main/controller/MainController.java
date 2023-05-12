@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.main.controller;
 
-import dongwook.shoppingpractice.member.model.CurrentMember;
-import dongwook.shoppingpractice.member.model.Member;
+import dongwook.shoppingpractice.model.member.CurrentMember;
+import dongwook.shoppingpractice.model.member.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

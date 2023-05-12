@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.member.model;
+package dongwook.shoppingpractice.model.member;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

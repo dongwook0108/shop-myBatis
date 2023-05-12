@@ -1,6 +1,6 @@
 package dongwook.shoppingpractice.form.member;
 
-import dongwook.shoppingpractice.member.model.Member;
+import dongwook.shoppingpractice.model.member.Member;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;

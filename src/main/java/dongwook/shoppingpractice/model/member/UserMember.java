@@ -1,4 +1,4 @@
-package dongwook.shoppingpractice.member.model;
+package dongwook.shoppingpractice.model.member;
 
 import java.util.List;
 import lombok.Getter;
