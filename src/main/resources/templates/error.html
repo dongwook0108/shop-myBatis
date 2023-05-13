@@ -1,12 +1,154 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ko">
-<head th:replace="~{fragments.html::head}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <title>shop</title>
+    <style>
+      @font-face {
+        font-family: "Musinsa";
+        font-weight: 500;
+        font-style: normal;
+        src: url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Medium.eot');
+        src: local("☺"),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Medium.eot?#iefix') format('embedded-opentype'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Medium.woff2') format('woff2'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Medium.woff') format('woff'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Medium.ttf') format('truetype'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Medium.svg#MusinsaRegualr') format('svg');
+      }
+
+      @font-face {
+        font-family: "Musinsa";
+        font-weight: 300;
+        font-style: normal;
+        src: url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Light.eot');
+        src: local("☺"),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Light.eot?#iefix') format('embedded-opentype'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Light.woff2') format('woff2'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Light.woff') format('woff'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Light.ttf') format('truetype'),
+        url('//image.msscdn.net/musinsaUI/fonts/musinsaot-Light.svg#MusinsaLight') format('svg');
+      }
+
+      * {
+        font-family: 'Auto', sans-serif;
+        color: #000;
+        margin: 0;
+        padding: 0
+      }
+
+      html, body {
+        height: 100%
+      }
+
+      body {
+        height: 100%
+      }
+
+      .error-network-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 533px;
+        margin: 0;
+        padding-top: 30px;
+        padding-bottom: constant(safe-area-inset-bottom);
+        padding-bottom: env(safe-area-inset-bottom);
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-align: center
+      }
+
+      .error-network-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: 100%;
+        min-width: 308px;
+        padding: 0 30px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        text-align: center
+      }
+
+      .error-network-text:before {
+        content: "";
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        background: url(https://image.msscdn.net/images/network_browser_icon.png) no-repeat 50% 50%;
+        background-size: 66px 62px
+      }
+
+      .error-network-text > strong {
+        display: block;
+        margin: 20px 0 16px 0;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 38px;
+        font-family: "Musinsa", "AppleSDGothicNeo", "Apple SD Gothic Neo", "Apple SD 산돌고딕 Neo", sans-serif
+      }
+
+      .error-network-text > p {
+        color: #777;
+        font-size: 14px;
+        line-height: 20px
+      }
+
+      .error-network-text > .btn {
+        display: block;
+        width: 130px;
+        height: 50px;
+        margin: 40px auto 5px;
+        background-color: #000;
+        color: #fff;
+        font-size: 14px;
+        line-height: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center
+      }
+
+      .error-network-text > .link {
+        display: block;
+        width: 130px;
+        height: 50px;
+        margin: 0 auto;
+        background-color: #fff;
+        color: #777;
+        font-size: 14px;
+        line-height: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: center
+      }
+
+      @media only screen and (max-width: 520px) {
+        .error-network-text {
+          padding: 40px 6px 0
+        }
+      }
+    </style>
 </head>
+
 <body>
-<nav th:replace="~{fragments.html::nav}"></nav>
-<main>
-    <h1>에러 페이지</h1>
-</main>
-<footer th:replace="~{fragments.html::footer}"></footer>
+<div class="error-network-wrap">
+    <h1 class="">Little Fashion</h1>
+    <div class="error-network-text">
+        <strong>페이지를 찾을 수<br>없습니다</strong>
+        <p>페이지의 주소가 잘못 입력되었거나,
+            <br>변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.
+            <br>입력하신 페이지 주소를 다시 한번 확인해 주세요.
+        </p>
+        <a class="btn" th:href="@{/}">홈페이지</a>
+        <a class="link" href="javascript:void(0)" onclick="history.back();">이전 페이지</a>
+    </div>
+</div>
+
 </body>
 </html>
