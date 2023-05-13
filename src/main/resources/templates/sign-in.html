@@ -28,24 +28,31 @@
 
                     <h1 class="hero-title text-center mb-5">Sign In</h1>
 
+
                     <div class="row">
                         <div class="col-lg-8 col-11 mx-auto">
-                            <form role="form" th:action="@{/login}" method="post">
+
+                            <div th:if="${param.error}" class="form-group">
+                                <div class="alert alert-danger" th:text="${exception}">잘못된 아이디나
+                                    암호입니다
+                                </div>
+                            </div>
+
+                            <form th:action="@{/login}" method="post">
                                 <div class="form-floating mb-4 p-0">
                                     <input type="email" pattern="[^ @]*@[^ @]*"
                                            name="username"
                                            class="form-control"
                                            placeholder="Email address" required>
                                     <label th:for="email">Email address</label>
-                                    <!--                                    <div class="field-error" th:errors="*{email}"></div>-->
                                 </div>
+
 
                                 <div class="form-floating p-0">
                                     <input type="password" class="form-control"
                                            name="password"
                                            placeholder="Password" required>
                                     <label th:for="password">Password</label>
-                                    <!--                                    <div class="field-error" th:errors="*{password}" />-->
                                 </div>
 
                                 <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
@@ -55,10 +62,10 @@
                                 <p class="text-center">Don’t have an account? <a th:href="@{/member/sign-up}">Create
                                     One</a>
                                 </p>
-
                             </form>
                         </div>
                     </div>
+
 
                 </div>
 

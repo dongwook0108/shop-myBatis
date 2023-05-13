@@ -9,6 +9,7 @@ import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.model.member.UserMember;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -69,6 +70,11 @@ public class MemberService implements UserDetailsService {
     }
 
     public boolean checkPassword(Member member, String password) {
+
+//        if (!passwordEncoder.matches(password, member.getPassword())) {
+//            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
+//        }
+
         return passwordEncoder.matches(password, member.getPassword());
     }
 

@@ -5,6 +5,8 @@ import dongwook.shoppingpractice.model.member.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -18,10 +20,20 @@ public class MainController {
     }
 
     @GetMapping(value = "/login")
-    public String login(Model model) {
+    public String loginPage(@RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "exception", required = false) String exception,
+            Model model) {
+        model.addAttribute("error", error);
+        model.addAttribute("exception", exception);
 
         return "sign-in";
     }
+
+//    @PostMapping(value = "/login")
+//    public String login() {
+//
+//        return "sign-in";
+//    }
 
 
 }
