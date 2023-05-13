@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head"></head>
+
+<link rel="stylesheet" href="/css/style.css">
+<body>
+
+
+<section class="preloader">
+    <div class="spinner">
+        <span class="sk-inner-circle"></span>
+    </div>
+</section>
+
+<nav th:replace="~{fragments.html::nav}"></nav>
+<main>
+
+    <div id="content" style="margin-top: 200px; padding: 30px">
+        <div style="display: flex; justify-content: space-between;">
+
+            <div th:replace="~{member/fragments.html::member-edit}"></div>
+
+
+            <div style="flex-basis: 68%; border-top: 2px solid black;" th:object="${member}">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">아이디(이메일)</th>
+                        <th colspan="2" scope="col" th:text="${member.email}">First</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">이름</th>
+                        <th scope="col" th:text="${member.username}"></th>
+                        <th>
+                            <button type="button" class="btn btn-sm btn-outline-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#member-name-edit-modal"
+                                    th:data-bs-id="${member.id}"
+                                    th:data-bs-username="${member.username}"
+                            >이름 수정
+                            </button>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="col">전화번호</th>
+                        <th scope="col" th:text="${member.phoneNumber}"></th>
+                        <th>
+                            <!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+                            <!--                                    data-bs-toggle="modal"-->
+                            <!--                                    data-bs-target="#member-edit-modal"-->
+                            <!--                                    data-bs-id="{{id}}"-->
+                            <!--                            >전화번호 변경-->
+                            <!--                            </button>-->
+                        </th>
+                    </tr>
+                    <tr>
+                        <th scope="col" colspan="2">비밀번호</th>
+                        <th>
+                            <!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+                            <!--                                    data-bs-toggle="modal"-->
+                            <!--                                    data-bs-target="#member-edit-modal"-->
+                            <!--                                    data-bs-id="{{id}}"-->
+                            <!--                            >비밀번호 변경-->
+                            <!--                            </button>-->
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2" scope="col">배송지</th>
+                        <th>
+                            <!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+                            <!--                                    data-bs-toggle="modal"-->
+                            <!--                                    data-bs-target="#member-edit-modal"-->
+                            <!--                                    data-bs-id="{{id}}"-->
+                            <!--                            >배송지 관리-->
+                            <!--                            </button>-->
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="member-name-edit-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">이름 수정</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <!-- 이름 입력 -->
+                    <div class="mb-3">
+                        <label class="form-label">변경하실 이름을 입력해 주세요</label>
+                        <input type="text" class="form-control form-control-sm"
+                               id="edit-member-username">
+                    </div>
+
+                    <!-- 히든 인풋 -->
+                    <input type="hidden" id="edit-member-id">
+
+                    <!-- 전송 버튼 -->
+                    <button type="button" class="btn btn-outline-primary btn-sm"
+                            id="member-update-btn">수정 완료
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block th:replace="fragments.html::footer"></th:block>
+
+<script>
+    {
+        //모달 요소 선택
+        const memberEditModal = document.querySelector("#member-edit-modal");
+
+        //모달 이벤트 감지
+        memberEditModal.addEventListener("show.bs.modal", function (event) {
+            // 트리거 버튼 선택
+            const triggerBtn = event.relatedTarget;
+
+            //데이터 가져오기
+            const id = triggerBtn.getAttribute("data-bs-id");
+            const username = triggerBtn.getAttribute("data-bs-username");
+
+            // 데이터 반영
+            document.querySelector("#edit-member-id").value = id;
+            document.querySelector("#edit-member-username").value = username;
+        });
+    }
+
+    {
+        // 수정 완료 버튼
+        const memberUpdateBtn = document.querySelector("#member-update-btn");
+        // 클릭 이벤트 처리
+        memberUpdateBtn.addEventListener("click", function () {
+            // 수정 댓글 객체 생성
+            const member = {
+                id: document.querySelector("#edit-member-id").value,
+                username: document.querySelector("#edit-member-nickname").value,
+            };
+            console.log(member);
+            // 수정 REST API 호출 fetch()
+            const url = "/api/members/" + member.id;
+            fetch(url, {
+                method: "PATCH",
+                body: JSON.stringify(member),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(response => {
+                const msg = (response.ok) ? "이름이 수정되었습니다." : "이름 수정 실패";
+                alert(msg);
+                window.location.reload();
+            });
+        });
+    }
+</script>
+
+
+</body>
+
+</html>

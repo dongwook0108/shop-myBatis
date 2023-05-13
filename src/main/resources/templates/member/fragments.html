@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<nav th:fragment="member-edit">
+    <div id="contentleft" style="margin-left: 100px">
+        <div class="link">
+            <ul>
+                <h4>나의 쇼핑 활동</h4>
+                <li class="back"><a href="#">주문 내역 조회</a></li>
+                <li class="back"><a th:href="@{/cart}">장바구니</a></li>
+                <li class="back"><a href="#">1:1 문의</a></li>
+                <li class="back"><a href="#">좋아요</a></li>
+                <li class="back"><a th:href="@{/my-info-edit}">회원정보변경</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+</html>
