@@ -110,5 +110,4 @@ public class MemberService implements UserDetailsService {
         member.deleteMember(form);
         memberMapper.deleteMember(member);
     }
-
 }

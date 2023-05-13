@@ -76,16 +76,16 @@
 
             <div class="d-none d-lg-block" sec:authorize="isAuthenticated()">
                 <a sec:authorize="hasAuthority('ADMIN')" th:href="@{/admin}">
-                    관리자페이지로 가기
+                    관리자페이지
                 </a>
-                <a th:href="@{/member/check-password}"
-                   th:text="${#authentication.name}"></a>
+                <!--                <a th:href="@{/my-info}">마이페이지</a>-->
+                <a th:href="@{/member/check-password}">마이페이지</a>
                 <!-- a태그 get 요청 -> logout post 요청 -> form-->
                 <form th:action="@{/logout}" method="post">
                     <button type="submit">로그아웃</button>
                 </form>
 
-                <a href="product-detail.html" class="bi-bag custom-icon"></a>
+                <a th:href="@{/cart}" class="bi-bag custom-icon"></a>
             </div>
         </div>
     </div>

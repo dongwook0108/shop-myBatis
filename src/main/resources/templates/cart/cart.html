@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html::head"></head>
+
+<link rel="stylesheet" href="/css/style.css">
+<body>
+
+
+<section class="preloader">
+    <div class="spinner">
+        <span class="sk-inner-circle"></span>
+    </div>
+</section>
+
+<nav th:replace="~{fragments.html::nav}"></nav>
+<main>
+
+    <div id="content" style="margin-top: 200px; padding: 20px">
+        <div style="display: flex; justify-content: space-between;">
+            <div th:replace="~{member/fragments.html::member-edit}"></div>
+
+            <div style="flex-basis: 68%; border-top: 2px solid black;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">상품명</th>
+                        <th scope="col">판매가</th>
+                        <th scope="col">수량</th>
+                        <th scope="col">가격</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+<th:block th:replace="fragments.html::footer"></th:block>
+
+</body>
+
+</html>
