@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.mapper;
 
 import dongwook.shoppingpractice.form.common.PaginationVo;
+import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.model.member.Member;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
@@ -68,4 +69,7 @@ public interface MemberMapper {
 
     @Update(value = "UPDATE MEMBER SET active=#{member.active} WHERE member_id=#{member.id}")
     void deleteMember(@Param(value = "member") Member member);
+
+    @Update(value = "UPDATE MEMBER SET username=#{member.username} WHERE member_id=#{id}")
+    void updateName(@Param(value = "member") Member target);
 }

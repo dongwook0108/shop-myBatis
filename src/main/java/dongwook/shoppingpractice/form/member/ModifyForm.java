@@ -1,6 +1,5 @@
 package dongwook.shoppingpractice.form.member;
 
-import dongwook.shoppingpractice.model.member.Member;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -15,7 +14,7 @@ public class ModifyForm {
 
     static final String NOTNULL = "공백일 수 없습니다";
     private Long id;
-    private String name;
+    private String username;
 
     @NotEmpty
     @Length(min = 10, max = 11, message = "전화번호는 10자리 이상 11자리 이하로 입력해 주세요")
@@ -30,9 +29,9 @@ public class ModifyForm {
     @NotEmpty(message = NOTNULL)
     private String zipcode;
 
-    public ModifyForm(Member member) {
+    public ModifyForm(dongwook.shoppingpractice.model.member.Member member) {
         this.id = member.getId();
-        this.name = member.getUsername();
+        this.username = member.getUsername();
         this.email = member.getEmail();
         this.address = member.getAddress();
         this.phoneNumber = member.getPhoneNumber();

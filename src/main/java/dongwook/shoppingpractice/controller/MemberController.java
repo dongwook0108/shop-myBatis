@@ -3,7 +3,6 @@ package dongwook.shoppingpractice.controller;
 import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import dongwook.shoppingpractice.model.member.CurrentMember;
-import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.MemberService;
 import dongwook.shoppingpractice.validator.ModifyValidator;
 import dongwook.shoppingpractice.validator.SignUpValidator;
@@ -60,7 +59,8 @@ public class MemberController {
     }
 
     @PostMapping(value = "/check-password")
-    public String checkPassword(@CurrentMember Member member, String password, Model model) {
+    public String checkPassword(@CurrentMember dongwook.shoppingpractice.model.member.Member member,
+            String password, Model model) {
 
         if (memberService.checkPassword(member, password)) {
             return "redirect:/member/my-page";
@@ -71,7 +71,8 @@ public class MemberController {
     }
 
     @GetMapping(value = "/my-page")
-    public String modifyMemberInfoForm(@CurrentMember Member member, Model model) {
+    public String modifyMemberInfoForm(
+            @CurrentMember dongwook.shoppingpractice.model.member.Member member, Model model) {
         model.addAttribute("message", "수정 완료");
         model.addAttribute("findMember", member);
         return "member/my-page";
@@ -79,14 +80,17 @@ public class MemberController {
 
     //---------------------------------------------회원 정보 수정 폼-------------------------------------------------------------
     @GetMapping(value = "/my-page/edit")
-    public String modifyMemberInfoForm1(@CurrentMember Member member, Model model) {
+    public String modifyMemberInfoForm1(
+            @CurrentMember dongwook.shoppingpractice.model.member.Member member, Model model) {
         model.addAttribute(member);
         model.addAttribute(new ModifyForm(member));
         return "member/my-page-edit";
     }
 
     @PostMapping(value = "/my-page/edit")
-    public String modifyMemberInfo1(@CurrentMember Member member, @Valid ModifyForm modifyForm,
+    public String modifyMemberInfo1(
+            @CurrentMember dongwook.shoppingpractice.model.member.Member member,
+            @Valid ModifyForm modifyForm,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "member/my-page-edit";
