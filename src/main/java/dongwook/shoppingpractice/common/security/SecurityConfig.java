@@ -22,6 +22,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/login**", "/member/sign-up", "/products/**",
                         "/api/**")
@@ -46,7 +47,7 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> {
             web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
-            web.ignoring().antMatchers(HttpMethod.OPTIONS);
+//            web.ignoring().antMatchers(HttpMethod.OPTIONS);
             web.ignoring().antMatchers("/fonts/**", "/error");
         };
     }

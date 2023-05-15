@@ -18,12 +18,12 @@ public interface MemberMapper {
 
     @ResultMap(value = "MemberMap")
     @Insert(value =
-            "INSERT INTO MEMBER(username, role, phoneNumber, email, zipcode, password, address, addressDetail, active) "
+            "INSERT INTO MEMBER(username, role, phone_number, email, zipcode, password, address, addressDetail, active) "
                     +
                     "VALUES(#{member.username}, #{member.role},  #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail},#{member.active})")
     void save(@Param(value = "member") Member member);
 
-    @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phoneNumber = #{phoneNumber})")
+    @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phone_number = #{phoneNumber})")
     boolean existsByPhone(@Param(value = "phoneNumber") String phoneNumber);
 
     @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE email = #{email})")
@@ -32,7 +32,7 @@ public interface MemberMapper {
     @Results(id = "MemberMap", value = {
             @Result(property = "id", column = "member_id"),
             @Result(property = "username", column = "username"),
-            @Result(property = "phoneNumber", column = "phoneNumber"),
+            @Result(property = "phoneNumber", column = "phone_number"),
             @Result(property = "email", column = "email"),
             @Result(property = "zipcode", column = "zipcode"),
             @Result(property = "password", column = "password"),
@@ -48,7 +48,7 @@ public interface MemberMapper {
     @Select(value = "SELECT * FROM MEMBER WHERE member_id = #{memberId}")
     Member findById(@Param(value = "memberId") Long memberId);
 
-    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phoneNumber=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, addressDetail=#{member.addressDetail} WHERE member_id = #{member.id} and active = true")
+    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phone_number=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, addressDetail=#{member.addressDetail} WHERE member_id = #{member.id} and active = true")
     void updateMember(@Param(value = "member") Member member);
 
 //    --------------------------페이징 -------------------------
@@ -70,6 +70,9 @@ public interface MemberMapper {
     @Update(value = "UPDATE MEMBER SET active=#{member.active} WHERE member_id=#{member.id}")
     void deleteMember(@Param(value = "member") Member member);
 
-    @Update(value = "UPDATE MEMBER SET username=#{member.username} WHERE member_id=#{id}")
-    void updateName(@Param(value = "member") Member target);
+    @Update(value = "UPDATE MEMBER SET username=#{member.username} WHERE member_id=#{member.id}")
+    void updateName(@Param(value = "member") Member member);
+
+    @Update(value = "UPDATE MEMBER SET phone_number=#{member.phoneNumber} WHERE member_id=#{member.id}")
+    void updatePhoneNumber(@Param(value = "member") Member member);
 }
