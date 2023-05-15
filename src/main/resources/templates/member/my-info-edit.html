@@ -101,7 +101,7 @@
                     </div>
 
                     <!-- 히든 인풋 -->
-                    <input type="hidden" id="edit-member-id">
+                    <input type="hidden" id="edit-member-id-name">
 
                     <!-- 전송 버튼 -->
                     <button type="button" class="btn btn-sm btn-secondary modal-cancel-button"
@@ -135,7 +135,7 @@
                     </div>
 
                     <!-- 히든 인풋 -->
-                    <input type="hidden" id="edit-member-id">
+                    <input type="hidden" id="edit-member-id-phone">
 
                     <!-- 전송 버튼 -->
                     <button type="button" class="btn btn-sm btn-secondary modal-cancel-button"
@@ -165,7 +165,7 @@
             const phone = triggerBtn.getAttribute("data-bs-phoneNumber"); // 수정: data-bs-username -> data-bs-phoneNumber
 
             // 데이터 반영
-            document.querySelector("#edit-member-id").value = id;
+            document.querySelector("#edit-member-id-phone").value = id;
             document.querySelector("#edit-member-phone").value = phone;
         });
     }
@@ -190,7 +190,7 @@
 
 
             // 데이터 반영
-            document.querySelector("#edit-member-id").value = id;
+            document.querySelector("#edit-member-id-name").value = id;
             document.querySelector("#edit-member-username").value = username;
         });
     }
@@ -202,7 +202,7 @@
         memberUpdateBtn.addEventListener("click", function () {
             // 수정 멤버 객체 생성
             const member = {
-                id: document.querySelector("#edit-member-id").value,
+                id: document.querySelector("#edit-member-id-name").value,
                 username: document.querySelector("#edit-member-username").value
             };
             console.log(member);
@@ -240,7 +240,7 @@
             const phone = triggerBtn.getAttribute("data-bs-phoneNumber");
 
             // 데이터 반영
-            document.querySelector("#edit-member-id").value = id;
+            document.querySelector("#edit-member-id-phone").value = id;
             document.querySelector("#edit-member-phone").value = phone;
         });
     }
@@ -252,7 +252,7 @@
         memberUpdateBtn.addEventListener("click", function () {
             // 수정 멤버 객체 생성
             const member = {
-                id: document.querySelector("#edit-member-id").value,
+                id: document.querySelector("#edit-member-id-phone").value,
                 phone: document.querySelector("#edit-member-phone").value
             };
             console.log(member);
