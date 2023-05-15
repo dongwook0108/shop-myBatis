@@ -17,11 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberApiController {
 
     private final MemberService memberService;
-
     @PatchMapping("/my-info-edit/{id}")
-    public ResponseEntity<ModifyForm> editName(@PathVariable Long id,
-            @RequestBody ModifyForm form) {
-        ModifyForm modifyForm = memberService.updateUsername(id, form);
+    public ResponseEntity<ModifyForm> editName(@PathVariable Long id) {
+        ModifyForm modifyForm = memberService.updateUsername(id, null);
 
         return ResponseEntity.status(HttpStatus.OK).body(modifyForm);
     }

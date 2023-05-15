@@ -6,5 +6,5 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
 
 
-#file:
-#  dir: /Users/dongwook/Desktop/study/study/file/
+file:
+  dir: /Users/dongwook/Desktop/study/study/file/

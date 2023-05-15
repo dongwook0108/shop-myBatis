@@ -4,7 +4,11 @@ import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.model.Product;
+import dongwook.shoppingpractice.model.member.CurrentMember;
+import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.ProductService;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
@@ -55,8 +61,31 @@ public class AdminProductController {
     }
 
     @PostMapping("/add")
-    public String addProduct(ProductForm form) {
+    public String addProduct(MultipartHttpServletRequest multipartHttpServletRequest,
+            ProductForm form, @CurrentMember Member member) {
+        MultipartFile mf = multipartHttpServletRequest.getFile("file");
+
+        String uploadPath = "/images/product/upload/";
+
+        String original = mf.getOriginalFilename(); // 업로드하는 파일 name
+
+        uploadPath = uploadPath + original; // 파일 업로드 경로 + 파일 이름
+
+        try {
+            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        form.setImagePath(uploadPath);
+        form.setCreatedBy(member.getUsername());
+//        form.setNameAndDate(member); --> 이런식으로 사용
         productService.save(form);
+
         return "redirect:/admin/products";
     }
 
@@ -79,8 +108,8 @@ public class AdminProductController {
     @PostMapping("/{productId}/edit")
     public String productEdit(@PathVariable Long productId, ProductEditForm editForm) {
 
-        Product product = productService.findById(productId);
-        System.out.println("product = " + product);
+//        Product product = productService.findById(productId);
+//        System.out.println("product = " + product);
 
         productService.updateProduct(productId, editForm);
         System.out.println("editForm = " + editForm);
