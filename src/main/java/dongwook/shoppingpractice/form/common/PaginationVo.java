@@ -45,7 +45,9 @@ public class PaginationVo {
         setOffset(page, size);
     }
 
-
+    // 5개씩 자르기 !
+    // 1. 지금 토탈 카운트를 들고옴
+    // 2. 몇 개로 나눌건지 확인 ->
     // 총 페이지 개수 구하기
     private void setTotalPageCount(final int totalCount, final int rowCount) {
         this.totalPageCount = (int) Math.ceil(totalCount * 1.0 / rowCount);

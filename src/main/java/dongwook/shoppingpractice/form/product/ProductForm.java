@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.form.product;
 
+import dongwook.shoppingpractice.model.member.Member;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Data;
@@ -15,6 +16,8 @@ public class ProductForm {
 
     private BigDecimal price;
 
+    private String imagePath;
+
     private LocalDateTime createdDate;
 
     private LocalDateTime updatedDate;
@@ -22,6 +25,10 @@ public class ProductForm {
     private String updateBy;
 
     private String createdBy;
+
+    public void setNameAndDate(Member member) {
+        this.createdBy = member.getUsername();
+    }
 
 
 }
