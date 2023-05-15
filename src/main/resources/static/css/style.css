@@ -9,7 +9,6 @@ body {
 #main {
   width: 100%;
   overflow: hidden;
-  background-image: url(../images/topback.jpg);
   background-position: top;
   background-repeat: repeat-x;
 
@@ -78,7 +77,6 @@ div.toplink .s3, .s2 {
 #search div.searchleft {
   width: 2%;
   float: left;
-  background-image: url(../images/dotline.gif);
   background-repeat: repeat-y;
   background-position: left;
   height: 171px;
@@ -89,7 +87,6 @@ div.toplink .s3, .s2 {
 #search div.searchright {
   width: 2%;
   float: right;
-  background-image: url(../images/dotline.gif);
   background-repeat: repeat-y;
   background-position: left;
   height: 171px;
@@ -129,7 +126,6 @@ h5 {
 }
 
 .searchbox {
-  background-image: url(../images/textboxback.gif);
   background-repeat: repeat-x;
   height: 23px;
   border: #efefef 1px solid;
@@ -140,7 +136,6 @@ h5 {
 }
 
 .textbox1 {
-  background-image: url(../images/textboxback.gif);
   background-repeat: repeat-x;
   border: #efefef 1px solid;
   width: 100px;
@@ -202,7 +197,6 @@ h5 {
 }
 
 .link ul li.back {
-  background-image: url(../images/leftlinkback.gif);
   height: 33px;
   line-height: 33px;
   background-repeat: no-repeat;
@@ -419,7 +413,6 @@ h5 {
 #welcome div.somewelcomeright {
   width: 25%;
   float: right;
-  background-image: url(../images/become.gif);
   background-repeat: repeat-x;
   background-position: top;
   border: #d04936 1px solid;

@@ -9,7 +9,6 @@ import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.model.member.UserMember;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,13 +29,14 @@ public class MemberService implements UserDetailsService {
 
     public void save(SignUpForm form) {
         form.setPassword(passwordEncoder.encode(form.getPassword()));
-        Member member = new Member(form);
+        dongwook.shoppingpractice.model.member.Member member = new dongwook.shoppingpractice.model.member.Member(
+                form);
         memberMapper.save(member);
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Member member = memberMapper.findByEmail(email);
+        dongwook.shoppingpractice.model.member.Member member = memberMapper.findByEmail(email);
         if (member == null || !member.isActive()) {
             throw new UsernameNotFoundException(email);
         }
@@ -45,7 +45,8 @@ public class MemberService implements UserDetailsService {
 
 //    -------------------------------
 
-    public void modifyMember(Member member, ModifyForm modifyForm) {
+    public void modifyMember(dongwook.shoppingpractice.model.member.Member member,
+            ModifyForm modifyForm) {
         if (!member.getPhoneNumber().equals(modifyForm.getPhoneNumber())) {
             member.updatePhone(modifyForm.getPhoneNumber());
         }
@@ -61,7 +62,7 @@ public class MemberService implements UserDetailsService {
         login(member);
     }
 
-    private void login(Member member) {
+    private void login(dongwook.shoppingpractice.model.member.Member member) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 new UserMember(member),
                 member.getPassword(),
@@ -69,7 +70,8 @@ public class MemberService implements UserDetailsService {
         SecurityContextHolder.getContext().setAuthentication(token);
     }
 
-    public boolean checkPassword(Member member, String password) {
+    public boolean checkPassword(dongwook.shoppingpractice.model.member.Member member,
+            String password) {
 
 //        if (!passwordEncoder.matches(password, member.getPassword())) {
 //            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
@@ -78,8 +80,8 @@ public class MemberService implements UserDetailsService {
         return passwordEncoder.matches(password, member.getPassword());
     }
 
-    public Member findById(Long memberId) {
-        Member findMember = memberMapper.findById(memberId);
+    public dongwook.shoppingpractice.model.member.Member findById(Long memberId) {
+        dongwook.shoppingpractice.model.member.Member findMember = memberMapper.findById(memberId);
         System.out.println(findMember.getEmail());
         return findMember;
     }
@@ -106,14 +108,22 @@ public class MemberService implements UserDetailsService {
     }
 
     public void updateMemberFromAdmin(AdminModifyForm form) {
-        Member member = memberMapper.findById(form.getId());
+        dongwook.shoppingpractice.model.member.Member member = memberMapper.findById(form.getId());
         member.updateMember(form);
         memberMapper.updateMember(member);
     }
 
     public void deleteMemberFromAdmin(AdminModifyForm form) {
-        Member member = memberMapper.findById(form.getId());
+        dongwook.shoppingpractice.model.member.Member member = memberMapper.findById(form.getId());
         member.deleteMember(form);
         memberMapper.deleteMember(member);
+    }
+
+
+    public ModifyForm updateUsername(Long id, ModifyForm form) {
+        Member findMember = memberMapper.findById(id);
+        memberMapper.updateName(findMember);
+
+        return form;
     }
 }

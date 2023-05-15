@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.model.member;
 
 import dongwook.shoppingpractice.form.member.AdminModifyForm;
+import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -70,5 +71,17 @@ public class Member {
 
     public void deleteMember(AdminModifyForm form) {
         this.active = false;
+    }
+
+    public void patch(ModifyForm form) {
+
+        if (form.getId() != this.id) {
+            throw new IllegalArgumentException("이름 수정 실패");
+        }
+
+        if (form.getUsername() != null) {
+            this.username = form.getUsername();
+        }
+
     }
 }
