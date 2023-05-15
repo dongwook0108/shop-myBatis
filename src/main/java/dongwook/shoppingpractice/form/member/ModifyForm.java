@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.form.member;
 
+import dongwook.shoppingpractice.model.member.Member;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
@@ -29,7 +30,7 @@ public class ModifyForm {
     @NotEmpty(message = NOTNULL)
     private String zipcode;
 
-    public ModifyForm(dongwook.shoppingpractice.model.member.Member member) {
+    public ModifyForm(Member member) {
         this.id = member.getId();
         this.username = member.getUsername();
         this.email = member.getEmail();

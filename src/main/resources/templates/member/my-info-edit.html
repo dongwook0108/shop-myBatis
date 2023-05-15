@@ -92,7 +92,7 @@
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" th:href="@{/my-page-edit}">
+                <form>
                     <!-- 이름 입력 -->
                     <div class="mb-3">
                         <label class="form-label">변경하실 이름을 입력해 주세요</label>
@@ -126,7 +126,7 @@
                         aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" th:href="@{/my-page-edit}">
+                <form>
                     <!-- 전화번호 입력 -->
                     <div class="mb-3">
                         <label class="form-label">변경하실 전화번호를 입력해 주세요</label>
@@ -149,6 +149,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     {
@@ -188,7 +189,6 @@
             const id = triggerBtn.getAttribute("data-bs-id");
             const username = triggerBtn.getAttribute("data-bs-username");
 
-
             // 데이터 반영
             document.querySelector("#edit-member-id-name").value = id;
             document.querySelector("#edit-member-username").value = username;
@@ -212,7 +212,7 @@
 
             fetch(url, {
                 method: "PATCH",
-                // body: JSON.stringify(member),
+                body: JSON.stringify(member),
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -247,6 +247,7 @@
     }
 
     {
+
         // 수정 완료 버튼
         const memberUpdateBtn = document.querySelector("#member-phone-update-btn");
         // 클릭 이벤트 처리
@@ -254,12 +255,12 @@
             // 수정 멤버 객체 생성
             const member = {
                 id: document.querySelector("#edit-member-id-phone").value,
-                phone: document.querySelector("#edit-member-phone").value
+                phoneNumber: document.querySelector("#edit-member-phone").value
             };
             console.log(member);
 
             // 수정 REST API 호출 fetch()
-            const url = "/api/my-info-edit/" + member.id;
+            const url = "/api/member-phone/" + member.id;
 
             fetch(url, {
                 method: "PATCH",

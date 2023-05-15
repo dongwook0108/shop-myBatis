@@ -73,7 +73,7 @@ public class Member {
         this.active = false;
     }
 
-    public void patch(ModifyForm form) {
+    public void patchName(ModifyForm form) {
 
         if (form.getId() != this.id) {
             throw new IllegalArgumentException("이름 수정 실패");
@@ -81,6 +81,18 @@ public class Member {
 
         if (form.getUsername() != null) {
             this.username = form.getUsername();
+        }
+
+    }
+
+    public void patchPhone(ModifyForm form) {
+
+        if (form.getId() != this.id) {
+            throw new IllegalArgumentException("전화번호 수정 실패");
+        }
+
+        if (form.getPhoneNumber() != null) {
+            this.phoneNumber = form.getPhoneNumber();
         }
 
     }

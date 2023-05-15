@@ -122,7 +122,16 @@ public class MemberService implements UserDetailsService {
 
     public ModifyForm updateUsername(Long id, ModifyForm form) {
         Member findMember = memberMapper.findById(id);
+        findMember.patchName(form);
         memberMapper.updateName(findMember);
+
+        return form;
+    }
+
+    public ModifyForm updatePhoneNumber(Long id, ModifyForm form) {
+        Member findMember = memberMapper.findById(id);
+        findMember.patchPhone(form);
+        memberMapper.updatePhoneNumber(findMember);
 
         return form;
     }
