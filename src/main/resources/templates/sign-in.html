@@ -26,7 +26,7 @@
 
                 <div class="col-lg-8 mx-auto col-12">
 
-                    <h1 class="hero-title text-center mb-5">Sign In</h1>
+                    <h1 class="hero-title text-center mb-5">로그인</h1>
 
 
                     <div class="row">
@@ -43,36 +43,30 @@
                                     <input type="email" pattern="[^ @]*@[^ @]*"
                                            name="username"
                                            class="form-control"
-                                           placeholder="Email address" required>
-                                    <label th:for="email">Email address</label>
+                                           placeholder="이메일을 입력해주세요" required>
                                 </div>
 
 
                                 <div class="form-floating p-0">
                                     <input type="password" class="form-control"
                                            name="password"
-                                           placeholder="Password" required>
-                                    <label th:for="password">Password</label>
+                                           placeholder="비빌번호를 입력해주세요" required>
                                 </div>
 
                                 <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
-                                    Sign in
+                                    로그인
                                 </button>
 
-                                <p class="text-center">Don’t have an account? <a th:href="@{/member/sign-up}">Create
-                                    One</a>
+                                <p class="text-center">회원이 아니신가요? <a th:href="@{/member/sign-up}">회원
+                                    가입</a>
                                 </p>
                             </form>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
     </section>
-
 </main>
 
 
