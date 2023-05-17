@@ -1,58 +1,283 @@
-<!doctype html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments.html::head}"></head>
+<!--<!doctype html>-->
+<!--<html lang="ko" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="~{fragments.html::head}"></head>-->
 
-<link rel="stylesheet" href="/css/style.css">
-<body>
+<!--<link rel="stylesheet" href="/css/style.css">-->
+<!--<body>-->
 
 
-<section class="preloader">
-    <div class="spinner">
-        <span class="sk-inner-circle"></span>
-    </div>
-</section>
+<!--<section class="preloader">-->
+<!--    <div class="spinner">-->
+<!--        <span class="sk-inner-circle"></span>-->
+<!--    </div>-->
+<!--</section>-->
 
-<main>
-    <nav th:replace="~{fragments.html::nav}"></nav>
+<!--<main>-->
+<!--    <nav th:replace="~{fragments.html::nav}"></nav>-->
 
-    <div id="content" style="margin-top: 200px; padding: 30px">
-        <div style="display: flex; justify-content: space-between;">
+<!--    <div id="content" style="margin-top: 200px; padding: 30px">-->
+<!--        <div style="display: flex; justify-content: space-between;">-->
 
-            <div th:replace="~{member/fragments.html::member-edit}"></div>
+<!--            <div th:replace="~{member/fragments.html::member-edit}"></div>-->
 
-            <div style="flex-basis: 68%; border-top: 2px solid black;" th:object="${member}">
-                <table class="table">
-                    <thead>
-                    <div class="form-group">
-                        <input id="member-id" name="id"
-                               type="hidden">
-                    </div>
-                    <tr>
-                        <th scope="col">아이디(이메일)</th>
-                        <th colspan="2" scope="col" th:text="${member.email}">First</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">이름</th>
-                        <th scope="col" th:text="${member.username}"></th>
-                    </tr>
-                    <tr>
-                        <th scope="col">전화번호</th>
-                        <th scope="col" th:text="${member.phoneNumber}"></th>
-                    </tr>
-                    <tr>
-                        <th scope="col" colspan="2">
-                            <a th:href="@{/member/check-password}" class="btn btn-primary">개인 정보
-                                수정하기</a>
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-    </div>
-</main>
+<!--            <div style="flex-basis: 68%; border-top: 2px solid black;" th:object="${member}">-->
+<!--                <table class="table">-->
+<!--                    <thead>-->
+<!--                    <div class="form-group">-->
+<!--                        <input id="member-id" name="id"-->
+<!--                               type="hidden">-->
+<!--                    </div>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">아이디(이메일)</th>-->
+<!--                        <th colspan="2" scope="col" th:text="${member.email}">First</th>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">이름</th>-->
+<!--                        <th scope="col" th:text="${member.username}"></th>-->
+<!--                        <th>-->
+<!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+<!--                                    data-bs-toggle="modal"-->
+<!--                                    data-bs-target="#member-name-edit-modal"-->
+<!--                                    th:data-bs-id="${member.id}"-->
+<!--                                    th:data-bs-username="${member.username}"-->
+<!--                            >이름 수정-->
+<!--                            </button>-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">전화번호</th>-->
+<!--                        <th scope="col" th:text="${member.phoneNumber}"></th>-->
+<!--                        <th>-->
+<!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+<!--                                    data-bs-toggle="modal"-->
+<!--                                    data-bs-target="#member-phone-edit-modal"-->
+<!--                                    th:data-bs-id="${member.id}"-->
+<!--                                    th:data-bs-phoneNumber="${member.phoneNumber}"-->
+<!--                            >전화번호 변경-->
+<!--                            </button>-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th scope="col" colspan="1">비밀번호</th>-->
+<!--                        <th colspan="2">비빌번호 변경은 관리자한테 <a th:href="@{/admin/contact}">1:1 문의</a>-->
+<!--                            부탁드립니다.-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <th colspan="2" scope="col">배송지</th>-->
+<!--                        <th>-->
+<!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+<!--                                    data-bs-toggle="modal"-->
+<!--                                    data-bs-target="#member-edit-modal"-->
+<!--                                    data-bs-id="{{id}}"-->
+<!--                            ><a th:href="@{/adress}">배송지 관리</a>-->
+<!--                            </button>-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                </table>-->
 
-<th:block th:replace="fragments.html::footer"></th:block>
-</body>
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</main>-->
 
-</html>
+<!--&lt;!&ndash; 이름 수정 Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="member-name-edit-modal" tabindex="-1">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header pb-0">-->
+<!--                <h3 class="modal-title fs-5" id="exampleModalLabel">이름 수정</h3>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                        aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form>-->
+<!--                    &lt;!&ndash; 이름 입력 &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label class="form-label">변경하실 이름을 입력해 주세요</label>-->
+<!--                        <input type="text" class="form-control form-control-sm"-->
+<!--                               id="edit-member-username">-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; 히든 인풋 &ndash;&gt;-->
+<!--                    <input type="hidden" id="edit-member-id-name">-->
+
+<!--                    &lt;!&ndash; 전송 버튼 &ndash;&gt;-->
+<!--                    <button type="button" class="btn btn-sm btn-secondary modal-cancel-button"-->
+<!--                            data-bs-dismiss="modal">취소-->
+<!--                    </button>-->
+<!--                    <button type="button" class="btn btn-outline-primary btn-sm"-->
+<!--                            id="member-update-btn">수정 완료-->
+<!--                    </button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; 전화번호 수정 Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="member-phone-edit-modal" tabindex="-1">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header pb-0">-->
+<!--                <h3 class="modal-title fs-5" id="exampleModalLabel">전화번호 수정</h3>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal"-->
+<!--                        aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--                <form>-->
+<!--                    &lt;!&ndash; 전화번호 입력 &ndash;&gt;-->
+<!--                    <div class="mb-3">-->
+<!--                        <label class="form-label">변경하실 전화번호를 입력해 주세요</label>-->
+<!--                        <input type="text" class="form-control form-control-sm"-->
+<!--                               id="edit-member-phone">-->
+<!--                    </div>-->
+
+<!--                    &lt;!&ndash; 히든 인풋 &ndash;&gt;-->
+<!--                    <input type="hidden" id="edit-member-id-phone">-->
+
+<!--                    &lt;!&ndash; 전송 버튼 &ndash;&gt;-->
+<!--                    <button type="button" class="btn btn-sm btn-secondary modal-cancel-button"-->
+<!--                            data-bs-dismiss="modal">취소-->
+<!--                    </button>-->
+<!--                    <button type="button" class="btn btn-outline-primary btn-sm"-->
+<!--                            id="member-phone-update-btn">수정 완료-->
+<!--                    </button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<!--<script>-->
+<!--    {-->
+<!--        //모달 요소 선택-->
+<!--        const memberPhoneEditModal = document.querySelector("#member-phone-edit-modal");-->
+
+<!--        //모달 이벤트 감지-->
+<!--        memberPhoneEditModal.addEventListener("show.bs.modal", function (event) {-->
+<!--            // 트리거 버튼 선택-->
+<!--            const triggerBtn = event.relatedTarget;-->
+
+<!--            //데이터 가져오기-->
+<!--            const id = triggerBtn.getAttribute("data-bs-id");-->
+<!--            const phone = triggerBtn.getAttribute("data-bs-phoneNumber"); // 수정: data-bs-username -> data-bs-phoneNumber-->
+
+<!--            // 데이터 반영-->
+<!--            document.querySelector("#edit-member-id-phone").value = id;-->
+<!--            document.querySelector("#edit-member-phone").value = phone;-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--<th:block th:replace="fragments.html::footer"></th:block>-->
+<!--&lt;!&ndash; 멤버 이름 &ndash;&gt;-->
+<!--<script>-->
+<!--    {-->
+<!--        //모달 요소 선택-->
+<!--        const memberEditModal = document.querySelector("#member-name-edit-modal");-->
+
+<!--        //모달 이벤트 감지-->
+<!--        memberEditModal.addEventListener("show.bs.modal", function (event) {-->
+<!--            // 트리거 버튼 선택-->
+<!--            const triggerBtn = event.relatedTarget;-->
+
+<!--            //데이터 가져오기-->
+<!--            const id = triggerBtn.getAttribute("data-bs-id");-->
+<!--            const username = triggerBtn.getAttribute("data-bs-username");-->
+
+<!--            // 데이터 반영-->
+<!--            document.querySelector("#edit-member-id-name").value = id;-->
+<!--            document.querySelector("#edit-member-username").value = username;-->
+<!--        });-->
+<!--    }-->
+
+<!--    {-->
+<!--        // 수정 완료 버튼-->
+<!--        const memberUpdateBtn = document.querySelector("#member-update-btn");-->
+<!--        // 클릭 이벤트 처리-->
+<!--        memberUpdateBtn.addEventListener("click", function () {-->
+<!--            // 수정 멤버 객체 생성-->
+<!--            const member = {-->
+<!--                id: document.querySelector("#edit-member-id-name").value,-->
+<!--                username: document.querySelector("#edit-member-username").value-->
+<!--            };-->
+<!--            console.log(member);-->
+
+<!--            // 수정 REST API 호출 fetch()-->
+<!--            const url = "/api/my-info-edit/" + member.id;-->
+
+<!--            fetch(url, {-->
+<!--                method: "PATCH",-->
+<!--                body: JSON.stringify(member),-->
+<!--                headers: {-->
+<!--                    "Content-Type": "application/json"-->
+<!--                }-->
+<!--            }).then(response => {-->
+<!--                console.log(response);-->
+<!--                const msg = (response.ok) ? "이름이 수정되었습니다." : "이름 수정 실패";-->
+<!--                alert(msg);-->
+<!--                window.location.reload();-->
+<!--            });-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+<!--&lt;!&ndash; 멤버 전화번호 &ndash;&gt;-->
+<!--<script>-->
+<!--    {-->
+<!--        //모달 요소 선택-->
+<!--        const memberPhoneEditModal = document.querySelector("#member-phone-edit-modal");-->
+
+<!--        //모달 이벤트 감지-->
+<!--        memberPhoneEditModal.addEventListener("show.bs.modal", function (event) {-->
+<!--            // 트리거 버튼 선택-->
+<!--            const triggerBtn = event.relatedTarget;-->
+
+<!--            //데이터 가져오기-->
+<!--            const id = triggerBtn.getAttribute("data-bs-id");-->
+<!--            const phone = triggerBtn.getAttribute("data-bs-phoneNumber");-->
+
+<!--            // 데이터 반영-->
+<!--            document.querySelector("#edit-member-id-phone").value = id;-->
+<!--            document.querySelector("#edit-member-phone").value = phone;-->
+<!--        });-->
+<!--    }-->
+
+<!--    {-->
+
+<!--        // 수정 완료 버튼-->
+<!--        const memberUpdateBtn = document.querySelector("#member-phone-update-btn");-->
+<!--        // 클릭 이벤트 처리-->
+<!--        memberUpdateBtn.addEventListener("click", function () {-->
+<!--            // 수정 멤버 객체 생성-->
+<!--            const member = {-->
+<!--                id: document.querySelector("#edit-member-id-phone").value,-->
+<!--                phoneNumber: document.querySelector("#edit-member-phone").value-->
+<!--            };-->
+<!--            console.log(member);-->
+
+<!--            // 수정 REST API 호출 fetch()-->
+<!--            const url = "/api/member-phone/" + member.id;-->
+
+<!--            fetch(url, {-->
+<!--                method: "PATCH",-->
+<!--                body: JSON.stringify(member),-->
+<!--                headers: {-->
+<!--                    "Content-Type": "application/json"-->
+<!--                }-->
+<!--            }).then(response => {-->
+<!--                const msg = (response.ok) ? "전화번호가 수정되었습니다." : "전화번호 수정 실패";-->
+<!--                alert(msg);-->
+<!--                window.location.reload();-->
+<!--            });-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+
+
+<!--</body>-->
+
+<!--</html>-->
