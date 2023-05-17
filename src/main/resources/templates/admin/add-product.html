@@ -15,6 +15,7 @@
             </div>
         </div>
     </div>
+
     <!-- row -->
     <div class="row tm-mt-big">
         <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
@@ -29,6 +30,7 @@
                         <form enctype="multipart/form-data" role="form" method="post"
                               th:action="@{/admin/products/add}"
                               th:object="${productForm}" class="tm-edit-product-form">
+
                             <div class="input-group mb-3">
                                 <label for="name"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
@@ -37,6 +39,7 @@
                                        th:field="*{name}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
+
                             <div class="input-group mb-3">
                                 <label for="simpleDescription"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한
@@ -48,6 +51,7 @@
                                         th:field="*{simpleDescription}"
                                         required></textarea>
                             </div>
+
                             <div class="input-group mb-3">
                                 <label for="description"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세설명</label>
@@ -58,6 +62,7 @@
                                         th:field="*{description}"
                                         required></textarea>
                             </div>
+
                             <div class="input-group mb-3">
                                 <label for="price"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
@@ -87,47 +92,11 @@
 
                         </form>
                     </div>
-                    <!--                    <form th:action method="post" enctype="multipart/form-data">-->
-                    <!--                        <ul>-->
-                    <!--                            <li>파일<input type="file" name="file" ></li>-->
-                    <!--                        </ul>-->
-                    <!--                        <input type="submit"/>-->
-                    <!--                    </form>-->
-                    <!--                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">-->
-                    <!--                        <div class="tm-product-img-dummy mx-auto">-->
-                    <!--                            <i class="fas fa-5x fa-cloud-upload-alt"-->
-                    <!--                               onclick="document.getElementById('fileInput').click();"></i>-->
-                    <!--                        </div>-->
-                    <!--                        <form th:action method="post" enctype="multipart/form-data">-->
-                    <!--                            <ul>-->
-                    <!--                                <li>파일<input type="file" name="file"></li>-->
-                    <!--                            </ul>-->
-                    <!--                        </form>-->
-                    <!--                        <div class="custom-file mt-3 mb-3">-->
-                    <!--                            <input id="fileInput" type="file" style="display:none;"/>-->
-                    <!--                            <input type="button" class="btn btn-primary d-block mx-auto"-->
-                    <!--                                   value="사진 등록"-->
-                    <!--                                   onclick="document.getElementById('fileInput').click();"-->
-                    <!--                            />-->
-                    <!--                        </div>-->
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 
-<script src="/js/jquery-3.3.1.min.js"></script>
-<!-- https://jquery.com/download/ -->
-<script src="/jquery-ui-datepicker/jquery-ui.min.js"></script>
-<!-- https://jqueryui.com/download/ -->
-<script src="/js/bootstrap.min.js"></script>
-<!-- https://getbootstrap.com/ -->
-<script>
-    $(function () {
-        $('#expire_date').datepicker();
-    });
-</script>
 </body>
-
 </html>
