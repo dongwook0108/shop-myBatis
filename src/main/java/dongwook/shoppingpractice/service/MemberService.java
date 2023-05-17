@@ -29,8 +29,7 @@ public class MemberService implements UserDetailsService {
 
     public void save(SignUpForm form) {
         form.setPassword(passwordEncoder.encode(form.getPassword()));
-        dongwook.shoppingpractice.model.member.Member member = new dongwook.shoppingpractice.model.member.Member(
-                form);
+        Member member = new Member(form);
         memberMapper.save(member);
     }
 
@@ -45,8 +44,7 @@ public class MemberService implements UserDetailsService {
 
 //    -------------------------------
 
-    public void modifyMember(dongwook.shoppingpractice.model.member.Member member,
-            ModifyForm modifyForm) {
+    public void modifyMember(Member member, ModifyForm modifyForm) {
         if (!member.getPhoneNumber().equals(modifyForm.getPhoneNumber())) {
             member.updatePhone(modifyForm.getPhoneNumber());
         }
@@ -62,7 +60,7 @@ public class MemberService implements UserDetailsService {
         login(member);
     }
 
-    private void login(dongwook.shoppingpractice.model.member.Member member) {
+    private void login(Member member) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 new UserMember(member),
                 member.getPassword(),
@@ -70,8 +68,7 @@ public class MemberService implements UserDetailsService {
         SecurityContextHolder.getContext().setAuthentication(token);
     }
 
-    public boolean checkPassword(dongwook.shoppingpractice.model.member.Member member,
-            String password) {
+    public boolean checkPassword(Member member, String password) {
 
 //        if (!passwordEncoder.matches(password, member.getPassword())) {
 //            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
@@ -80,8 +77,8 @@ public class MemberService implements UserDetailsService {
         return passwordEncoder.matches(password, member.getPassword());
     }
 
-    public dongwook.shoppingpractice.model.member.Member findById(Long memberId) {
-        dongwook.shoppingpractice.model.member.Member findMember = memberMapper.findById(memberId);
+    public Member findById(Long memberId) {
+        Member findMember = memberMapper.findById(memberId);
         System.out.println(findMember.getEmail());
         return findMember;
     }
@@ -108,13 +105,13 @@ public class MemberService implements UserDetailsService {
     }
 
     public void updateMemberFromAdmin(AdminModifyForm form) {
-        dongwook.shoppingpractice.model.member.Member member = memberMapper.findById(form.getId());
+        Member member = memberMapper.findById(form.getId());
         member.updateMember(form);
         memberMapper.updateMember(member);
     }
 
     public void deleteMemberFromAdmin(AdminModifyForm form) {
-        dongwook.shoppingpractice.model.member.Member member = memberMapper.findById(form.getId());
+        Member member = memberMapper.findById(form.getId());
         member.deleteMember(form);
         memberMapper.deleteMember(member);
     }
