@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -25,11 +24,12 @@ public class SecurityConfig {
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/login**", "/member/sign-up", "/products/**",
-                        "/api/**")
+                        "/api/**", "/h2-console/**")
                 .permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
+                .headers(headers -> headers.frameOptions().sameOrigin())
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")

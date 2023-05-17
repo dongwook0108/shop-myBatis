@@ -18,7 +18,7 @@ public interface MemberMapper {
 
     @ResultMap(value = "MemberMap")
     @Insert(value =
-            "INSERT INTO MEMBER(username, role, phone_number, email, zipcode, password, address, addressDetail, active) "
+            "INSERT INTO MEMBER(username, role, phone_number, email, zipcode, password, address, address_detail, active) "
                     +
                     "VALUES(#{member.username}, #{member.role},  #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail},#{member.active})")
     void save(@Param(value = "member") Member member);
@@ -37,7 +37,7 @@ public interface MemberMapper {
             @Result(property = "zipcode", column = "zipcode"),
             @Result(property = "password", column = "password"),
             @Result(property = "address", column = "address"),
-            @Result(property = "addressDetail", column = "addressDetail"),
+            @Result(property = "addressDetail", column = "address_detail"),
             @Result(property = "role", column = "role"),
             @Result(property = "active", column = "active")
     })
@@ -48,7 +48,7 @@ public interface MemberMapper {
     @Select(value = "SELECT * FROM MEMBER WHERE member_id = #{memberId}")
     Member findById(@Param(value = "memberId") Long memberId);
 
-    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phone_number=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, addressDetail=#{member.addressDetail} WHERE member_id = #{member.id} and active = true")
+    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phone_number=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, address_detail=#{member.addressDetail} WHERE member_id = #{member.id} and active = true")
     void updateMember(@Param(value = "member") Member member);
 
 //    --------------------------페이징 -------------------------
