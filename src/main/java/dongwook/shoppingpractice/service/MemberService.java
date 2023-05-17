@@ -9,6 +9,7 @@ import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.model.member.UserMember;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -45,19 +46,11 @@ public class MemberService implements UserDetailsService {
 //    -------------------------------
 
     public void modifyMember(Member member, ModifyForm modifyForm) {
-        if (!member.getPhoneNumber().equals(modifyForm.getPhoneNumber())) {
-            member.updatePhone(modifyForm.getPhoneNumber());
-        }
+        Member findMember = memberMapper.findById(modifyForm.getId());
+        findMember.updateMember(modifyForm);
 
-        if (!member.getEmail().equals(modifyForm.getEmail())) {
-            member.updateEmail(modifyForm.getEmail());
-        }
-        if (!member.getZipcode().equals(modifyForm.getZipcode())) {
-            member.updateZipcode(modifyForm.getZipcode());
-        }
-
-        memberMapper.updateMember(member);
-        login(member);
+        memberMapper.updateMember(findMember);
+        login(findMember);
     }
 
     private void login(Member member) {
@@ -70,9 +63,9 @@ public class MemberService implements UserDetailsService {
 
     public boolean checkPassword(Member member, String password) {
 
-//        if (!passwordEncoder.matches(password, member.getPassword())) {
-//            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
-//        }
+        if (!passwordEncoder.matches(password, member.getPassword())) {
+            throw new BadCredentialsException("비밀번호가 일치하지 않습니다.");
+        }
 
         return passwordEncoder.matches(password, member.getPassword());
     }
@@ -106,7 +99,7 @@ public class MemberService implements UserDetailsService {
 
     public void updateMemberFromAdmin(AdminModifyForm form) {
         Member member = memberMapper.findById(form.getId());
-        member.updateMember(form);
+        member.updateMemberByAdmin(form);
         memberMapper.updateMember(member);
     }
 
