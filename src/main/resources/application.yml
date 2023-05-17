@@ -1,9 +1,26 @@
+#spring:
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/shopping-study
+#    username: root
+#    password:
+#    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
+
 spring:
+  h2:
+    console:
+      enabled: true
+
   datasource:
-    url: jdbc:mysql://localhost:3306/shopping-study
-    username: root
+    generate-unique-name: false
+    url: jdbc:h2:mem:test
+    username: sa
     password:
-    driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
+    driver-class-name: org.h2.Driver
+
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      mode: always
 
 
 file:
