@@ -51,19 +51,17 @@ public class Member {
         this.active = true;
     }
 
-    public void updatePhone(String phone) {
-        this.phoneNumber = phone;
+    public void updateMember(ModifyForm form) {
+        this.username = form.getUsername();
+        this.email = form.getEmail();
+        this.phoneNumber = form.getPhoneNumber();
+        this.zipcode = form.getZipcode();
+        this.address = form.getAddress();
+        this.addressDetail = form.getAddressDetail();
     }
 
-    public void updateEmail(String email) {
-        this.email = email;
-    }
 
-    public void updateZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public void updateMember(AdminModifyForm form) {
+    public void updateMemberByAdmin(AdminModifyForm form) {
         this.username = form.getUsername();
         this.phoneNumber = form.getPhoneNumber();
         this.email = form.getEmail();

@@ -25,7 +25,7 @@ public class ModifyForm {
     private String email;
     @NotEmpty(message = NOTNULL)
     private String address;
-    @NotEmpty(message = NOTNULL)
+//    @NotEmpty(message = NOTNULL)
     private String addressDetail;
     @NotEmpty(message = NOTNULL)
     private String zipcode;
