@@ -86,38 +86,9 @@
                             </li>
                         </ul>
                     </nav>
-
-                    <!-- 맨 처음 페이지로 이동하는 버튼 -->
-                    <!--                    <span th:if="${pageVo.startPage > 1}">-->
-                    <!--                        <a th:href="@{'/admin/members?page=1'}" th:text="'처음&emsp;'"></a>-->
-                    <!--                    </span>-->
-
-                    <!--                    &lt;!&ndash; 이전 블록으로 이동하는 버튼 &ndash;&gt;-->
-                    <!--                    <span th:if="${pageVo.isPrev == true}">-->
-                    <!--                    	<a th:href="@{'/admin/members?page='+${pageVo.startPage - 1}}"-->
-                    <!--                           th:text="'이전'"></a>-->
-                    <!--                    </span>-->
-
-                    <!--                    &lt;!&ndash; 시퀀스 보여주는 값을 변경. &ndash;&gt;-->
-                    <!--                    <span th:each="pageNum : ${#numbers.sequence(pageVo.startPage, pageVo.endPage)}">-->
-                    <!--                        <a class="div2" th:href="@{'/admin/members?page='+${pageNum}}"-->
-                    <!--                           th:text="|&emsp;${pageNum}&emsp;|"></a>-->
-                    <!--                    </span>-->
-
-                    <!--                    &lt;!&ndash; 다음 블록으로 이동하는 버튼 &ndash;&gt;-->
-                    <!--                    <span th:if="${pageVo.isNext == true}">-->
-                    <!--                	<a th:href="@{'/admin/members?page='+ ${pageVo.endPage + 1}}"-->
-                    <!--                       th:text="'다음'"></a>-->
-                    <!--                    </span>-->
-
-                    <!-- 맨 뒷 페이지로 이동하는 버튼 -->
-                    <!--                    <span th:if="${pageVo.endPage < pageVo.totalPageCount}">-->
-                    <!--                	<a th:href="@{'/admin/members?page='+${pageVo.totalPageCount}}"-->
-                    <!--                       th:text="|&emsp;끝|"></a>-->
-                    <!--                    </span>-->
                 </div>
-                <ul class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
-                </ul>
+
+                <ul class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big"></ul>
             </div>
         </div>
 
@@ -129,26 +100,29 @@
                     <div class="col-12 d-flex justify-content-between align-items-center">
                         <h2 class="tm-block-title">회원 수정</h2>
                         <form th:action="@{/admin/delete-member}" method="post">
+
                             <div class="form-group">
                                 <input id="id" name="id"
                                        type="hidden">
                             </div>
                             <button type="submit" class="btn btn-danger">삭제</button>
+
                         </form>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <div class="col-12">
                         <form th:action="@{/admin/update-member}" method="post"
                               class="tm-signup-form">
+
                             <div class="form-group">
                                 <input id="member-id" name="id"
                                        type="hidden"
                                        readonly
                                 >
                             </div>
+
                             <div class="form-group">
                                 <label for="username">이름</label>
                                 <input id="username" name="username"
@@ -156,26 +130,29 @@
                                        class="form-control validate"
                                 >
                             </div>
+
                             <div class="form-group">
                                 <label for="email">이메일</label>
                                 <input id="email" name="email"
                                        type="email"
                                        class="form-control validate">
                             </div>
+
                             <div class="form-group">
                                 <label for="phoneNumber">전화번호</label>
                                 <input id="phoneNumber" name="phoneNumber"
                                        type="tel"
                                        class="form-control validate">
                             </div>
+
                             <div class="row">
                                 <div class="col-12 col-sm-4">
                                     <button type="submit" class="btn btn-primary">수정
                                     </button>
                                 </div>
                             </div>
-                        </form>
 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -189,7 +166,6 @@
     const memberIdInputUpdate = document.querySelector(
             "form[action='/admin/update-member'] input[name='id']");
 
-    // const memberIdInput = document.querySelector("#member-id");
     const memberName = document.querySelector("#username");
     const memberEmail = document.querySelector("#email");
     const memberPhone = document.querySelector("#phoneNumber");
@@ -213,7 +189,7 @@
             return numberOnly.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'); // 3-3-4 형태로 변환
         } else if (numberOnly.length === 11) { // 11자리인 경우
             return numberOnly.replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'); // 3-4-4 형태로 변환
-        } else { // 그 외의 경우
+        } else {
             return phoneNumber; // 원본 전화번호 반환
         }
     }
