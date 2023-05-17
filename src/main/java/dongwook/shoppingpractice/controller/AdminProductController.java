@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -26,6 +27,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 @RequiredArgsConstructor
 @RequestMapping("/admin/products")
 public class AdminProductController {
+
+    @Value("${file.dir}")
+    private String fileDir;
 
     private final ProductService productService;
 
@@ -63,9 +67,10 @@ public class AdminProductController {
     @PostMapping("/add")
     public String addProduct(MultipartHttpServletRequest multipartHttpServletRequest,
             ProductForm form, @CurrentMember Member member) {
+
         MultipartFile mf = multipartHttpServletRequest.getFile("file");
 
-        String uploadPath = "/images/product/upload/";
+        String uploadPath = fileDir;
 
         String original = mf.getOriginalFilename(); // 업로드하는 파일 name
 
@@ -74,10 +79,8 @@ public class AdminProductController {
         try {
             mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
         } catch (IllegalStateException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

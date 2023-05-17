@@ -24,4 +24,4 @@ spring:
 
 
 file:
-  dir: /Users/dongwook/Desktop/study/study/file/
+  dir: /Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/
