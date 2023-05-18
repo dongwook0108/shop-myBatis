@@ -61,6 +61,8 @@ public class AdminProductController {
     @GetMapping("/add")
     public String addProductPage(Model model) {
         model.addAttribute(new ProductForm());
+        List<Product> allFileName = productService.findAllFileName();
+        model.addAttribute("allFileName", allFileName);
         return "admin/add-product";
     }
 
@@ -73,7 +75,7 @@ public class AdminProductController {
         String uploadPath = fileDir;
 
         String original = mf.getOriginalFilename(); // 업로드하는 파일 name
-
+        form.setOriginalFileName(original);
         uploadPath = uploadPath + original; // 파일 업로드 경로 + 파일 이름
 
         try {

@@ -25,3 +25,23 @@ VALUES ('동욱', '01012341234', 'test12@dongwook.com', '12345',
         'Apt 4B',
         'user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin', 1);
 
+INSERT INTO PRODUCT(name, description, simple_description, price, image_path, original_file_name,
+                    created_date, created_by)
+VALUES ('bottle', 'Product Description', 'Product Simple Description', 10000,
+        '/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
+        'bottle.jpeg', CURRENT_TIMESTAMP, 'admin'),
+
+       ('shirts', 'Product Description', 'Product Simple Description', 20000,
+        '/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin'),
+
+       ('book', 'Product Description', 'Product Simple Description', 30000,
+        '/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
+        'book.jpeg', CURRENT_TIMESTAMP, 'admin');
+
+
+
+
+
+
+

@@ -43,6 +43,7 @@ CREATE TABLE PRODUCT
     `updated_by`         varchar(45) DEFAULT NULL,
     `created_by`         varchar(45) DEFAULT NULL,
     `image_path`         varchar(255),
+    `original_file_name` varchar(255),
     PRIMARY KEY (`product_id`)
 );
 

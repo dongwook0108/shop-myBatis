@@ -22,6 +22,7 @@ public class Product {
     private String simpleDescription;
     private BigDecimal price;
 
+    private String originalFileName;
     private String imagePath;
     private LocalDateTime updatedDate;
     private LocalDateTime createdDate;
@@ -38,6 +39,7 @@ public class Product {
         this.createdDate = LocalDateTime.now();
         this.imagePath = form.getImagePath();
         this.createdBy = form.getCreatedBy();
+        this.originalFileName = form.getOriginalFileName();
     }
 
     public void updateProduct(ProductEditForm form) {

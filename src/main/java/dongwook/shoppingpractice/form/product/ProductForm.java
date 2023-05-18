@@ -16,6 +16,8 @@ public class ProductForm {
 
     private BigDecimal price;
 
+    private String originalFileName;
+
     private String imagePath;
 
     private LocalDateTime createdDate;
