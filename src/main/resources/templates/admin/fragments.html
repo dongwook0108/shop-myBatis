@@ -27,55 +27,10 @@
     <!-- https://getbootstrap.com/ -->
 </head>
 
+<nav th:fragment="nav(menu)" class="navbar navbar-expand-xl navbar-light bg-light">
 
-<nav th:fragment="nav-index" class="navbar navbar-expand-xl navbar-light bg-light">
-
-    <!--    <a class="navbar-brand active" th:href="@{/admin}">-->
-    <!--        <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>-->
-    <!--        <h1 class="tm-site-title mb-0">관리자 페이지</h1>-->
-    <!--    </a>-->
-
-    <a class="nav-link active" th:href="@{/admin}">관리자페이지
-        <span class="sr-only">(current)</span>
-    </a>
-
-    <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/products}">상품관리
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/members}">회원관리
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link d-flex" href="login.html">
-                    <i class="far fa-user mr-2 tm-logout-icon"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-
-    </div>
-</nav>
-
-<nav th:fragment="nav-accounts" class="navbar navbar-expand-xl navbar-light bg-light">
-
-    <a class="navbar-brand" th:href="@{/admin}">
+    <a class="navbar-brand" th:classappend="${menu} == 'home' ? 'active' : '' "
+       th:href="@{/admin}">
         <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
         <h1 class="tm-site-title mb-0">관리자 페이지</h1>
     </a>
@@ -90,54 +45,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/products}">상품관리
+                <a class="nav-link" th:classappend="${menu} == 'product' ? 'active' : '' "
+                   th:href="@{/admin/products}">상품관리
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" th:href="@{/admin/members}">회원관리
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link d-flex" href="login.html">
-                    <i class="far fa-user mr-2 tm-logout-icon"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-
-    </div>
-</nav>
-
-<nav th:fragment="nav-product" class="navbar navbar-expand-xl navbar-light bg-light">
-
-    <a class="navbar-brand" th:href="@{/admin}">
-        <i class="fas fa-3x fa-tachometer-alt tm-site-icon"></i>
-        <h1 class="tm-site-title mb-0">관리자 페이지</h1>
-    </a>
-
-    <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link active" th:href="@{/admin/products}">상품관리
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/admin/members}">회원관리
+                <a class="nav-link" th:classappend="${menu} == 'member' ? 'active' : '' "
+                   th:href="@{/admin/members}">회원관리
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
@@ -145,10 +61,7 @@
 
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link d-flex" href="login.html">
-                    <i class="far fa-user mr-2 tm-logout-icon"></i>
-                    <span>Logout</span>
-                </a>
+                <a class="nav-link d-flex" th:href="@{/}"><span>Home</span></a>
             </li>
         </ul>
 
