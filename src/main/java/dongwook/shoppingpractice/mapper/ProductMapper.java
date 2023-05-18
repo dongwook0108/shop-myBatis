@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.mapper;
 
 import dongwook.shoppingpractice.form.common.PaginationVo;
+import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.model.Product;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
@@ -16,9 +17,9 @@ import org.apache.ibatis.annotations.Update;
 public interface ProductMapper {
 
     @Insert(value =
-            "INSERT INTO PRODUCT(name, description, simple_description, price, image_path, created_date, created_by) "
+            "INSERT INTO PRODUCT(name, description, simple_description, price, image_path, original_file_name, created_date, created_by) "
                     +
-                    "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.imagePath}, #{product.createdDate}, #{product.createdBy})")
+                    "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.imagePath}, #{product.originalFileName},#{product.createdDate}, #{product.createdBy})")
     void save(@Param(value = "product") Product product);
 
 
@@ -29,6 +30,7 @@ public interface ProductMapper {
             @Result(property = "simpleDescription", column = "simple_description"),
             @Result(property = "price", column = "price"),
             @Result(property = "imagePath", column = "image_path"),
+            @Result(property = "originalFileName", column = "original_file_name"),
             @Result(property = "updatedDate", column = "updated_date"),
             @Result(property = "createdDate", column = "created_date"),
             @Result(property = "updatedBy", column = "updated_by"),
@@ -60,4 +62,8 @@ public interface ProductMapper {
     @Select(value = "SELECT * FROM product where email like concat('%',#{name},'%') ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
     List<Product> getListPageByName(@Param(value = "page") PaginationVo paginationVo,
             @Param(value = "name") String name);
+
+    @ResultMap(value = "ProductMap")
+    @Select(value = "SELECT original_file_name FROM product")
+    List<Product> findAllFilName();
 }
