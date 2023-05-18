@@ -23,7 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/", "/login", "/login**", "/member/sign-up", "/products/**",
+                .antMatchers("/", "/login", "/login**", "/member/sign-up", "/product/**",
                         "/api/**", "/h2-console/**")
                 .permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ADMIN")

@@ -27,15 +27,15 @@ VALUES ('동욱', '01012341234', 'test12@dongwook.com', '12345',
 
 INSERT INTO PRODUCT(name, description, simple_description, price, image_path, original_file_name,
                     created_date, created_by)
-VALUES ('bottle', 'Product Description', 'Product Simple Description', 10000,
+VALUES ('bottle', '아기자기한 물병', '넉넉하게 물도 많이 들어가요 ~', 10000,
         '/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
         'bottle.jpeg', CURRENT_TIMESTAMP, 'admin'),
 
-       ('shirts', 'Product Description', 'Product Simple Description', 20000,
+       ('shirts', '간지 폭발 셔츠', '입으면 멋이란게 느껴짐', 20000,
         '/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
         'shirts.jpeg', CURRENT_TIMESTAMP, 'admin'),
 
-       ('book', 'Product Description', 'Product Simple Description', 30000,
+       ('book', '내이름은 독서왕', '책한권으로 똑똑해져봅시다.', 30000,
         '/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
         'book.jpeg', CURRENT_TIMESTAMP, 'admin');
 
