@@ -42,7 +42,7 @@ CREATE TABLE PRODUCT
     `created_date`       datetime    DEFAULT NULL,
     `updated_by`         varchar(45) DEFAULT NULL,
     `created_by`         varchar(45) DEFAULT NULL,
-    `image_file`         blob,
+    `image_path`         varchar(255),
     PRIMARY KEY (`product_id`)
 );
 

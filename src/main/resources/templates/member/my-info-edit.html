@@ -1,86 +1,89 @@
-<!--<!doctype html>-->
-<!--<html lang="ko" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="~{fragments.html::head}"></head>-->
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html::head}"></head>
 
-<!--<link rel="stylesheet" href="/css/style.css">-->
-<!--<body>-->
+<link rel="stylesheet" href="/css/style.css">
+<body>
 
 
-<!--<section class="preloader">-->
-<!--    <div class="spinner">-->
-<!--        <span class="sk-inner-circle"></span>-->
-<!--    </div>-->
-<!--</section>-->
+<section class="preloader">
+    <div class="spinner">
+        <span class="sk-inner-circle"></span>
+    </div>
+</section>
+<main>
+    <nav th:replace="~{fragments.html::nav}"></nav>
 
-<!--<main>-->
-<!--    <nav th:replace="~{fragments.html::nav}"></nav>-->
+    <div id="content" style="margin-top: 200px; padding: 30px">
+        <div style="display: flex; justify-content: space-between;">
 
-<!--    <div id="content" style="margin-top: 200px; padding: 30px">-->
-<!--        <div style="display: flex; justify-content: space-between;">-->
+            <div th:replace="~{member/fragments.html::member-edit}"></div>
 
-<!--            <div th:replace="~{member/fragments.html::member-edit}"></div>-->
+            <div style="flex-basis: 68%; border-top: 2px solid black;" th:object="${member}">
+                <table class="table">
+                    <thead>
+                    <div class="form-group">
+                        <input id="member-id" name="id"
+                               type="hidden">
+                    </div>
+                    <tr>
+                        <th scope="col">아이디(이메일)</th>
+                        <th colspan="2" scope="col" th:text="${member.email}">First</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">이름</th>
+                        <th scope="col" th:text="${member.username}"></th>
+                        <!--                        <th>-->
+                        <!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+                        <!--                                    data-bs-toggle="modal"-->
+                        <!--                                    data-bs-target="#member-name-edit-modal"-->
+                        <!--                                    th:data-bs-id="${member.id}"-->
+                        <!--                                    th:data-bs-username="${member.username}"-->
+                        <!--                            >이름 수정-->
+                        <!--                            </button>-->
+                        <!--                        </th>-->
+                    </tr>
+                    <tr>
+                        <th scope="col">전화번호</th>
+                        <th scope="col" th:text="${member.phoneNumber}"></th>
+                        <!--                        <th>-->
+                        <!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+                        <!--                                    data-bs-toggle="modal"-->
+                        <!--                                    data-bs-target="#member-phone-edit-modal"-->
+                        <!--                                    th:data-bs-id="${member.id}"-->
+                        <!--                                    th:data-bs-phoneNumber="${member.phoneNumber}"-->
+                        <!--                            >전화번호 변경-->
+                        <!--                            </button>-->
+                        <!--                        </th>-->
+                    </tr>
+                    <tr>
+                        <!--                        <th scope="col" colspan="1">비밀번호</th>-->
+                        <!--                        <th colspan="2">비빌번호 변경은 관리자한테 <a th:href="@{/admin/contact}">1:1 문의</a>-->
+                        <!--                            부탁드립니다.-->
+                        <!--                        </th>-->
+                        <!--                    </tr>-->
+                        <!--                    <tr>-->
+                        <!--                        <th colspan="2" scope="col">배송지</th>-->
+                        <!--                        <th>-->
+                        <!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
+                        <!--                                    data-bs-toggle="modal"-->
+                        <!--                                    data-bs-target="#member-edit-modal"-->
+                        <!--                                    data-bs-id="{{id}}"-->
+                        <!--                            ><a th:href="@{/adress}">배송지 관리</a>-->
+                        <!--                            </button>-->
+                        <!--                        </th>-->
+                        <th scope="col" colspan="2">
+                            <a th:href="@{/member/check-password}" class="btn btn-primary">개인 정보
+                                수정하기</a>
+                        </th>
+                    </tr>
+                    </thead>
+                </table>
 
-<!--            <div style="flex-basis: 68%; border-top: 2px solid black;" th:object="${member}">-->
-<!--                <table class="table">-->
-<!--                    <thead>-->
-<!--                    <div class="form-group">-->
-<!--                        <input id="member-id" name="id"-->
-<!--                               type="hidden">-->
-<!--                    </div>-->
-<!--                    <tr>-->
-<!--                        <th scope="col">아이디(이메일)</th>-->
-<!--                        <th colspan="2" scope="col" th:text="${member.email}">First</th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <th scope="col">이름</th>-->
-<!--                        <th scope="col" th:text="${member.username}"></th>-->
-<!--                        <th>-->
-<!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
-<!--                                    data-bs-toggle="modal"-->
-<!--                                    data-bs-target="#member-name-edit-modal"-->
-<!--                                    th:data-bs-id="${member.id}"-->
-<!--                                    th:data-bs-username="${member.username}"-->
-<!--                            >이름 수정-->
-<!--                            </button>-->
-<!--                        </th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <th scope="col">전화번호</th>-->
-<!--                        <th scope="col" th:text="${member.phoneNumber}"></th>-->
-<!--                        <th>-->
-<!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
-<!--                                    data-bs-toggle="modal"-->
-<!--                                    data-bs-target="#member-phone-edit-modal"-->
-<!--                                    th:data-bs-id="${member.id}"-->
-<!--                                    th:data-bs-phoneNumber="${member.phoneNumber}"-->
-<!--                            >전화번호 변경-->
-<!--                            </button>-->
-<!--                        </th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <th scope="col" colspan="1">비밀번호</th>-->
-<!--                        <th colspan="2">비빌번호 변경은 관리자한테 <a th:href="@{/admin/contact}">1:1 문의</a>-->
-<!--                            부탁드립니다.-->
-<!--                        </th>-->
-<!--                    </tr>-->
-<!--                    <tr>-->
-<!--                        <th colspan="2" scope="col">배송지</th>-->
-<!--                        <th>-->
-<!--                            <button type="button" class="btn btn-sm btn-outline-primary"-->
-<!--                                    data-bs-toggle="modal"-->
-<!--                                    data-bs-target="#member-edit-modal"-->
-<!--                                    data-bs-id="{{id}}"-->
-<!--                            ><a th:href="@{/adress}">배송지 관리</a>-->
-<!--                            </button>-->
-<!--                        </th>-->
-<!--                    </tr>-->
-<!--                    </thead>-->
-<!--                </table>-->
-
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</main>-->
+            </div>
+        </div>
+    </div>
+</main>
 
 <!--&lt;!&ndash; 이름 수정 Modal &ndash;&gt;-->
 <!--<div class="modal fade" id="member-name-edit-modal" tabindex="-1">-->
@@ -173,7 +176,7 @@
 <!--</script>-->
 
 
-<!--<th:block th:replace="fragments.html::footer"></th:block>-->
+<th:block th:replace="fragments.html::footer"></th:block>
 <!--&lt;!&ndash; 멤버 이름 &ndash;&gt;-->
 <!--<script>-->
 <!--    {-->
@@ -277,7 +280,6 @@
 <!--    }-->
 <!--</script>-->
 
+</body>
 
-<!--</body>-->
-
-<!--</html>-->
+</html>
