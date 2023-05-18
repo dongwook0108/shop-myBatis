@@ -12,7 +12,7 @@
 <!--<div th:if="${message}" th:text="${message}"></div>-->
 
 <main>
-    <nav th:replace="~{fragments.html::nav}"></nav>
+    <nav th:replace="~{fragments.html::nav('home')}"></nav>
 
     <!--    <th:block th:if="${#authentication.getName().equals(findMember.getId())}">-->
     <th:block th:if="${#authentication.getName().equals(findMember.email)}">
