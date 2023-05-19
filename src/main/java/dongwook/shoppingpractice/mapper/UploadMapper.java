@@ -1,6 +1,5 @@
 package dongwook.shoppingpractice.mapper;
 
-import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.model.Upload;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;

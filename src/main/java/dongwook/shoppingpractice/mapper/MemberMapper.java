@@ -1,7 +1,6 @@
 package dongwook.shoppingpractice.mapper;
 
 import dongwook.shoppingpractice.form.common.PaginationVo;
-import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.model.member.Member;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
