@@ -66,4 +66,7 @@ public class ProductService {
         return productMapper.getCountByName(name);
     }
 
+    public List<Product> featuredProductList() {
+        return productMapper.featuredProductList();
+    }
 }
