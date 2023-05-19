@@ -16,9 +16,9 @@ import org.apache.ibatis.annotations.Update;
 public interface ProductMapper {
 
     @Insert(value =
-            "INSERT INTO PRODUCT(name, description, simple_description, price, original_file_name, created_date, created_by) "
+            "INSERT INTO PRODUCT(name, description, simple_description, price, original_file_name, created_date, created_by, featured) "
                     +
-                    "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.originalFileName},#{product.createdDate}, #{product.createdBy})")
+                    "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.originalFileName},#{product.createdDate}, #{product.createdBy}, #{product.featured})")
     void save(@Param(value = "product") Product product);
 
 
@@ -32,7 +32,8 @@ public interface ProductMapper {
             @Result(property = "updatedDate", column = "updated_date"),
             @Result(property = "createdDate", column = "created_date"),
             @Result(property = "updatedBy", column = "updated_by"),
-            @Result(property = "createdBy", column = "created_by")
+            @Result(property = "createdBy", column = "created_by"),
+            @Result(property = "featured", column = "featured")
     })
     @Select(value = "SELECT * FROM PRODUCT")
     List<Product> productList();

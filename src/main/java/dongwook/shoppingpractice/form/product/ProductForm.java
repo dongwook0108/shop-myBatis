@@ -28,9 +28,14 @@ public class ProductForm {
 
     private String createdBy;
 
+    private boolean featured;
+
     public void setNameAndDate(Member member) {
         this.createdBy = member.getUsername();
     }
 
+    public void setFeatured(boolean featured) {
+        this.featured = featured;
+    }
 
 }

@@ -43,6 +43,7 @@ CREATE TABLE PRODUCT
     `updated_by`         varchar(45) DEFAULT NULL,
     `created_by`         varchar(45) DEFAULT NULL,
     `original_file_name` varchar(255),
+    `featured`           tinyint        NOT NULL,
     PRIMARY KEY (`product_id`)
 );
 

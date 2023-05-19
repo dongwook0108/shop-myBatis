@@ -30,6 +30,8 @@ public class Product {
     private String updatedBy;
     private String createdBy;
 
+    private boolean featured;
+
     public Product(ProductForm form) {
         this.name = form.getName();
         this.description = form.getDescription();
@@ -39,6 +41,7 @@ public class Product {
         this.imagePath = form.getImagePath();
         this.createdBy = form.getCreatedBy();
         this.originalFileName = form.getOriginalFileName();
+        this.featured = form.isFeatured();
     }
 
     public void updateProduct(ProductEditForm form) {
