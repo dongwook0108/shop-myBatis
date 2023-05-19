@@ -52,6 +52,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" th:classappend="${menu} == 'upload' ? 'active' : '' "
+                   th:href="@{/uploads}">상품사진관리
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" th:classappend="${menu} == 'member' ? 'active' : '' "
                    th:href="@{/admin/members}">회원관리
                     <span class="sr-only">(current)</span>

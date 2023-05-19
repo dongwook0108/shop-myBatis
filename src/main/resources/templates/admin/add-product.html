@@ -27,7 +27,7 @@
                 </div>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form enctype="multipart/form-data" role="form" method="post"
+                        <form role="form" method="post"
                               th:action="@{/admin/products/add}"
                               th:object="${productForm}" class="tm-edit-product-form">
 
@@ -73,14 +73,28 @@
                             </div>
 
                             <div class="input-group mb-3">
-                                <label for="file"
+                                <label for="selectImage"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이미지
-                                    등록
-                                </label>
-                                <input id="file" name="file" type="file"
-                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                />
+                                    선택</label>
+                                <select id="selectImage"
+                                        class="form-control col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                        th:field="*{originalFileName}">
+                                    <option th:each="fileName : ${fileNameList}"
+                                            th:value="${fileName.originalFileName}"
+                                            th:text="${fileName.originalFileName}"
+                                            th:selected="${fileName.originalFileName} == ${productForm.originalFileName}"></option>
+                                </select>
                             </div>
+
+                            <!--                            <div class="input-group mb-3">-->
+                            <!--                                <label for="file"-->
+                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이미지-->
+                            <!--                                    등록-->
+                            <!--                                </label>-->
+                            <!--                                <input id="file" name="file" type="file"-->
+                            <!--                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"-->
+                            <!--                                />-->
+                            <!--                            </div>-->
 
                             <!--                            <label>-->
                             <!--                                <select th:object="${allFileName}">-->
