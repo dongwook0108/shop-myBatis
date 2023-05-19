@@ -9,11 +9,8 @@ import dongwook.shoppingpractice.model.member.CurrentMember;
 import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.ProductService;
 import dongwook.shoppingpractice.service.UploadService;
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -22,19 +19,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin/products")
 public class AdminProductController {
-
-    @Value("${file.dir}")
-    private String fileDir;
-
     private final ProductService productService;
-
     private final UploadService uploadService;
 
     @GetMapping()
