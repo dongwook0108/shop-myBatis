@@ -27,8 +27,7 @@ public class Product {
     private LocalDateTime updatedDate;
     private LocalDateTime createdDate;
 
-    private String updateBy;
-
+    private String updatedBy;
     private String createdBy;
 
     public Product(ProductForm form) {
@@ -48,5 +47,6 @@ public class Product {
         this.simpleDescription = form.getSimpleDescription();
         this.description = form.getDescription();
         this.updatedDate = LocalDateTime.now();
+        this.updatedBy = form.getUpdatedBy();
     }
 }

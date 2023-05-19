@@ -7,6 +7,7 @@ import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.mapper.ProductMapper;
 import dongwook.shoppingpractice.model.Product;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,6 @@ public class ProductService {
         if (form.getSimpleDescription() == null || form.getDescription() == null) {
             throw new ProductSaveException("제품 설명 부분은 비어있을 수 없습니다.");
         }
-
         productMapper.save(product);
     }
 

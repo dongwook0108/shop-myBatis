@@ -41,7 +41,7 @@ public interface ProductMapper {
     @Select(value = "SELECT * FROM PRODUCT where product_id = #{productId}")
     Product findById(@Param(value = "productId") Long productId);
 
-    @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate} WHERE product_id = #{product.id} ")
+    @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy} WHERE product_id = #{product.id} ")
     void updateProduct(@Param(value = "product") Product product);
 
 //    paging
