@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 @RequestMapping("/admin/products")
 public class AdminProductController {
+
     private final ProductService productService;
     private final UploadService uploadService;
 
@@ -66,6 +67,7 @@ public class AdminProductController {
 //        form.setImagePath(uploadPath);
 //        form.setCreatedBy(member.getUsername());
 //        form.setNameAndDate(member); --> 이런식으로 사용
+        form.setNameAndDate(member);
         productService.save(form);
 
         return "redirect:/admin/products";
@@ -83,16 +85,17 @@ public class AdminProductController {
     public String productEditPage(@PathVariable Long productId, Model model) {
         Product product = productService.findById(productId);
         model.addAttribute(product);
-        model.addAttribute(new ProductEditForm(product));
+//        model.addAttribute(new ProductEditForm(product));
         return "admin/edit-product";
     }
 
     @PostMapping("/{productId}/edit")
-    public String productEdit(@PathVariable Long productId, ProductEditForm editForm) {
+    public String productEdit(@PathVariable Long productId, @CurrentMember Member member,
+            ProductEditForm editForm) {
 
 //        Product product = productService.findById(productId);
 //        System.out.println("product = " + product);
-
+        editForm.setUpdatedDateAndBy(member);
         productService.updateProduct(productId, editForm);
         System.out.println("editForm = " + editForm);
 
