@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments.html::head}"></head>
 
 <body>
@@ -31,9 +32,11 @@
                             <a href="about.html" class="btn custom-btn">Learn more about us</a>
                         </div>
                         <div class="col-lg-6 col-10" sec:authorize="isAuthenticated()">
-                            <h1 class="slick-title" th:text="${member.getUsername() + '님 환영합니다.'}">Cool Fashion</h1>
+                            <h1 class="slick-title" th:text="${member.getUsername() + '님 환영합니다.'}">
+                                Cool Fashion</h1>
 
-                            <p class="lead text-white mt-lg-3 mb-lg-5">Little fashion template comes with total 8 HTML
+                            <p class="lead text-white mt-lg-3 mb-lg-5">Little fashion template comes
+                                with total 8 HTML
                                 pages provided by Tooplate website.</p>
                         </div>
                     </div>
@@ -42,7 +45,8 @@
         </div>
 
         <div class="slick-custom">
-            <img src="/images/slideshow/team-meeting-renewable-energy-project.jpeg" class="img-fluid" alt="">
+            <img src="/images/slideshow/team-meeting-renewable-energy-project.jpeg"
+                 class="img-fluid" alt="">
 
             <div class="slick-bottom">
                 <div class="container">
@@ -50,7 +54,8 @@
                         <div class="col-lg-6 col-10">
                             <h1 class="slick-title">New Design</h1>
 
-                            <p class="lead text-white mt-lg-3 mb-lg-5">Please share this Little Fashion template to your
+                            <p class="lead text-white mt-lg-3 mb-lg-5">Please share this Little
+                                Fashion template to your
                                 friends. Thank you for supporting us.</p>
 
                             <a href="product.html" class="btn custom-btn">Explore products</a>
@@ -61,7 +66,8 @@
         </div>
 
         <div class="slick-custom">
-            <img src="/images/slideshow/two-business-partners-working-together-office-computer.jpeg" class="img-fluid"
+            <img src="/images/slideshow/two-business-partners-working-together-office-computer.jpeg"
+                 class="img-fluid"
                  alt="">
 
             <div class="slick-bottom">
@@ -70,7 +76,8 @@
                         <div class="col-lg-6 col-10">
                             <h1 class="slick-title">Talk to us</h1>
 
-                            <p class="lead text-white mt-lg-3 mb-lg-5">Tooplate is one of the best HTML CSS template
+                            <p class="lead text-white mt-lg-3 mb-lg-5">Tooplate is one of the best
+                                HTML CSS template
                                 websites for everyone.</p>
 
                             <a href="contact.html" class="btn custom-btn">Work with us</a>
@@ -91,10 +98,11 @@
                     <h2 class="mb-5">Featured Products</h2>
                 </div>
 
-                <div class="col-lg-4 col-12 mb-3">
+                <div class="col-lg-4 col-12 mb-3"
+                     th:each="featuredProduct  : ${featuredProductList}">
                     <div class="product-thumb">
-                        <a th:href="@{/product/product-detail}">
-                            <img src="/images/product/jordan-nix-CkCUvwMXAac-unsplash.jpeg"
+                        <a th:href="@{/product/{id}(id=${featuredProduct.id})}">
+                            <img th:src="@{'/images/product/upload/' + ${featuredProduct.originalFileName}}"
                                  class="img-fluid product-image" alt="">
                         </a>
 
@@ -108,39 +116,16 @@
                             <div>
                                 <h5 class="product-title mb-0">
                                     <a th:href="@{/product/product-detail}"
-                                       class="product-title-link">Fashion Set</a>
+                                       class="product-title-link" th:text="${featuredProduct.name}">Fashion
+                                        Set</a>
                                 </h5>
 
-                                <p class="product-p">Costume Package</p>
+                                <p class="product-p" th:text="${featuredProduct.simpleDescription}">
+                                    Costume Package</p>
                             </div>
 
-                            <small class="product-price text-muted ms-auto mt-auto mb-5">$35</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-12">
-                    <div class="product-thumb">
-                        <a th:href="@{/product/product-detail}">
-                            <img src="/images/product/nature-zen-3Dn1BZZv3m8-unsplash.jpeg"
-                                 class="img-fluid product-image" alt="">
-                        </a>
-
-                        <div class="product-top d-flex">
-                            <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
-                        </div>
-
-                        <div class="product-info d-flex">
-                            <div>
-                                <h5 class="product-title mb-0">
-                                    <a th:href="@{/product/product-detail}"
-                                       class="product-title-link">Juice Drinks</a>
-                                </h5>
-
-                                <p class="product-p">Nature made another world</p>
-                            </div>
-
-                            <small class="product-price text-muted ms-auto mt-auto mb-5">$45</small>
+                            <small class="product-price text-muted ms-auto mt-auto mb-5"
+                                   th:text="${featuredProduct.price}">$35</small>
                         </div>
                     </div>
                 </div>

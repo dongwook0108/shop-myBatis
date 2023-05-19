@@ -62,4 +62,8 @@ public interface ProductMapper {
     List<Product> getListPageByName(@Param(value = "page") PaginationVo paginationVo,
             @Param(value = "name") String name);
 
+    @ResultMap(value = "ProductMap")
+    @Select(value = "SELECT * FROM product where featured = true")
+    List<Product> featuredProductList();
+
 }
