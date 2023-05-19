@@ -4,9 +4,11 @@ import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.model.Product;
+import dongwook.shoppingpractice.model.Upload;
 import dongwook.shoppingpractice.model.member.CurrentMember;
 import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.ProductService;
+import dongwook.shoppingpractice.service.UploadService;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -32,6 +34,8 @@ public class AdminProductController {
     private String fileDir;
 
     private final ProductService productService;
+
+    private final UploadService uploadService;
 
     @GetMapping()
     public String selectListAndPage(Model model,
@@ -61,33 +65,16 @@ public class AdminProductController {
     @GetMapping("/add")
     public String addProductPage(Model model) {
         model.addAttribute(new ProductForm());
-        List<Product> allFileName = productService.findAllFileName();
-        model.addAttribute("allFileName", allFileName);
+        List<Upload> fileNameList = uploadService.findAllFileName();
+        model.addAttribute("fileNameList", fileNameList);
         return "admin/add-product";
     }
 
     @PostMapping("/add")
-    public String addProduct(MultipartHttpServletRequest multipartHttpServletRequest,
-            ProductForm form, @CurrentMember Member member) {
+    public String addProduct(@CurrentMember Member member, ProductForm form) {
 
-        MultipartFile mf = multipartHttpServletRequest.getFile("file");
-
-        String uploadPath = fileDir;
-
-        String original = mf.getOriginalFilename(); // 업로드하는 파일 name
-        form.setOriginalFileName(original);
-        uploadPath = uploadPath + original; // 파일 업로드 경로 + 파일 이름
-
-        try {
-            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        form.setImagePath(uploadPath);
-        form.setCreatedBy(member.getUsername());
+//        form.setImagePath(uploadPath);
+//        form.setCreatedBy(member.getUsername());
 //        form.setNameAndDate(member); --> 이런식으로 사용
         productService.save(form);
 

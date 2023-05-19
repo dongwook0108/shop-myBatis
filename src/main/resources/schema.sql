@@ -42,13 +42,16 @@ CREATE TABLE PRODUCT
     `created_date`       datetime    DEFAULT NULL,
     `updated_by`         varchar(45) DEFAULT NULL,
     `created_by`         varchar(45) DEFAULT NULL,
-    `image_path`         varchar(255),
     `original_file_name` varchar(255),
     PRIMARY KEY (`product_id`)
 );
 
--- INSERT INTO MEMBER(username, phoneNumber, email, zipcode, password, address, addressDetail)
--- VALUES ('dong125', '0101234124', 'test@naver.com', '1234', '123qwe', 'blackSt', '12443');
+DROP TABLE IF EXISTS UPLOADFILE;
+CREATE TABLE UPLOADFILE
+(
+    `upload_id`          bigint       NOT NULL AUTO_INCREMENT,
+    `image_path`         varchar(255) NOT NULL,
+    `original_file_name` varchar(255) NOT NULL,
+    PRIMARY KEY (`upload_id`)
+);
 
--- INSERT INTO MEMBER(username, phoneNumber, email, zipcode, password, address, addressDetail)
--- VALUES ('dong127', '0104444124', 'test12@naver.com', '1234', '123qwe', 'blackSt', '12443');

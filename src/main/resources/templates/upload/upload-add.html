@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments.html::header}"></head>
+
+<body class="bg02">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="col-12">
+                <nav th:replace="~{admin/fragments.html::nav('upload')}"
+                     class="navbar navbar-expand-xl navbar-light bg-light">
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- row -->
+    <div class="row tm-mt-big">
+        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+            <div class="bg-white tm-block">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">상품 사진 등록</h2>
+                    </div>
+                </div>
+                <div class="row mt-4 tm-edit-product-row">
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <form enctype="multipart/form-data" role="form" method="post"
+                              th:action="@{/upload}"
+                              th:object="${uploadForm}" class="tm-edit-product-form">
+
+                            <div class="input-group mb-3">
+                                <label for="file"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이미지
+                                    등록
+                                </label>
+                                <input id="file" name="file" type="file"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                />
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                    <button type="submit" class="btn btn-primary">등록
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

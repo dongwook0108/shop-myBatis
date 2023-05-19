@@ -73,7 +73,11 @@
                     <div class="col-lg-4 col-12 mb-3" th:each="product : ${productList}">
                         <div class="product-thumb">
                             <a th:href="@{/product/{id}(id=${product.id})}">
-                                <img src="/images/product/f.jpeg"
+                                <img th:src="@{'/images/product/upload/' + ${product.originalFileName}}"
+                                     class="img-fluid product-image" alt="">
+                            </a>
+                            <a th:href="@{/product/{id}(id=${product.id})}">
+                                <img th:src="@{'/images/product/upload/' + ${product.originalFileName}}"
                                      class="img-fluid product-image" alt="">
                             </a>
 
