@@ -65,6 +65,8 @@ public class Member {
         this.username = form.getUsername();
         this.phoneNumber = form.getPhoneNumber();
         this.email = form.getEmail();
+        this.updatedDate = form.getUpdatedDate();
+        this.updatedBy = form.getUpdatedBy();
     }
 
     public void deleteMember(AdminModifyForm form) {
