@@ -2,7 +2,6 @@ package dongwook.shoppingpractice.service;
 
 import dongwook.shoppingpractice.form.upload.UploadForm;
 import dongwook.shoppingpractice.mapper.UploadMapper;
-import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.model.Upload;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

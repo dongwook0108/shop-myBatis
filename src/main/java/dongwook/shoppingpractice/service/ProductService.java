@@ -66,7 +66,4 @@ public class ProductService {
         return productMapper.getCountByName(name);
     }
 
-    public List<Product> findAllFileName() {
-        return productMapper.findAllFilName();
-    }
 }
