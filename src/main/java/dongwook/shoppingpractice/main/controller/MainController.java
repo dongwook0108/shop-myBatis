@@ -29,11 +29,4 @@ public class MainController {
         return "sign-in";
     }
 
-//    @PostMapping(value = "/login")
-//    public String login() {
-//
-//        return "sign-in";
-//    }
-
-
 }
