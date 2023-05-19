@@ -10,24 +10,32 @@ import org.hibernate.validator.constraints.Length;
 public class SignUpForm {
 
     static final String NOTNULL = "공백일 수 없습니다";
+    static final String EMAIL_REGEXP_CHECK_PATTERN = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
 
     @NotEmpty
-    @Length(min = 2, max = 10, message = "username은 2글자 이상 10글자 이하로 입력해 주세요" )
+    @Length(min = 2, max = 10, message = "username은 2글자 이상 10글자 이하로 입력해 주세요")
     private String username;
+
     @NotEmpty
     @Length(min = 10, max = 11, message = "전화번호는 10자리 이상 11자리 이하로 입력해 주세요")
     private String phoneNumber;
+
     @NotEmpty
-    @Pattern(regexp = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$", message = "올바른 이메일이 아닙니다.")
+    @Pattern(regexp = EMAIL_REGEXP_CHECK_PATTERN, message = "올바른 이메일이 아닙니다.")
     private String email;
+
     @NotEmpty(message = NOTNULL)
     private String zipcode;
+
     @NotEmpty(message = NOTNULL)
     private String password;
+
     @NotEmpty(message = NOTNULL)
     private String passwordConfirm;
+
     @NotEmpty(message = NOTNULL)
     private String address;
+
     @NotEmpty(message = NOTNULL)
     private String addressDetail;
 
