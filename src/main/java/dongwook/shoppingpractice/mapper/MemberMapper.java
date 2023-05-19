@@ -38,7 +38,9 @@ public interface MemberMapper {
             @Result(property = "address", column = "address"),
             @Result(property = "addressDetail", column = "address_detail"),
             @Result(property = "role", column = "role"),
-            @Result(property = "active", column = "active")
+            @Result(property = "active", column = "active"),
+            @Result(property = "updatedDate", column = "updated_date"),
+            @Result(property = "updatedBy", column = "updated_by")
     })
     @Select(value = "SELECT * FROM MEMBER WHERE email = #{email}")
     Member findByEmail(@Param(value = "email") String email);
@@ -48,7 +50,7 @@ public interface MemberMapper {
     Member findById(@Param(value = "memberId") Long memberId);
 
     @ResultMap(value = "MemberMap")
-    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phone_number=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, address_detail=#{member.addressDetail} WHERE member_id = #{member.id}")
+    @Update(value = "UPDATE MEMBER SET username=#{member.username}, phone_number=#{member.phoneNumber}, email=#{member.email}, zipcode=#{member.zipcode}, address=#{member.address}, address_detail=#{member.addressDetail}, updated_date=#{member.updatedDate}, updated_by=#{member.updatedBy} WHERE member_id = #{member.id}")
     void updateMember(@Param(value = "member") Member member);
 
 //    --------------------------페이징 -------------------------
