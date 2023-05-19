@@ -62,7 +62,4 @@ public interface ProductMapper {
     List<Product> getListPageByName(@Param(value = "page") PaginationVo paginationVo,
             @Param(value = "name") String name);
 
-    @ResultMap(value = "ProductMap")
-    @Select(value = "SELECT original_file_name FROM product")
-    List<Product> findAllFilName();
 }

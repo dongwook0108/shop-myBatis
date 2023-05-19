@@ -42,9 +42,8 @@ values ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/st
        ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
         'book.jpeg'),
        ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
-        'pants.jpeg'),
-       ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
-        'watch.jpeg');
+        'shirts.jpeg');
+
 
 
 
