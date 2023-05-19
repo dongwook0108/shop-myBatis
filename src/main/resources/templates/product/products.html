@@ -76,29 +76,11 @@
                                 <img th:src="@{'/images/product/upload/' + ${product.originalFileName}}"
                                      class="img-fluid product-image" alt="">
                             </a>
-                            <a th:href="@{/product/{id}(id=${product.id})}">
-                                <img th:src="@{'/images/product/upload/' + ${product.originalFileName}}"
-                                     class="img-fluid product-image" alt="">
-                            </a>
 
                             <div class="product-top d-flex">
                                 <span class="product-alert">Trending</span>
 
                                 <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
-                            </div>
-
-                            <div class="product-info d-flex">
-                                <div>
-                                    <h5 class="product-title mb-0">
-                                        <a th:href="@{/product/{id}(id=${product.id})}"
-                                           class="product-title-link">Package</a>
-                                    </h5>
-
-                                    <p class="product-p">Original package design from
-                                        house</p>
-                                </div>
-
-                                <small class="product-price text-muted ms-auto">$50</small>
                             </div>
                         </div>
                     </div>
