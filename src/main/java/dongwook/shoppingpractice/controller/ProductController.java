@@ -26,6 +26,9 @@ public class ProductController {
 
         List<Category> categoryList = categoryService.findParentCategory();
         model.addAttribute("categoryList", categoryList);
+
+        List<Category> categories = categoryService.findChildCategory();
+        model.addAttribute("categories", categories);
         return "product/products";
     }
 

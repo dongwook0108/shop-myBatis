@@ -25,4 +25,8 @@ public class CategoryService {
         Category category = new Category(form);
         categoryMapper.save(category);
     }
+
+    public List<Category> findChildCategory() {
+        return categoryMapper.findChildCategory();
+    }
 }
