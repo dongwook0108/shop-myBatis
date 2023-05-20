@@ -29,37 +29,39 @@
             </div>
         </div>
     </header>
-    <div class="col-lg-10 col-md-8 col-12">
-        <section class="products section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 col-12 align-items-start">
-                        <div class="accordion" id="accordionExample">
-                            <div class="accordion-item" th:each="category : ${categoryList}">
-                                <h2 class="accordion-header">
-                                    <button th:text="${category.name}"
-                                            style="width: 70px; border-radius: 7px; height: auto"
-                                            class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                            aria-expanded="false" aria-controls="collapseOne">
-                                        Accordion
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse"
-                                     data-bs-parent="#accordionExample">
-                                    <th:block th:each="child : ${categories}">
-                                        <th:block th:if="${child.parentId == category.id}">
-                                            <a th:href="@{'/product?code=' + ${child.categoryCode}}">
-                                                <span th:text="${child.name}"></span>
-                                            </a>
-                                        </th:block>
-                                    </th:block>
 
-                                </div>
-                            </div>
+    <div class="section-padding d-flex justify-content-center align-items-center">
+        <div class="col-lg-2 col-md-4 col-12 align-items-start"
+             style="width: 25%; margin-right: -15px; margin-left: -15px; margin-bottom: 500px;">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item" th:each="category : ${categoryList}">
+                    <h2 class="accordion-header">
+                        <button th:text="${category.name}"
+                                style="width: 70px; border-radius: 7px; height: auto"
+                                class="accordion-button collapsed" type="button"
+                                data-bs-toggle="collapse"
+                                th:data-bs-target="'#collapse' + ${category.id}"
+                                aria-expanded="false"
+                                th:aria-controls="'collapse' + ${category.id}">
+                            Accordion
+                        </button>
+                    </h2>
+                    <div th:id="'collapse' + ${category.id}" class="accordion-collapse collapse"
+                         data-bs-parent="#accordionExample">
+                        <div th:each="child : ${categories}"
+                             th:if="${child.parentId == category.id}">
+                            <a th:href="@{'/product?code=' + ${child.categoryCode}}">
+                                <span th:text="${child.name}"></span>
+                            </a>
                         </div>
                     </div>
-
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-8 col-12"
+             style="width: 75%; margin-right: -15px; margin-left: -15px;">
+            <div class="container">
+                <div class="row">
                     <div class="col-12">
                         <h2 class="mb-5">New Arrivals</h2>
                     </div>
@@ -69,13 +71,10 @@
                                 <img th:src="@{'/images/product/upload/' + ${product.originalFileName}}"
                                      class="img-fluid product-image" alt="">
                             </a>
-
                             <div class="product-top d-flex">
                                 <span class="product-alert me-auto">New Arrival</span>
-
                                 <a href="#" class="bi-heart-fill product-icon"></a>
                             </div>
-
                             <div class="product-info d-flex">
                                 <div>
                                     <h5 class="product-title mb-0">
@@ -83,11 +82,9 @@
                                            class="product-title-link"
                                            th:text="${product.name}"></a>
                                     </h5>
-
                                     <p class="product-p"
                                        th:text="${product.simpleDescription}"></p>
                                 </div>
-
                                 <small class="product-price text-muted ms-auto"
                                        th:text="${product.price}"></small>
                             </div>
@@ -96,14 +93,12 @@
                     <div class="col-12">
                         <h2 class="mb-5">Popular</h2>
                     </div>
-
                     <div class="col-lg-4 col-12 mb-3" th:each="product : ${productList}">
                         <div class="product-thumb">
                             <a th:href="@{/product/{id}(id=${product.id})}">
                                 <img th:src="@{'/images/product/upload/' + ${product.originalFileName}}"
                                      class="img-fluid product-image" alt="">
                             </a>
-
                             <div class="product-top d-flex">
                                 <span class="product-alert">Trending</span>
 
@@ -113,7 +108,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
 </main>
