@@ -25,16 +25,27 @@ VALUES ('동욱', '01012341234', 'test12@dongwook.com', '12345',
         'Apt 4B',
         'user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin', 1);
 
+insert into CATEGORY(name, category_code, parent_id)
+values ('책', 'book', NULL),
+       ('원피스', '만화책', '1'),
+       ('불편한편의점', '소설책', '1'),
+       ('물병', 'bottle', NULL),
+       ('스타벅스텀블러', '텀블러', '2'),
+       ('탐탐머그잔', '머그잔', '2'),
+       ('셔츠', 'shirts', NULL),
+       ('반팔셔츠', 'shorts', '3'),
+       ('긴팔셔츠', 'long', '3');
+
 INSERT INTO PRODUCT(name, description, simple_description, price, original_file_name,
                     created_date, created_by, updated_by, featured, category_id)
-VALUES ('bottle', '아기자기한 물병', '넉넉하게 물도 많이 들어가요 ~', 10000,
-        'bottle.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 1),
+VALUES ('book', '내이름은 독서왕', '책한권으로 똑똑해져봅시다.', 30000,
+        'book.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 1),
+
+       ('bottle', '아기자기한 물병', '넉넉하게 물도 많이 들어가요 ~', 10000,
+        'bottle.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 2),
 
        ('shirts', '간지 폭발 셔츠', '입으면 멋이란게 느껴짐', 20000,
-        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 4),
-
-       ('book', '내이름은 독서왕', '책한권으로 똑똑해져봅시다.', 30000,
-        'book.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 7);
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 3);
 
 insert into UPLOADFILE(image_path, original_file_name)
 values ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
@@ -44,16 +55,7 @@ values ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/st
        ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
         'shirts.jpeg');
 
-insert into CATEGORY(name, category_code, parent_id)
-values ('시계', 'watch', NULL),
-       ('애플와치', '애플시계', '1'),
-       ('갤럭시와치', '삼성시계', '1'),
-       ('가방', 'bag', NULL),
-       ('백팩', 'backpack', '4'),
-       ('크로스백', 'cross bag', '4'),
-       ('아우터', 'outer', NULL),
-       ('점퍼', 'jumper', '7'),
-       ('패딩', 'padding', '7');
+
 
 
 
