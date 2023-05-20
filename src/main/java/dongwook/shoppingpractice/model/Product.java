@@ -32,6 +32,8 @@ public class Product {
 
     private boolean featured;
 
+    private Long categoryId;
+
     public Product(ProductForm form) {
         this.name = form.getName();
         this.description = form.getDescription();
@@ -42,6 +44,7 @@ public class Product {
         this.createdBy = form.getCreatedBy();
         this.originalFileName = form.getOriginalFileName();
         this.featured = form.isFeatured();
+        this.categoryId = form.getCategoryId();
     }
 
     public void updateProduct(ProductEditForm form) {
