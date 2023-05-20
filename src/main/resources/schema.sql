@@ -44,6 +44,7 @@ CREATE TABLE PRODUCT
     `created_by`         varchar(45) DEFAULT NULL,
     `original_file_name` varchar(255),
     `featured`           tinyint        NOT NULL,
+    `category_id`        bigint         NOT NULL,
     PRIMARY KEY (`product_id`)
 );
 

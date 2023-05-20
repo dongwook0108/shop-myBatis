@@ -30,6 +30,8 @@ public class ProductForm {
 
     private boolean featured;
 
+    private Long categoryId;
+
     public void setNameAndDate(Member member) {
         this.createdBy = member.getUsername();
     }

@@ -3,10 +3,12 @@ package dongwook.shoppingpractice.controller;
 import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
+import dongwook.shoppingpractice.model.Category;
 import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.model.Upload;
 import dongwook.shoppingpractice.model.member.CurrentMember;
 import dongwook.shoppingpractice.model.member.Member;
+import dongwook.shoppingpractice.service.CategoryService;
 import dongwook.shoppingpractice.service.ProductService;
 import dongwook.shoppingpractice.service.UploadService;
 import java.util.List;
@@ -27,6 +29,8 @@ public class AdminProductController {
 
     private final ProductService productService;
     private final UploadService uploadService;
+
+    private final CategoryService categoryService;
 
     @GetMapping()
     public String selectListAndPage(Model model,
@@ -56,8 +60,12 @@ public class AdminProductController {
     @GetMapping("/add")
     public String addProductPage(Model model) {
         model.addAttribute(new ProductForm());
+
         List<Upload> fileNameList = uploadService.findAllFileName();
         model.addAttribute("fileNameList", fileNameList);
+
+        List<Category> categoryList = categoryService.findChildCategory();
+        model.addAttribute("categoryList", categoryList);
         return "admin/add-product";
     }
 
