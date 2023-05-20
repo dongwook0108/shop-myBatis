@@ -33,6 +33,33 @@
         <section class="products section-padding">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-2 col-md-4 col-12 align-items-start">
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item" th:each="category : ${categoryList}">
+                                <h2 class="accordion-header">
+                                    <button th:text="${category.name}"
+                                            style="width: 70px; border-radius: 7px; height: auto"
+                                            class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne">
+                                        Accordion
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse"
+                                     data-bs-parent="#accordionExample">
+                                    <th:block th:each="child : ${categories}">
+                                        <th:block th:if="${child.parentId == category.id}">
+                                            <a th:href="@{'/product?code=' + ${child.categoryCode}}">
+                                                <span th:text="${child.name}"></span>
+                                            </a>
+                                        </th:block>
+                                    </th:block>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-12">
                         <h2 class="mb-5">New Arrivals</h2>
                     </div>

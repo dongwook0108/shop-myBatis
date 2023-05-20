@@ -32,4 +32,8 @@ public interface CategoryMapper {
     List<Category> findParentCategory();
 
 
+    @ResultMap(value = "CategoryMap")
+    @Select(value = "SELECT * FROM category where parent_id is not NULL")
+    List<Category> findChildCategory();
+
 }
