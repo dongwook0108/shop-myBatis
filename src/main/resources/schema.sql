@@ -56,3 +56,13 @@ CREATE TABLE UPLOADFILE
     PRIMARY KEY (`upload_id`)
 );
 
+DROP TABLE IF EXISTS CATEGORY;
+CREATE TABLE CATEGORY
+(
+    `category_id`   bigint       NOT NULL AUTO_INCREMENT,
+    `name`          varchar(255) NULL,
+    `category_code` varchar(255) NULL,
+    `parent_id`     bigint       NULL,
+    PRIMARY KEY (`category_id`)
+);
+

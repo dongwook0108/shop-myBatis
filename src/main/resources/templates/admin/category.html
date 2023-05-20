@@ -9,7 +9,7 @@
         <div class="row">
 
             <div class="col-12">
-                <nav th:replace="~{admin/fragments.html::nav('upload')}"
+                <nav th:replace="~{admin/fragments.html::nav('category')}"
                      class="navbar navbar-expand-xl navbar-light bg-light">
                 </nav>
             </div>
@@ -22,11 +22,12 @@
                 <div class="bg-white tm-block h-100">
                     <div class="row">
                         <div class="col-md-8 col-sm-12">
-                            <h2 class="tm-block-title d-inline-block">상품 사진 목록</h2>
+                            <h2 class="tm-block-title d-inline-block">카테고리 목록</h2>
                         </div>
                         <div class="col-md-4 col-sm-12 tm-table-actions-col-right">
-                            <a th:href="@{/admin/upload}" class="btn btn-small btn-primary">상품
-                                사진 추가</a>
+                            <a th:href="@{/admin/category/upload}"
+                               class="btn btn-small btn-primary">카테고리
+                                추가</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -36,15 +37,21 @@
                             <tr class="tm-bg-gray">
                                 <th scope="col">Id</th>
                                 <th scope="col">이름</th>
+                                <th scope="col" class="text-center">카테고리 코드</th>
+                                <th scope="col" class="text-center">상위 코드</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            <tr th:each="upload : ${uploadList}">
+                            <tr th:each="category : ${categoryList}">
                                 <div id="pagination">
-                                    <td th:text="${upload.id}"></td>
+                                    <td th:text="${category.id}"></td>
                                     <td>
-                                        <a th:text="${upload.originalFileName}"></a></td>
+                                        <a th:text="${category.name}"></a></td>
+                                    <td class="text-center"
+                                        th:text="${category.categoryCode}"></td>
+                                    <td class="text-center"
+                                        th:text="${category.parentId}"></td>
                                 </div>
                             </tr>
                             </tbody>
@@ -83,9 +90,11 @@
                     <!--                            </nav>-->
                     <!--                        </div>-->
                     <!--                    </div>-->
+
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>
