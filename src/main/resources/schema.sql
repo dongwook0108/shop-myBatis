@@ -30,6 +30,17 @@ CREATE TABLE MEMBER
     `active`         tinyint      NOT NULL,
     PRIMARY KEY (`member_id`)
 );
+
+DROP TABLE IF EXISTS CATEGORY;
+CREATE TABLE CATEGORY
+(
+    `category_id`   bigint       NOT NULL AUTO_INCREMENT,
+    `name`          varchar(255) NULL,
+    `category_code` varchar(255) NULL,
+    `parent_id`     bigint       NULL,
+    PRIMARY KEY (`category_id`)
+);
+
 DROP TABLE IF EXISTS PRODUCT;
 CREATE TABLE PRODUCT
 (
@@ -45,8 +56,13 @@ CREATE TABLE PRODUCT
     `original_file_name` varchar(255),
     `featured`           tinyint        NOT NULL,
     `category_id`        bigint         NOT NULL,
-    PRIMARY KEY (`product_id`)
+    PRIMARY KEY (`product_id`),
+    CONSTRAINT FK_CATEGORY_ID
+        FOREIGN KEY (`category_id`)
+            REFERENCES CATEGORY (`category_id`)
 );
+
+
 
 DROP TABLE IF EXISTS UPLOADFILE;
 CREATE TABLE UPLOADFILE
@@ -57,13 +73,5 @@ CREATE TABLE UPLOADFILE
     PRIMARY KEY (`upload_id`)
 );
 
-DROP TABLE IF EXISTS CATEGORY;
-CREATE TABLE CATEGORY
-(
-    `category_id`   bigint       NOT NULL AUTO_INCREMENT,
-    `name`          varchar(255) NULL,
-    `category_code` varchar(255) NULL,
-    `parent_id`     bigint       NULL,
-    PRIMARY KEY (`category_id`)
-);
+
 
