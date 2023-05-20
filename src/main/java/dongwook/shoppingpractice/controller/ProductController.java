@@ -1,6 +1,8 @@
 package dongwook.shoppingpractice.controller;
 
+import dongwook.shoppingpractice.model.Category;
 import dongwook.shoppingpractice.model.Product;
+import dongwook.shoppingpractice.service.CategoryService;
 import dongwook.shoppingpractice.service.ProductService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ProductController {
 
     private final ProductService productService;
+    private final CategoryService categoryService;
 
     @GetMapping("/product")
     public String products(Model model) {
         List<Product> productList = productService.productList();
         model.addAttribute("productList", productList);
+
+        List<Category> categoryList = categoryService.findParentCategory();
+        model.addAttribute("categoryList", categoryList);
         return "product/products";
     }
 
