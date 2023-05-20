@@ -44,6 +44,18 @@ values ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/st
        ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',
         'shirts.jpeg');
 
+insert into CATEGORY(name, category_code, parent_id)
+values ('시계', 'watch', NULL),
+       ('애플와치', '애플시계', '1'),
+       ('갤럭시와치', '삼성시계', '1'),
+       ('가방', 'bag', NULL),
+       ('백팩', 'backpack', '4'),
+       ('크로스백', 'cross bag', '4'),
+       ('아우터', 'outer', NULL),
+       ('점퍼', 'jumper', '7'),
+       ('패딩', 'padding', '7');
+
+
 
 
 

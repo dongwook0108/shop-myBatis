@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments.html::header}"></head>
+
+<body class="bg02">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="col-12">
+                <nav th:replace="~{admin/fragments.html::nav('category')}"
+                     class="navbar navbar-expand-xl navbar-light bg-light">
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- row -->
+    <div class="row tm-mt-big">
+        <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+            <div class="bg-white tm-block">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="tm-block-title d-inline-block">카테고리 등록</h2>
+                    </div>
+                </div>
+                <div class="row mt-4 tm-edit-product-row">
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <form role="form" method="post"
+                              th:action="@{/admin/category/upload}"
+                              th:object="${categoryForm}" class="tm-edit-product-form">
+
+                            <div class="input-group mb-3">
+                                <label for="name"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이름
+                                </label>
+                                <input id="name" name="name" type="text"
+                                       th:field="*{name}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label for="categoryCode"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">카테고리코드
+                                </label>
+                                <input id="categoryCode" name="categoryCode" type="text"
+                                       th:field="*{categoryCode}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label>
+                                    <select th:field="*{parentId}">
+                                        <option th:value="null" th:text="'상위없음'"></option>
+                                        <option th:each="parent : ${parentCategory}"
+                                                th:text="${parent.name}"
+                                                th:value="${parent.id}"></option>
+                                    </select>
+                                </label>
+                            </div>
+
+
+                            <!--                            <div class="input-group mb-3">-->
+                            <!--                                <label for="categoryCode"-->
+                            <!--                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상위코드선택-->
+                            <!--                                </label>-->
+                            <!--                                <div class="input-group mb-3">-->
+                            <!--                                    <label>-->
+                            <!--                                        <select th:field="*{parentId}">-->
+                            <!--                                            <option th:value="null" th:text="'상위없음'"></option>-->
+                            <!--                                            <option th:each="parent : ${parentCategory}"-->
+                            <!--                                                    th:text="${parent.categoryCode}"-->
+                            <!--                                                    th:value="${parent.name}"></option>-->
+                            <!--                                        </select>-->
+                            <!--                                    </label>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+
+                            <div class="input-group mb-3">
+                                <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
+                                    <button type="submit" class="btn btn-primary">등록
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
