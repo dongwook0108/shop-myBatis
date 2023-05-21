@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.controller;
 
+import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.form.category.CategoryForm;
 import dongwook.shoppingpractice.model.Category;
 import dongwook.shoppingpractice.service.CategoryService;
@@ -8,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,13 +52,22 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public String category(@PathVariable Long id) {
-        return null;
+    public String category(@PathVariable Long id, Model model) {
+        Category category = categoryService.findById(id);
+        model.addAttribute("category", category);
+
+        List<Category> parentCategory = categoryService.findParentCategory();
+        model.addAttribute("parentCategory", parentCategory);
+        return "admin/edit-category";
     }
 
     @PostMapping("/{id}")
-    public String categoryEdit(@PathVariable Long id) {
-        return null;
+    public String categoryEdit(@PathVariable Long id, CategoryEditForm form) {
+
+        CategoryEditForm categoryEditForm = CategoryEditForm.editForm(form, id);
+        categoryService.updateCategory(categoryEditForm);
+
+        return "redirect:/admin/category/" + id;
     }
 
 //    @DeleteMapping("/{id}")

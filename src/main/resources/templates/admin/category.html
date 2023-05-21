@@ -45,9 +45,12 @@
                             <tbody>
                             <tr th:each="category : ${categoryList}">
                                 <div id="pagination">
-                                    <td th:text="${category.id}"></td>
+                                    <td th:text="${category.id}">
+                                        <a></a>
+                                    </td>
                                     <td>
-                                        <a th:text="${category.name}"></a></td>
+                                        <a th:href="@{/admin/category/{id}(id=${category.id})}"
+                                           th:text="${category.name}"></a></td>
                                     <td class="text-center"
                                         th:text="${category.categoryCode}"></td>
                                     <td class="text-center"

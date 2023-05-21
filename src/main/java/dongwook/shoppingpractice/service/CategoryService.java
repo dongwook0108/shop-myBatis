@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.service;
 
+import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.form.category.CategoryForm;
 import dongwook.shoppingpractice.mapper.CategoryMapper;
 import dongwook.shoppingpractice.model.Category;
@@ -28,5 +29,13 @@ public class CategoryService {
 
     public List<Category> findChildCategory() {
         return categoryMapper.findChildCategory();
+    }
+
+    public Category findById(Long id) {
+        return categoryMapper.findById(id);
+    }
+
+    public void updateCategory(CategoryEditForm form) {
+        categoryMapper.update(form);
     }
 }

@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.model;
 
+import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.form.category.CategoryForm;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,18 +24,6 @@ public class Category {
         this.name = form.getName();
         this.categoryCode = form.getCategoryCode();
         this.parentId = form.getParentId();
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCategoryCode(String categoryCode) {
-        this.categoryCode = categoryCode;
-    }
-
-    public void setParentId(Long parentId) {
-        this.parentId = parentId;
     }
 
     /**

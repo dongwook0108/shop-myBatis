@@ -30,11 +30,11 @@ values ('책', 'book', NULL),
        ('원피스', '만화책', '1'),
        ('불편한편의점', '소설책', '1'),
        ('물병', 'bottle', NULL),
-       ('스타벅스텀블러', '텀블러', '2'),
-       ('탐탐머그잔', '머그잔', '2'),
+       ('스타벅스텀블러', '텀블러', '4'),
+       ('탐탐머그잔', '머그잔', '4'),
        ('셔츠', 'shirts', NULL),
-       ('반팔셔츠', 'shorts', '3'),
-       ('긴팔셔츠', 'long', '3');
+       ('반팔셔츠', 'shorts', '7'),
+       ('긴팔셔츠', 'long', '7');
 
 INSERT INTO PRODUCT(name, description, simple_description, price, original_file_name,
                     created_date, created_by, updated_by, featured, category_id)
@@ -42,10 +42,10 @@ VALUES ('book', '내이름은 독서왕', '책한권으로 똑똑해져봅시다
         'book.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 1),
 
        ('bottle', '아기자기한 물병', '넉넉하게 물도 많이 들어가요 ~', 10000,
-        'bottle.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 2),
+        'bottle.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 4),
 
        ('shirts', '간지 폭발 셔츠', '입으면 멋이란게 느껴짐', 20000,
-        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 3);
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 7);
 
 insert into UPLOADFILE(image_path, original_file_name)
 values ('/Users/dongwook/Desktop/IdeaProjects/shop-myBatis/src/main/resources/static/images/product/upload/',

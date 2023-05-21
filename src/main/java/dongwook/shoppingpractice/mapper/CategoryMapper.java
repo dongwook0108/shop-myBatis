@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.mapper;
 
+import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.model.Category;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
@@ -9,6 +10,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface CategoryMapper {
@@ -26,6 +28,8 @@ public interface CategoryMapper {
     @Insert(value = "INSERT INTO category(name,category_code,parent_id) VALUES(#{category.name},#{category.categoryCode},#{category.parentId})")
     void save(@Param(value = "category") Category category);
 
+    @Update(value = "UPDATE  category set name=#{category.name}, category_code=#{category.categoryCode}, parent_id=#{category.parentId} WHERE category_id = #{category.id}")
+    void update(@Param(value = "category") CategoryEditForm editForm);
 
     @ResultMap(value = "CategoryMap")
     @Select(value = "SELECT * FROM category where parent_id is NULL")
@@ -35,5 +39,9 @@ public interface CategoryMapper {
     @ResultMap(value = "CategoryMap")
     @Select(value = "SELECT * FROM category where parent_id is not NULL")
     List<Category> findChildCategory();
+
+    @ResultMap(value = "CategoryMap")
+    @Select(value = "SELECT * FROM category where category_id = #{id}")
+    Category findById(@Param("id") Long id);
 
 }
