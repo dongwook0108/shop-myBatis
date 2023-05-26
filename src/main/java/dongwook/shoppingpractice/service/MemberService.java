@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 
 @Service
@@ -29,6 +30,8 @@ public class MemberService implements UserDetailsService {
 
 
     public void save(SignUpForm form) {
+
+        // TODO: SecurityUtils 만들어서 인크립트할 수 있도록 변경해보기
         form.setPassword(passwordEncoder.encode(form.getPassword()));
         Member member = new Member(form);
         memberMapper.save(member);
@@ -37,7 +40,7 @@ public class MemberService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         dongwook.shoppingpractice.model.member.Member member = memberMapper.findByEmail(email);
-        if (member == null || !member.isActive()) {
+        if (ObjectUtils.isEmpty(member) || !member.isActive()) {
             throw new UsernameNotFoundException(email);
         }
         return new UserMember(member);
@@ -45,12 +48,12 @@ public class MemberService implements UserDetailsService {
 
 //    -------------------------------
 
-    public void modifyMember(Member member, ModifyForm modifyForm) {
-        Member findMember = memberMapper.findById(modifyForm.getId());
-        findMember.updateMember(modifyForm);
+    public void modifyMember(ModifyForm modifyForm) {
+        Member member = memberMapper.findById(modifyForm.getId());
+        member.updateMember(modifyForm);
 
-        memberMapper.updateMember(findMember);
-        login(findMember);
+        memberMapper.updateMember(member);
+        login(member);
     }
 
     private void login(Member member) {
@@ -71,20 +74,13 @@ public class MemberService implements UserDetailsService {
     }
 
     public Member findById(Long memberId) {
-        Member findMember = memberMapper.findById(memberId);
-        System.out.println(findMember.getEmail());
-        return findMember;
+        return memberMapper.findById(memberId);
     }
 
-
-    //-----------------paging---------------
-    // 페이징을 위한 전체 데이터 개수 파악
     public int getCount() {
         return this.memberMapper.getCount();
     }
 
-
-    // 페이징을 위한 getListPage 메소드 추가
     public List<Member> getListPage(final PaginationVo paginationVo) {
         return memberMapper.getListPage(paginationVo);
     }
@@ -105,24 +101,7 @@ public class MemberService implements UserDetailsService {
 
     public void deleteMemberFromAdmin(AdminModifyForm form) {
         Member member = memberMapper.findById(form.getId());
-        member.deleteMember(form);
+        member.deleteMember();
         memberMapper.deleteMember(member);
-    }
-
-
-    public ModifyForm updateUsername(Long id, ModifyForm form) {
-        Member findMember = memberMapper.findById(id);
-        findMember.patchName(form);
-        memberMapper.updateName(findMember);
-
-        return form;
-    }
-
-    public ModifyForm updatePhoneNumber(Long id, ModifyForm form) {
-        Member findMember = memberMapper.findById(id);
-        findMember.patchPhone(form);
-        memberMapper.updatePhoneNumber(findMember);
-
-        return form;
     }
 }

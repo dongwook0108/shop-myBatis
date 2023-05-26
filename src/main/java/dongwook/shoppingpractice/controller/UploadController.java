@@ -24,11 +24,11 @@ public class UploadController {
     @Value("${file.dir}")
     private String fileDir;
 
-
     private final UploadService uploadService;
 
     @GetMapping("/uploads")
     public String uploadPageHome(Model model) {
+        // TODO: 명확한 이름으로 변경 해주세요
         List<Upload> uploadList = uploadService.findAll();
         model.addAttribute("uploadList", uploadList);
         return "upload/upload";
@@ -45,21 +45,14 @@ public class UploadController {
 
         MultipartFile mf = multipartHttpServletRequest.getFile("file");
 
-        String uploadPath = fileDir;
-
         String original = mf.getOriginalFilename(); // 업로드하는 파일 name
-        uploadPath = uploadPath + original; // 파일 업로드 경로 + 파일 이름
+        fileDir = fileDir + original; // 파일 업로드 경로 + 파일 이름
 
         try {
-            mf.transferTo(new File(uploadPath)); // 파일을 위에 지정 경로로 업로드
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+            mf.transferTo(new File(fileDir)); // 파일을 위에 지정 경로로 업로드
+        } catch (IllegalStateException | IOException e) {
             e.printStackTrace();
         }
-
-        form.setOriginalFileName(original);
-        form.setImagePath(uploadPath);
 
         uploadService.save(form);
 

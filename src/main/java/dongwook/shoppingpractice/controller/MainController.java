@@ -27,7 +27,7 @@ public class MainController {
         }
 
         List<Product> featuredProductList = productService.featuredProductList();
-        List<Category> categoryList = categoryService.findParentCategory();
+        List<Category> categoryList = categoryService.findAllParentCategories();
         model.addAttribute("featuredProductList", featuredProductList);
         model.addAttribute("categoryList", categoryList);
 

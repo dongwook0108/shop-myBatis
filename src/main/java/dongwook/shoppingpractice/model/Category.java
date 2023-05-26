@@ -3,6 +3,7 @@ package dongwook.shoppingpractice.model;
 import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.form.category.CategoryForm;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -10,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Category {
-
 
     private Long id;
 

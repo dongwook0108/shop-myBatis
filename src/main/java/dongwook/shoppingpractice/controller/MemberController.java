@@ -94,9 +94,11 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             return "member/my-page-edit";
         }
+
+        // TODO: 서비스 로직으로 옮겨주세여
         ModifyForm modifyForm = ModifyForm.modify(form, member.getId());
 
-        memberService.modifyMember(member, modifyForm);
+        memberService.modifyMember(modifyForm);
         return "redirect:/member/my-page";
     }
 

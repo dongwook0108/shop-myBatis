@@ -29,10 +29,10 @@ public class AdminProductController {
 
     private final ProductService productService;
     private final UploadService uploadService;
-
     private final CategoryService categoryService;
 
-    @GetMapping()
+    // TODO: PageDTO 만들어서 사이즈랑 페이지 값 받기
+    @GetMapping
     public String selectListAndPage(Model model,
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "size", defaultValue = "5") int size,
@@ -57,6 +57,7 @@ public class AdminProductController {
         return "admin/products";
     }
 
+
     @GetMapping("/add")
     public String addProductPage(Model model) {
         model.addAttribute(new ProductForm());
@@ -70,11 +71,8 @@ public class AdminProductController {
     }
 
     @PostMapping("/add")
-    public String addProduct(@CurrentMember Member member, ProductForm form) {
-
-        form.setNameAndDate(member);
+    public String addProduct(ProductForm form) {
         productService.save(form);
-
         return "redirect:/admin/products";
     }
 
@@ -85,25 +83,15 @@ public class AdminProductController {
         return "admin/edit-products";
     }
 
-
     @GetMapping("/{productId}/edit")
     public String productEditPage(@PathVariable Long productId, Model model) {
-        Product product = productService.findById(productId);
-        model.addAttribute(product);
-//        model.addAttribute(new ProductEditForm(product));
+        model.addAttribute(productService.findById(productId));
         return "admin/edit-product";
     }
 
     @PostMapping("/{productId}/edit")
-    public String productEdit(@PathVariable Long productId, @CurrentMember Member member,
-            ProductEditForm editForm) {
-
-//        Product product = productService.findById(productId);
-//        System.out.println("product = " + product);
-        editForm.setUpdatedDateAndBy(member);
+    public String productEdit(@PathVariable Long productId, ProductEditForm editForm) {
         productService.updateProduct(productId, editForm);
-        System.out.println("editForm = " + editForm);
-
         return "redirect:/admin/products/{productId}";
     }
 }

@@ -16,11 +16,9 @@ public class ApiController {
 
     private final MemberService memberService;
 
-
     @GetMapping(value = "/member-detail")
     public ResponseEntity<Member> memberDetail(@RequestParam(value = "id") Long id) {
-        Member member = memberService.findById(id);
-        return ResponseEntity.ok(member);
+        return ResponseEntity.ok(memberService.findById(id));
     }
 
 

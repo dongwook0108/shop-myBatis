@@ -21,10 +21,10 @@ public class ProductController {
 
     @GetMapping("/product")
     public String products(Model model) {
-        List<Product> productList = productService.productList();
+        List<Product> productList = productService.findAllProducts();
         model.addAttribute("productList", productList);
 
-        List<Category> categoryList = categoryService.findParentCategory();
+        List<Category> categoryList = categoryService.findAllParentCategories();
         model.addAttribute("categoryList", categoryList);
 
         List<Category> categories = categoryService.findChildCategory();

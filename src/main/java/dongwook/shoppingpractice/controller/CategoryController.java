@@ -20,19 +20,19 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    @GetMapping()
+    @GetMapping
     public String categoryPage(Model model) {
-        List<Category> categoryList = categoryService.findAll();
-        model.addAttribute("categoryList", categoryList);
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categoryList", categories);
 
         return "admin/category";
     }
 
     @GetMapping("/upload")
     public String categoryAddPage(Model model) {
-        List<Category> parentCategory = categoryService.findParentCategory();
+        List<Category> parentCategories = categoryService.findAllParentCategories();
 
-        model.addAttribute("parentCategory", parentCategory);
+        model.addAttribute("parentCategory", parentCategories);
         model.addAttribute(new CategoryForm());
 
         return "admin/add-category";
@@ -40,15 +40,6 @@ public class CategoryController {
 
     @PostMapping("/upload")
     public String categoryAdd(CategoryForm categoryForm) {
-//        Category category = new Category(form);
-
-//        form.setName(category.getName());
-//        form.setCategoryCode(category.getCategoryCode());
-//        form.setParentId(category.getParentId());
-
-//        CategoryForm form = new CategoryForm(categoryForm);
-//        CategoryForm categoryForm1form = CategoryForm.categoryForm(form);
-
         categoryService.save(categoryForm);
 
         return "redirect:/admin/category";
@@ -59,16 +50,15 @@ public class CategoryController {
         Category category = categoryService.findById(id);
         model.addAttribute("category", category);
 
-        List<Category> parentCategory = categoryService.findParentCategory();
+        List<Category> parentCategory = categoryService.findAllParentCategories();
         model.addAttribute("parentCategory", parentCategory);
         return "admin/edit-category";
     }
 
+    // TODO: 아이디 빠져도 될 것 같습니다.
     @PostMapping("/{id}")
     public String categoryEdit(@PathVariable Long id, CategoryEditForm form) {
-
-        CategoryEditForm categoryEditForm = CategoryEditForm.editForm(form, id);
-        categoryService.updateCategory(categoryEditForm);
+        categoryService.updateCategory(form);
 
         return "redirect:/admin/category/" + id;
     }

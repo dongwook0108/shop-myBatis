@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.model;
 
+import dongwook.shoppingpractice.common.BaseEntityForm;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
 import java.math.BigDecimal;
@@ -14,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Product {
+public class Product extends BaseEntityForm {
 
     private Long id;
     private String name;
@@ -39,11 +40,10 @@ public class Product {
         this.description = form.getDescription();
         this.simpleDescription = form.getSimpleDescription();
         this.price = form.getPrice();
-        this.createdDate = LocalDateTime.now();
-        this.createdBy = form.getCreatedBy();
         this.originalFileName = form.getOriginalFileName();
         this.featured = form.isFeatured();
         this.categoryId = form.getCategoryId();
+        modifyCreateData(form.getCreatedBy());
     }
 
     public void updateProduct(ProductEditForm form) {
@@ -51,7 +51,6 @@ public class Product {
         this.price = form.getPrice();
         this.simpleDescription = form.getSimpleDescription();
         this.description = form.getDescription();
-        this.updatedDate = LocalDateTime.now();
-        this.updatedBy = form.getUpdatedBy();
+        modifyUpdateData(form.getUpdatedBy());
     }
 }

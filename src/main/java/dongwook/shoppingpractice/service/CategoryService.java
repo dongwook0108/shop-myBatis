@@ -14,12 +14,12 @@ public class CategoryService {
 
     private final CategoryMapper categoryMapper;
 
-    public List<Category> findAll() {
-        return categoryMapper.findAll();
+    public List<Category> findAllCategories() {
+        return categoryMapper.findAllCategories();
     }
 
-    public List<Category> findParentCategory() {
-        return categoryMapper.findParentCategory();
+    public List<Category> findAllParentCategories() {
+        return categoryMapper.findParentCategories();
     }
 
     public void save(CategoryForm form) {
@@ -36,6 +36,15 @@ public class CategoryService {
     }
 
     public void updateCategory(CategoryEditForm form) {
-        categoryMapper.update(form);
+
+        // TODO: 방법 맞춰서 바꾸기
+        CategoryEditForm categoryEditForm = CategoryEditForm.builder()
+                .id(form.getId())
+                .name(form.getName())
+                .categoryCode(form.getCategoryCode())
+                .parentId(form.getParentId())
+                .build();
+
+        categoryMapper.update(categoryEditForm);
     }
 }
