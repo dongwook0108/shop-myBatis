@@ -17,8 +17,8 @@ public class CartController {
     @GetMapping("/cart")
     public String cartInfo(Model model) {
 
-        List<Category> categoryList = categoryService.findParentCategory();
-        model.addAttribute("categoryList", categoryList);
+        List<Category> categories = categoryService.findAllParentCategories();
+        model.addAttribute("categoryList", categories);
 
         return "cart/cart";
     }

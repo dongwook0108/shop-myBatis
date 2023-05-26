@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.form.product;
 
+import dongwook.shoppingpractice.common.BaseEntityForm;
 import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.model.member.Member;
 import java.math.BigDecimal;
@@ -9,11 +10,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-//@Data
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductEditForm {
+public class ProductEditForm extends BaseEntityForm {
 
     private Long id;
 
@@ -24,25 +24,6 @@ public class ProductEditForm {
     private String description;
 
     private BigDecimal price;
-
-    private LocalDateTime updatedDate;
-
-    private String updatedBy;
-
-//    public ProductEditForm(Product product) {
-//        this.id = product.getId();
-//        this.name = product.getName();
-//        this.simpleDescription = product.getSimpleDescription();
-//        this.description = product.getDescription();
-//        this.price = product.getPrice();
-//        this.updatedDate = LocalDateTime.now();
-//    }
-
-
-    public void setUpdatedDateAndBy(Member member) {
-        this.updatedDate = LocalDateTime.now();
-        this.updatedBy = member.getUsername();
-    }
 
     public void setName(String name) {
         this.name = name;

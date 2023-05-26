@@ -19,7 +19,7 @@ public class MyPageController {
     @GetMapping("/my-info")
     public String myInfo(Model model) {
 
-        List<Category> categoryList = categoryService.findParentCategory();
+        List<Category> categoryList = categoryService.findAllParentCategories();
         model.addAttribute("categoryList", categoryList);
 
         return "member/my-info";
@@ -30,7 +30,7 @@ public class MyPageController {
 
         model.addAttribute("member", member);
 
-        List<Category> categoryList = categoryService.findParentCategory();
+        List<Category> categoryList = categoryService.findAllParentCategories();
         model.addAttribute("categoryList", categoryList);
 
         return "member/my-info-edit";

@@ -4,9 +4,9 @@ import dongwook.shoppingpractice.model.member.Member;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.ObjectUtils;
 
 //@Data
 @Getter
@@ -56,15 +56,12 @@ public class ProductForm {
         this.originalFileName = originalFileName;
     }
 
-    public void setNameAndDate(Member member) {
-        this.createdBy = member.getUsername();
+    public boolean isUnderZeroPrice() {
+        return this.price.compareTo(BigDecimal.ZERO) <= 0;
     }
 
-    public void setFeatured(boolean featured) {
-        this.featured = featured;
+    public boolean validateRequiredValue() {
+        return ObjectUtils.isEmpty(this.simpleDescription) || ObjectUtils.isEmpty(this.description);
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
-    }
 }

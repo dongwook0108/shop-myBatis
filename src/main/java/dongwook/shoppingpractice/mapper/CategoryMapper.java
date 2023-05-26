@@ -22,18 +22,19 @@ public interface CategoryMapper {
             @Result(property = "parentId", column = "parent_id")
     })
     @Select(value = "SELECT * FROM category")
-    List<Category> findAll();
+    List<Category> findAllCategories();
 
 
-    @Insert(value = "INSERT INTO category(name,category_code,parent_id) VALUES(#{category.name},#{category.categoryCode},#{category.parentId})")
+    @Insert(value = "INSERT INTO category(name,category_code,parent_id) VALUES(#{category.name}, #{category.categoryCode}, #{category.parentId})")
     void save(@Param(value = "category") Category category);
 
-    @Update(value = "UPDATE  category set name=#{category.name}, category_code=#{category.categoryCode}, parent_id=#{category.parentId} WHERE category_id = #{category.id}")
+    @Update(value = "UPDATE category SET name=#{category.name}, category_code=#{category.categoryCode}, parent_id=#{category.parentId} WHERE category_id = #{category.id}")
     void update(@Param(value = "category") CategoryEditForm editForm);
 
+    // TODO: * 말고 컬럼 명확하게 명시 해주세요
     @ResultMap(value = "CategoryMap")
     @Select(value = "SELECT * FROM category where parent_id is NULL")
-    List<Category> findParentCategory();
+    List<Category> findParentCategories();
 
 
     @ResultMap(value = "CategoryMap")

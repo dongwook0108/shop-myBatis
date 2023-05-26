@@ -28,14 +28,17 @@ public class AdminMemberController {
         return "admin/index";
     }
 
-    //        paging -----------------------
+    // TODO: PageDTO 만들어서 사이즈랑 페이지 값 받기
     @GetMapping("/members")
     public String selectListAndPage(Model model,
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "size", defaultValue = "5") int size,
             @RequestParam(value = "email", required = false) String email) {
+
         List<Member> memberList;
         PaginationVo paginationVo;
+
+        // TODO: 서비스 로직으로 이동
         int count;
         if (StringUtils.hasText(email)) {
             count = memberService.getCountByEmail(email);
@@ -43,7 +46,7 @@ public class AdminMemberController {
             memberList = memberService.getListPageByEmail(paginationVo, email);
         } else {
             count = memberService.getCount();
-            paginationVo = new PaginationVo(count, page, size); // 모든 게시글 개수 구하기.
+            paginationVo = new PaginationVo(count, page, size);
             memberList = memberService.getListPage(paginationVo);
         }
 
@@ -53,16 +56,15 @@ public class AdminMemberController {
         return "admin/accounts";
     }
 
+    // TODO: PATCH 사용
     @PostMapping("/update-member")
-    public String editMemberFromAdmin(AdminModifyForm form, RedirectAttributes redirectAttributes,
-            @CurrentMember Member member) {
-        System.out.println("form = " + form);
-        form.updateDateAndBy(member);
+    public String editMemberFromAdmin(AdminModifyForm form, RedirectAttributes redirectAttributes) {
         memberService.updateMemberFromAdmin(form);
         redirectAttributes.addFlashAttribute("message", "수정 완료");
         return "redirect:/admin/members";
     }
 
+    // TODO: DELETE MAPPING
     @PostMapping("/delete-member")
     public String deleteMemberFromAdmin(AdminModifyForm form) {
         memberService.deleteMemberFromAdmin(form);

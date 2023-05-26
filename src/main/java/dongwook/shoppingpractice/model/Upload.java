@@ -16,7 +16,6 @@ public class Upload {
 
     private String originalFileName;
 
-
     public Upload(UploadForm form) {
         this.imagePath = form.getImagePath();
         this.originalFileName = form.getOriginalFileName();

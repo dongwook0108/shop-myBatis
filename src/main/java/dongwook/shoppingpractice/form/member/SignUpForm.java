@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.form.member;
 
+import dongwook.shoppingpractice.common.BaseEntityForm;
 import dongwook.shoppingpractice.model.member.Member;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
@@ -14,7 +15,7 @@ import org.hibernate.validator.constraints.Length;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SignUpForm {
+public class SignUpForm extends BaseEntityForm {
 
     static final String NOTNULL = "공백일 수 없습니다";
     static final String EMAIL_REGEXP_CHECK_PATTERN = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
@@ -45,12 +46,6 @@ public class SignUpForm {
 
     @NotEmpty(message = NOTNULL)
     private String addressDetail;
-
-    private LocalDateTime updatedDate;
-
-    private LocalDateTime createdDate;
-
-    private String updatedBy;
 
     private boolean active;
 
@@ -86,19 +81,6 @@ public class SignUpForm {
     public void setAddressDetail(String addressDetail) {
         this.addressDetail = addressDetail;
     }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
 
     public void setActive(boolean active) {
         this.active = active;

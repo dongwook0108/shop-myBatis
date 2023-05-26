@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.model.member;
 
+import dongwook.shoppingpractice.common.BaseEntityForm;
 import dongwook.shoppingpractice.form.member.AdminModifyForm;
 import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
@@ -8,11 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import org.springframework.util.ObjectUtils;
 
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
-public class Member {
+public class Member extends BaseEntityForm {
 
     private Long id;
     private String role;
@@ -23,12 +25,6 @@ public class Member {
     private String password;
     private String address;
     private String addressDetail;
-
-    private LocalDateTime updatedDate;
-
-    private LocalDateTime createdDate;
-
-    private String updatedBy;
 
     private boolean active;
 
@@ -46,8 +42,8 @@ public class Member {
         this.password = form.getPassword();
         this.address = form.getAddress();
         this.addressDetail = form.getAddressDetail();
-        this.createdDate = LocalDateTime.now();
         this.active = true;
+        form.modifyCreateData(form.getEmail());
     }
 
     public void updateMember(ModifyForm form) {
@@ -64,33 +60,22 @@ public class Member {
         this.username = form.getUsername();
         this.phoneNumber = form.getPhoneNumber();
         this.email = form.getEmail();
-        this.updatedDate = form.getUpdatedDate();
-        this.updatedBy = form.getUpdatedBy();
+        form.modifyUpdateData(form.getUpdatedBy());
     }
 
-    public void deleteMember(AdminModifyForm form) {
+    public void deleteMember() {
         this.active = false;
     }
 
     public void patchName(ModifyForm form) {
+        if (ObjectUtils.isEmpty(form.getUsername())) {
 
-        if (form.getId() != this.id) {
-            throw new IllegalArgumentException("이름 수정 실패");
-        }
-
-        if (form.getUsername() != null) {
             this.username = form.getUsername();
         }
-
     }
 
     public void patchPhone(ModifyForm form) {
-
-        if (form.getId() != this.id) {
-            throw new IllegalArgumentException("전화번호 수정 실패");
-        }
-
-        if (form.getPhoneNumber() != null) {
+        if (ObjectUtils.isEmpty(form.getPhoneNumber())) {
             this.phoneNumber = form.getPhoneNumber();
         }
 
