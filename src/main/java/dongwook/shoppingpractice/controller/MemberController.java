@@ -50,6 +50,7 @@ public class MemberController {
         if (bindingResult.hasErrors()) {
             return "member/sign-up";
         }
+
         memberService.save(signUpForm);
         return "redirect:/login";
     }
@@ -87,11 +88,14 @@ public class MemberController {
     }
 
     @PostMapping(value = "/my-page/edit")
-    public String modifyMemberInfo1(@CurrentMember Member member, @Valid ModifyForm modifyForm,
+    public String modifyMemberInfo1(@CurrentMember Member member, @Valid ModifyForm form,
             BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             return "member/my-page-edit";
         }
+        ModifyForm modifyForm = ModifyForm.modify(form, member.getId());
+
         memberService.modifyMember(member, modifyForm);
         return "redirect:/member/my-page";
     }

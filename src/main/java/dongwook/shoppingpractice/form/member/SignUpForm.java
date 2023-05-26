@@ -1,12 +1,19 @@
 package dongwook.shoppingpractice.form.member;
 
+import dongwook.shoppingpractice.model.member.Member;
 import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-@Data
+//@Data
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class SignUpForm {
 
     static final String NOTNULL = "공백일 수 없습니다";
@@ -45,8 +52,56 @@ public class SignUpForm {
 
     private String updatedBy;
 
-    private String createdBt;
-
     private boolean active;
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setAddressDetail(String addressDetail) {
+        this.addressDetail = addressDetail;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
 }

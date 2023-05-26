@@ -5,6 +5,7 @@ import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -28,8 +29,6 @@ public class Member {
     private LocalDateTime createdDate;
 
     private String updatedBy;
-
-    private String createdBt;
 
     private boolean active;
 

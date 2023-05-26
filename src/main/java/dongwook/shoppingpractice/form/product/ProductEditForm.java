@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+//@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductEditForm {
@@ -36,9 +38,25 @@ public class ProductEditForm {
 //        this.updatedDate = LocalDateTime.now();
 //    }
 
+
     public void setUpdatedDateAndBy(Member member) {
         this.updatedDate = LocalDateTime.now();
         this.updatedBy = member.getUsername();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSimpleDescription(String simpleDescription) {
+        this.simpleDescription = simpleDescription;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 }

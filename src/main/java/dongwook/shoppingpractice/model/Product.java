@@ -40,7 +40,6 @@ public class Product {
         this.simpleDescription = form.getSimpleDescription();
         this.price = form.getPrice();
         this.createdDate = LocalDateTime.now();
-        this.imagePath = form.getImagePath();
         this.createdBy = form.getCreatedBy();
         this.originalFileName = form.getOriginalFileName();
         this.featured = form.isFeatured();

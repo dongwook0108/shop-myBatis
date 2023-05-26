@@ -39,14 +39,17 @@ public class CategoryController {
     }
 
     @PostMapping("/upload")
-    public String categoryAdd(CategoryForm form) {
-        Category category = new Category(form);
+    public String categoryAdd(CategoryForm categoryForm) {
+//        Category category = new Category(form);
 
-        form.setName(category.getName());
-        form.setCategoryCode(category.getCategoryCode());
-        form.setParentId(category.getParentId());
+//        form.setName(category.getName());
+//        form.setCategoryCode(category.getCategoryCode());
+//        form.setParentId(category.getParentId());
 
-        categoryService.save(form);
+//        CategoryForm form = new CategoryForm(categoryForm);
+//        CategoryForm categoryForm1form = CategoryForm.categoryForm(form);
+
+        categoryService.save(categoryForm);
 
         return "redirect:/admin/category";
     }

@@ -17,9 +17,9 @@ public interface MemberMapper {
 
     @ResultMap(value = "MemberMap")
     @Insert(value =
-            "INSERT INTO MEMBER(username, role, phone_number, email, zipcode, password, address, address_detail, active) "
+            "INSERT INTO MEMBER(username, role, phone_number, email, zipcode, password, address, address_detail, active, created_date) "
                     +
-                    "VALUES(#{member.username}, #{member.role},  #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail},#{member.active})")
+                    "VALUES(#{member.username}, #{member.role},  #{member.phoneNumber},#{member.email},#{member.zipcode},#{member.password},#{member.address},#{member.addressDetail},#{member.active}, #{member.createdDate})")
     void save(@Param(value = "member") Member member);
 
     @Select(value = "SELECT EXISTS (SELECT 1 FROM MEMBER WHERE phone_number = #{phoneNumber})")
@@ -40,6 +40,7 @@ public interface MemberMapper {
             @Result(property = "role", column = "role"),
             @Result(property = "active", column = "active"),
             @Result(property = "updatedDate", column = "updated_date"),
+            @Result(property = "createdDate", column = "created_date"),
             @Result(property = "updatedBy", column = "updated_by")
     })
     @Select(value = "SELECT * FROM MEMBER WHERE email = #{email}")
