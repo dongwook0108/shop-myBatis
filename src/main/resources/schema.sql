@@ -26,6 +26,7 @@ CREATE TABLE MEMBER
     `updated_date`   datetime    DEFAULT NULL,
     `created_date`   datetime    DEFAULT NULL,
     `updated_by`     varchar(45) DEFAULT NULL,
+    `created_by`     varchar(45) DEFAULT NULL,
     `active`         tinyint      NOT NULL,
     PRIMARY KEY (`member_id`)
 );
