@@ -72,9 +72,6 @@ public class AdminProductController {
     @PostMapping("/add")
     public String addProduct(@CurrentMember Member member, ProductForm form) {
 
-//        form.setImagePath(uploadPath);
-//        form.setCreatedBy(member.getUsername());
-//        form.setNameAndDate(member); --> 이런식으로 사용
         form.setNameAndDate(member);
         productService.save(form);
 

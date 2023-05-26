@@ -28,7 +28,7 @@ public class CategoryEditForm {
 
     public static CategoryEditForm editForm(CategoryEditForm form, Long id) {
         CategoryEditForm editForm = new CategoryEditForm();
-        editForm.setId(form.getId());
+        editForm.setId(id);
         editForm.setName(form.getName());
         editForm.setCategoryCode(form.getCategoryCode());
         editForm.setParentId(form.getParentId());
