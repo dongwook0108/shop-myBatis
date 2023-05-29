@@ -55,6 +55,7 @@ public class Member extends BaseEntityForm {
         this.zipcode = form.getZipcode();
         this.address = form.getAddress();
         this.addressDetail = form.getAddressDetail();
+        modifyUpdateData(form.getEmail());
     }
 
 
