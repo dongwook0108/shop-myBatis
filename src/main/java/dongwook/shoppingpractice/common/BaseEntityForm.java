@@ -17,7 +17,7 @@ public class BaseEntityForm {
     public void modifyCreateData(String loginId) {
         this.createdBy = loginId;
         this.createdDate = LocalDateTime.now();
-        modifyUpdateData(loginId);
+//        modifyUpdateData(loginId);
     }
 
     public void modifyUpdateData(String loginId) {
