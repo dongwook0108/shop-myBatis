@@ -45,7 +45,7 @@ public class Member extends BaseEntityForm {
         this.address = form.getAddress();
         this.addressDetail = form.getAddressDetail();
         this.active = true;
-        form.modifyCreateData(form.getEmail());
+        this.modifyCreateData(form.getEmail());
     }
 
     public void updateMember(ModifyForm form) {
