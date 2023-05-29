@@ -83,13 +83,7 @@ public class AdminProductController {
         return "admin/edit-products";
     }
 
-    @GetMapping("/{productId}/edit")
-    public String productEditPage(@PathVariable Long productId, Model model) {
-        model.addAttribute(productService.findById(productId));
-        return "admin/edit-product";
-    }
-
-    @PostMapping("/{productId}/edit")
+    @PostMapping("/{productId}")
     public String productEdit(@PathVariable Long productId, ProductEditForm editForm) {
         productService.updateProduct(productId, editForm);
         return "redirect:/admin/products/{productId}";
