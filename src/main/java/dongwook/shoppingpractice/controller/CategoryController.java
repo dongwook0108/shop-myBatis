@@ -33,7 +33,7 @@ public class CategoryController {
         List<Category> parentCategories = categoryService.findAllParentCategories();
 
         model.addAttribute("parentCategory", parentCategories);
-        model.addAttribute(new CategoryForm());
+//        model.addAttribute(new CategoryForm()); --> 여기부분을 없애줌 기존에는 하나로 쓱 들어왓다가 post 요청까지 해줬는데 지금 뭔가 큰 문제가 생길 거 같음
 
         return "admin/add-category";
     }
@@ -52,6 +52,7 @@ public class CategoryController {
 
         List<Category> parentCategory = categoryService.findAllParentCategories();
         model.addAttribute("parentCategory", parentCategory);
+
         return "admin/edit-category";
     }
 
