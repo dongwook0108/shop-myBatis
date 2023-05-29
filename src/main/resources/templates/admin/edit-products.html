@@ -25,76 +25,73 @@
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
 
-                        <div class="input-group mb-3">
-                            <label for="name"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
-                            </label>
-                            <input readonly
-                                   id="name" name="name" type="text"
-                                   th:value="${product.name}"
-                                   class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
-                        </div>
+                        <form method="post" role="form"
+                              th:action="@{/admin/products/{productId}(productId=${product.id})}"
+                              th:object="${product}"
+                              class="tm-edit-product-form">
+                            <div class="input-group mb-3">
+                                <label for="name"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
+                                </label>
+                                <input placeholder="Product name" value="In malesuada placerat"
+                                       readonly
+                                       id="name" name="name" type="text"
+                                       th:field="*{name}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
 
-                        <!--                        textarea -> th:value 사용 x -> th:text 사용 !!!-->
+                            <div class="input-group mb-3">
+                                <label for="simpleDescription"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">간략한
+                                    설명
+                                </label>
+                                <input placeholder="simpleDescription"
+                                       id="simpleDescription" name="simpleDescription" type="text"
+                                       readonly
+                                       th:field="*{simpleDescription}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
 
-                        <div class="input-group mb-3">
-                            <label for="simpleDescription"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한 설명</label>
-                            <textarea
-                                    id="simpleDescription"
-                                    th:text="${product.simpleDescription}" readonly
-                                    class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                    rows="1">
-                            </textarea>
-                        </div>
+                            <div class="input-group mb-3">
+                                <label for="description"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상세
+                                    설명
+                                </label>
+                                <input placeholder="description"
+                                       id="description" name="description" type="text"
+                                       readonly
+                                       th:field="*{description}"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                            </div>
 
-                        <div class="input-group mb-3">
-                            <label for="description"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세 설명</label>
-                            <textarea
-                                    id="description"
-                                    th:text="${product.description}" readonly
-                                    class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                    rows="3"></textarea>
-                        </div>
+                            <div class="input-group mb-3">
+                                <label for="price"
+                                       class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격</label>
+                                <input id="price" name="price"
+                                       th:field="*{price}"
+                                       readonly
+                                       type="text"
+                                       class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                            </div>
 
-                        <div class="input-group mb-3">
-                            <label for="price"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
-                            </label>
-                            <input value="255" id="price" name="price"
-                                   th:value="${product.price}"
-                                   type="text" readonly
-                                   class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
-                        </div>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <a href="/admin/products" id="list-btn" class="btn btn-primary">
+                                        목록보기
+                                    </a>
+                                </div>
+                                <div>
+                                    <button id="modify-btn" class="btn btn-primary" type="button">
+                                        수정하기
+                                    </button>
+                                </div>
 
-                        <div class="input-group mb-3">
-                            <label for="createdDate"
-                                   class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">등록일
-                            </label>
-                            <input type="text" id="createdDate" name="quantity"
-                                   class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"
-                                   value="10" th:value="${product.createdDate}" readonly>
-                        </div>
-
-                        <div class="d-flex mb-3">
-                            <div class="mr-auto">
-                                <button class="btn btn-primary" type="submit"
-                                        th:onclick="|location.href='@{/admin/products}'|">
-                                    목록으로
+                                <button id="complete-btn" class="btn btn-primary" type="submit"
+                                        style="display: none">
+                                    수정완료
                                 </button>
                             </div>
-                            <div class="ml-auto">
-                                <button class="btn btn-primary" type="submit"
-                                        th:onclick="|location.href='@{/admin/products/{productId}/edit(productId=${product.id})}'|">
-                                    수정하기
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">
-                        <img th:src="${product.imagePath}" class="img-fluid product-image"
-                             alt="image">
+                        </form>
                     </div>
 
                 </div>
@@ -102,6 +99,29 @@
         </div>
     </div>
 </div>
+
+<script>
+    const modifyButton = document.getElementById('modify-btn');
+    const listButton = document.getElementById('list-btn');
+    const completeButton = document.getElementById('complete-btn');
+
+    let nameInput = document.getElementById('name');
+    let simpleDescriptionInput = document.getElementById('simpleDescription');
+    let descriptionInput = document.getElementById('description');
+    let priceInput = document.getElementById('price');
+
+    modifyButton.addEventListener('click', () => {
+        nameInput.readOnly = false;
+        simpleDescriptionInput.readOnly = false;
+        descriptionInput.readOnly = false;
+        priceInput.readOnly = false;
+
+        modifyButton.style.display = 'none';
+        listButton.style.display = 'none';
+        completeButton.style.display = 'block';
+    })
+
+</script>
 
 </body>
 </html>
