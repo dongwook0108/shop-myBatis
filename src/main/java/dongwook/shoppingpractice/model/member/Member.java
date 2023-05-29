@@ -6,15 +6,12 @@ import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.util.ObjectUtils;
 
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
 public class Member extends BaseEntityForm {
 
@@ -28,8 +25,14 @@ public class Member extends BaseEntityForm {
     private String address;
     private String addressDetail;
 
-    private boolean active;
+    private LocalDateTime updatedDate;
 
+    private LocalDateTime createdDate;
+
+    private String updatedBy;
+
+    private String createdBy;
+    private boolean active;
 
     public Member(SignUpForm form) {
         if (form.getEmail().contains("@dongwook.com")) {
