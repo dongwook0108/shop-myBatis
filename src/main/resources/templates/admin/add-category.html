@@ -31,12 +31,15 @@
                               th:action="@{/admin/category/upload}"
                               th:object="${categoryForm}" class="tm-edit-product-form">
 
+                            <!--                            <div class="slick-hidden">-->
+                            <!--                                <label th:value="${categoryForm.id}"></label>-->
+                            <!--                            </div>-->
+
                             <div class="input-group mb-3">
                                 <label for="name"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이름
                                 </label>
                                 <input id="name" name="name" type="text"
-                                       th:field="*{name}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
 
@@ -45,13 +48,12 @@
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">카테고리코드
                                 </label>
                                 <input id="categoryCode" name="categoryCode" type="text"
-                                       th:field="*{categoryCode}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label>
-                                    <select th:field="*{parentId}">
+                                    <select name="parentId" id="parentId">
                                         <option th:value="null" th:text="'상위없음'"></option>
                                         <option th:each="parent : ${parentCategory}"
                                                 th:text="${parent.name}"

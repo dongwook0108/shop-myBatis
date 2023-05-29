@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.mapper;
 
 import dongwook.shoppingpractice.form.category.CategoryEditForm;
+import dongwook.shoppingpractice.form.category.CategoryForm;
 import dongwook.shoppingpractice.model.Category;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
@@ -26,7 +27,7 @@ public interface CategoryMapper {
 
 
     @Insert(value = "INSERT INTO category(name,category_code,parent_id) VALUES(#{category.name}, #{category.categoryCode}, #{category.parentId})")
-    void save(@Param(value = "category") Category category);
+    void save(@Param(value = "category") CategoryForm category);
 
     @Update(value = "UPDATE category SET name=#{category.name}, category_code=#{category.categoryCode}, parent_id=#{category.parentId} WHERE category_id = #{category.id}")
     void update(@Param(value = "category") CategoryEditForm editForm);

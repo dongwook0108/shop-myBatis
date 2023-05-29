@@ -23,8 +23,13 @@ public class CategoryService {
     }
 
     public void save(CategoryForm form) {
-        Category category = new Category(form);
-        categoryMapper.save(category);
+        CategoryForm categoryForm = CategoryForm.builder()
+                .id(form.getId())
+                .name(form.getName())
+                .categoryCode(form.getCategoryCode())
+                .parentId(form.getParentId())
+                .build();
+        categoryMapper.save(categoryForm);
     }
 
     public List<Category> findChildCategory() {
