@@ -1,13 +1,11 @@
 package dongwook.shoppingpractice.form.member;
 
 import dongwook.shoppingpractice.common.BaseEntityForm;
-import dongwook.shoppingpractice.model.member.Member;
-import lombok.Data;
-import org.hibernate.validator.constraints.Length;
-
+import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDateTime;
+import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 // TODO: @Data 삭제
 @Data
