@@ -6,8 +6,6 @@ import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.model.Category;
 import dongwook.shoppingpractice.model.Product;
 import dongwook.shoppingpractice.model.Upload;
-import dongwook.shoppingpractice.model.member.CurrentMember;
-import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.service.CategoryService;
 import dongwook.shoppingpractice.service.ProductService;
 import dongwook.shoppingpractice.service.UploadService;

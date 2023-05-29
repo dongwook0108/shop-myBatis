@@ -1,6 +1,5 @@
 package dongwook.shoppingpractice.form.product;
 
-import dongwook.shoppingpractice.model.member.Member;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;

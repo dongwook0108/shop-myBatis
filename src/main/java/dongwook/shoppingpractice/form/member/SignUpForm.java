@@ -1,12 +1,9 @@
 package dongwook.shoppingpractice.form.member;
 
 import dongwook.shoppingpractice.common.BaseEntityForm;
-import dongwook.shoppingpractice.model.member.Member;
-import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
