@@ -52,7 +52,7 @@
                     <th:block th:unless="${memberList.isEmpty()}">
                         <li class="tm-list-group-item" th:each="member : ${memberList}">
                             <a th:member-id="${member.id}"
-                               onclick="requestMemberDetail(this.getAttribute('member-id'))"
+                               th:onclick="requestMemberDetail(this.getAttribute('member-id'))"
                                th:text="${member.email}">user
                                 email</a>
                         </li>
@@ -172,7 +172,7 @@
     const detailPage = document.querySelector("#detail-page");
 
     function requestMemberDetail(memberId) {
-        $.ajax("/api/member/" + memberId)
+        $.ajax("/api/member-detail?id=" + memberId)
         .done((data) => {
             detailPage.style.display = "block";
             memberIdInputDelete.value = data.id;

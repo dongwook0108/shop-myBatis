@@ -58,7 +58,7 @@ public class AdminMemberController {
     // TODO: PATCH 사용
     @PostMapping("/update-member")
     public String editMemberFromAdmin(AdminModifyForm form, RedirectAttributes redirectAttributes) {
-        memberService.updateMemberFromAdmin(form);
+        memberService.updateMemberFromAdmin(form.getId(), form);
         redirectAttributes.addFlashAttribute("message", "수정 완료");
         return "redirect:/admin/members";
     }
@@ -66,7 +66,7 @@ public class AdminMemberController {
     // TODO: DELETE MAPPING
     @PostMapping("/delete-member")
     public String deleteMemberFromAdmin(AdminModifyForm form) {
-        memberService.deleteMemberFromAdmin(form);
+        memberService.deleteMemberFromAdmin(form.getId());
         return "redirect:/admin/members";
     }
 }
