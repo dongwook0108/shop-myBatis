@@ -20,23 +20,24 @@
     <div class="row tm-mt-big">
         <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
             <div class="bg-white tm-block">
+
                 <div class="row">
                     <div class="col-12">
                         <h2 class="tm-block-title d-inline-block">상품 등록</h2>
                     </div>
                 </div>
+
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
                         <form role="form" method="post"
                               th:action="@{/admin/products/add}"
-                              th:object="${productForm}" class="tm-edit-product-form">
+                              class="tm-edit-product-form">
 
                             <div class="input-group mb-3">
                                 <label for="name"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">상품명
                                 </label>
                                 <input id="name" name="name" type="text"
-                                       th:field="*{name}"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                             </div>
 
@@ -45,59 +46,54 @@
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">간략한
                                     설명</label>
                                 <textarea
-                                        id="simpleDescription"
+                                        id="simpleDescription" name="simpleDescription" type="text"
                                         class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         rows="1"
-                                        th:field="*{simpleDescription}"
                                         required></textarea>
                             </div>
 
                             <div class="input-group mb-3">
                                 <label for="description"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">상세설명</label>
-                                <textarea
-                                        id="description"
-                                        class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                        rows="3"
-                                        th:field="*{description}"
-                                        required></textarea>
+                                <textarea id="description" name="description" type="text"
+                                          class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                          rows="3" required></textarea>
                             </div>
 
                             <div class="input-group mb-3">
                                 <label for="price"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">가격
                                 </label>
-                                <input id="price" name="Price" type="text"
-                                       th:value="*{#numbers.formatDecimal(price, 2, 'COMMA', 0, 'POINT')}"
+                                <input id="price" name="price" type="text"
                                        class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                             </div>
 
                             <div class="input-group mb-3">
-                                <label for="selectImage"
+                                <label for="originalFileName"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">이미지
                                     선택</label>
-                                <select id="selectImage"
-                                        class="form-control col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                        th:field="*{originalFileName}">
+                                <select id="originalFileName" name="originalFileName"
+                                        class="form-control col-xl-9 col-lg-8 col-md-8 col-sm-7">
                                     <option th:each="fileName : ${fileNameList}"
                                             th:value="${fileName.originalFileName}"
                                             th:text="${fileName.originalFileName}"
-                                            th:selected="${fileName.originalFileName} == ${productForm.originalFileName}"></option>
+                                            th:selected="${fileName.originalFileName}"></option>
                                 </select>
                             </div>
+
 
                             <div class="input-group mb-3">
                                 <label for="featured"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">추천
-                                    상품 등록</label>
-                                <input id="featured" name="featured" type="checkbox"
-                                       th:checked="*{featured}"
+                                    상품 여부</label>
+                                <input id="featured" name="featured" type="checkbox" value="1"
                                        class="form-control validate col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                                <input type="hidden" name="_featured" value="0">
                             </div>
 
                             <div class="input-group mb-3">
                                 <label>
-                                    <select th:field="*{categoryId}">
+                                    <select name="categoryId" id="categoryId">
                                         <option th:each="category : ${categoryList}"
                                                 th:value="${category.id}"
                                                 th:text="${category.name}"></option>
@@ -107,11 +103,9 @@
 
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                    <button type="submit" class="btn btn-primary">등록
-                                    </button>
+                                    <button type="submit" class="btn btn-primary">등록</button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </div>

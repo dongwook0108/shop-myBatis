@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.mapper;
 
 import dongwook.shoppingpractice.form.common.PaginationVo;
+import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.model.Product;
 import java.util.List;
 import org.apache.ibatis.annotations.Insert;
@@ -19,7 +20,7 @@ public interface ProductMapper {
             "INSERT INTO PRODUCT(name, description, simple_description, price, original_file_name, created_date, created_by, featured, category_id) "
                     +
                     "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.originalFileName},#{product.createdDate}, #{product.createdBy}, #{product.featured}, #{product.categoryId})")
-    void save(@Param(value = "product") Product product);
+    void save(@Param(value = "product") ProductForm product);
 
 
     @Results(id = "ProductMap", value = {
@@ -45,8 +46,6 @@ public interface ProductMapper {
 
     @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy} WHERE product_id = #{product.id} ")
     void updateProduct(@Param(value = "product") Product product);
-
-//    paging
 
     @Select(value = "SELECT count(*) as listCnt from product")
     int getCount();

@@ -21,12 +21,21 @@ public class ProductService {
             throw new IllegalArgumentException("가격은 0원 초과이어야 합니다.");
         }
 
-        if (!form.validateRequiredValue()) {
+        if (form.validateRequiredValue()) {
             throw new IllegalArgumentException("제품 설명 부분은 비어있을 수 없습니다.");
         }
 
-        Product product = new Product(form);
-        productMapper.save(product);
+        ProductForm productForm = ProductForm.builder()
+                .name(form.getName())
+                .simpleDescription(form.getSimpleDescription())
+                .description(form.getDescription())
+                .price(form.getPrice())
+                .originalFileName(form.getOriginalFileName())
+                .featured(form.isFeatured())
+                .categoryId(form.getCategoryId())
+                .build();
+
+        productMapper.save(productForm);
     }
 
     public List<Product> findAllProducts() {
@@ -36,7 +45,6 @@ public class ProductService {
     public Product findById(Long productId) {
         return productMapper.findById(productId);
     }
-
 
     public void updateProduct(Long productId, ProductEditForm editForm) {
         Product product = productMapper.findById(productId);
