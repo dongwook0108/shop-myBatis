@@ -1,15 +1,12 @@
 package dongwook.shoppingpractice.model;
 
 import dongwook.shoppingpractice.common.BaseEntityForm;
-import dongwook.shoppingpractice.form.product.ProductEditForm;
-import dongwook.shoppingpractice.form.product.ProductForm;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @NoArgsConstructor
