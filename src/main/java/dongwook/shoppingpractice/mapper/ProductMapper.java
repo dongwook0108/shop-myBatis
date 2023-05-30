@@ -1,6 +1,7 @@
 package dongwook.shoppingpractice.mapper;
 
 import dongwook.shoppingpractice.form.common.PaginationVo;
+import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
 import dongwook.shoppingpractice.model.Product;
 import java.util.List;
@@ -45,7 +46,7 @@ public interface ProductMapper {
     Product findById(@Param(value = "productId") Long productId);
 
     @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy} WHERE product_id = #{product.id} ")
-    void updateProduct(@Param(value = "product") Product product);
+    void updateProduct(@Param(value = "product") ProductEditForm product);
 
     @Select(value = "SELECT count(*) as listCnt from product")
     int getCount();

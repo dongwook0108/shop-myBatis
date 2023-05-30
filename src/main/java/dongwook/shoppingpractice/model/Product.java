@@ -34,6 +34,7 @@ public class Product extends BaseEntityForm {
     private boolean featured;
 
     private Long categoryId;
+
     // builder 패턴말고 생성자로 통으로 주입 받는 방법도 좋은 거 같은데 알아보기 무슨 차이가 있는건지
 //    public Product(ProductForm form) {
 //        this.name = form.getName();
@@ -46,11 +47,11 @@ public class Product extends BaseEntityForm {
 //        modifyCreateData(form.getCreatedBy());
 //    }
 
-    public void updateProduct(ProductEditForm form) {
-        this.name = form.getName();
-        this.price = form.getPrice();
-        this.simpleDescription = form.getSimpleDescription();
-        this.description = form.getDescription();
-        modifyUpdateData(form.getUpdatedBy());
-    }
+//    public void updateProduct(ProductEditForm form) {
+//        this.name = form.getName();
+//        this.price = form.getPrice();
+//        this.simpleDescription = form.getSimpleDescription();
+//        this.description = form.getDescription();
+//        modifyUpdateData(form.getUpdatedBy());
+//    }
 }
