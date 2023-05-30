@@ -26,8 +26,7 @@
                         </div>
                         <div class="col-md-4 col-sm-12 tm-table-actions-col-right">
                             <a th:href="@{/admin/category/upload}"
-                               class="btn btn-small btn-primary">카테고리
-                                추가</a>
+                               class="btn btn-small btn-primary">카테고리 추가</a>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -43,7 +42,7 @@
                             </thead>
 
                             <tbody>
-                            <tr th:each="category : ${categoryList}">
+                            <tr th:each="category : ${categories}">
                                 <div id="pagination">
                                     <td th:text="${category.id}">
                                         <a></a>
@@ -60,44 +59,9 @@
                             </tbody>
                         </table>
                     </div>
-
-                    <!--                    <div class="tm-table-mt tm-table-actions-row">-->
-                    <!--                        <div class="tm-table-actions-col-right">-->
-                    <!--                            <span class="tm-pagination-label"></span>-->
-                    <!--                            <nav aria-label="Page navigation example">-->
-                    <!--                                <ul class="pagination">-->
-                    <!--                                    <li class="page-item">-->
-                    <!--                                        <a class="page-link" th:href="@{'/admin/products?page=1'}"-->
-                    <!--                                           aria-label="Previous">-->
-                    <!--                                            <span aria-hidden="true">&laquo;</span>-->
-                    <!--                                            <span class="sr-only">Previous</span>-->
-                    <!--                                        </a>-->
-                    <!--                                    </li>-->
-
-                    <!--                                    <li class="page-item"-->
-                    <!--                                        th:each="pageNum : ${#numbers.sequence(1, pageVo.totalPageCount)}">-->
-                    <!--                                        <a class="page-link"-->
-                    <!--                                           th:href="@{'/admin/products?page='+${pageNum}}"-->
-                    <!--                                           th:text="${pageNum}"></a>-->
-                    <!--                                    </li>-->
-
-                    <!--                                    <li class="page-item">-->
-                    <!--                                        <a class="page-link"-->
-                    <!--                                           th:href="@{'/admin/products?page='+${pageVo.totalPageCount}}"-->
-                    <!--                                           aria-label="Next">-->
-                    <!--                                            <span aria-hidden="true">&raquo;</span>-->
-                    <!--                                            <span class="sr-only">Next</span>-->
-                    <!--                                        </a>-->
-                    <!--                                    </li>-->
-                    <!--                                </ul>-->
-                    <!--                            </nav>-->
-                    <!--                        </div>-->
-                    <!--                    </div>-->
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>

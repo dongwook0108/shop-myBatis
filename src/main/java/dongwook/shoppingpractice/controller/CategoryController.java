@@ -23,7 +23,7 @@ public class CategoryController {
     @GetMapping
     public String categoryPage(Model model) {
         List<Category> categories = categoryService.findAllCategories();
-        model.addAttribute("categoryList", categories);
+        model.addAttribute("categories", categories);
 
         return "admin/category";
     }

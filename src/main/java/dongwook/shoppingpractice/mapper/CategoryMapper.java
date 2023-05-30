@@ -22,28 +22,34 @@ public interface CategoryMapper {
             @Result(property = "categoryCode", column = "category_code"),
             @Result(property = "parentId", column = "parent_id")
     })
-    @Select(value = "SELECT * FROM category")
+    @Select(value = "SELECT category_id, name ,category_code, parent_id FROM category")
     List<Category> findAllCategories();
 
 
-    @Insert(value = "INSERT INTO category(name,category_code,parent_id) VALUES(#{category.name}, #{category.categoryCode}, #{category.parentId})")
+    @Insert(value = "INSERT INTO category(name, category_code, parent_id)"
+            + " VALUES(#{category.name}, #{category.categoryCode}, #{category.parentId})")
     void save(@Param(value = "category") CategoryForm category);
 
-    @Update(value = "UPDATE category SET name=#{category.name}, category_code=#{category.categoryCode}, parent_id=#{category.parentId} WHERE category_id = #{category.id}")
+    @Update(value =
+            "UPDATE category SET name=#{category.name}, category_code=#{category.categoryCode}, parent_id=#{category.parentId}"
+                    + " WHERE category_id = #{category.id}")
     void update(@Param(value = "category") CategoryEditForm editForm);
 
     // TODO: * 말고 컬럼 명확하게 명시 해주세요
     @ResultMap(value = "CategoryMap")
-    @Select(value = "SELECT * FROM category where parent_id is NULL")
+    @Select(value = "SELECT category_id, name ,category_code, parent_id"
+            + " FROM category where parent_id is NULL")
     List<Category> findParentCategories();
 
 
     @ResultMap(value = "CategoryMap")
-    @Select(value = "SELECT * FROM category where parent_id is not NULL")
+    @Select(value = "SELECT category_id, name, category_code, parent_id"
+            + " FROM category where parent_id is not NULL")
     List<Category> findChildCategory();
 
     @ResultMap(value = "CategoryMap")
-    @Select(value = "SELECT * FROM category where category_id = #{id}")
+    @Select(value = "SELECT category_id, name, category_code, parent_id"
+            + " FROM category where category_id = #{id}")
     Category findById(@Param("id") Long id);
 
 }
