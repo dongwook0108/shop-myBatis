@@ -2,15 +2,11 @@ package dongwook.shoppingpractice.form.product;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.util.ObjectUtils;
 
-//@Data
 @Getter
-//@AllArgsConstructor
 public class ProductForm {
 
     private String name;

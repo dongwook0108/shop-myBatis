@@ -47,9 +47,15 @@ public class ProductService {
     }
 
     public void updateProduct(Long productId, ProductEditForm editForm) {
-        Product product = productMapper.findById(productId);
-        product.updateProduct(editForm);
-        productMapper.updateProduct(product);
+        ProductEditForm productEditForm = ProductEditForm.builder()
+                .id(productId)
+                .name(editForm.getName())
+                .simpleDescription(editForm.getSimpleDescription())
+                .description(editForm.getDescription())
+                .price(editForm.getPrice())
+                .build();
+
+        productMapper.updateProduct(productEditForm);
     }
 
     public int getCount() {
