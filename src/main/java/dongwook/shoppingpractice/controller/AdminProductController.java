@@ -58,7 +58,6 @@ public class AdminProductController {
 
     @GetMapping("/add")
     public String addProductPage(Model model) {
-        model.addAttribute(new ProductForm());
 
         List<Upload> fileNameList = uploadService.findAllFileName();
         model.addAttribute("fileNameList", fileNameList);

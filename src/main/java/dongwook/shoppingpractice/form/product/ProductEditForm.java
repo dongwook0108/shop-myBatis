@@ -2,13 +2,10 @@ package dongwook.shoppingpractice.form.product;
 
 import dongwook.shoppingpractice.common.BaseEntityForm;
 import java.math.BigDecimal;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class ProductEditForm extends BaseEntityForm {
 
     private Long id;
@@ -21,19 +18,13 @@ public class ProductEditForm extends BaseEntityForm {
 
     private BigDecimal price;
 
-    public void setName(String name) {
+    @Builder
+    public ProductEditForm(Long id, String name, String simpleDescription, String description,
+            BigDecimal price) {
+        this.id = id;
         this.name = name;
-    }
-
-    public void setSimpleDescription(String simpleDescription) {
         this.simpleDescription = simpleDescription;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
