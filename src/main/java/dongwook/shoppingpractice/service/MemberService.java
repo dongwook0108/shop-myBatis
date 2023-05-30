@@ -46,7 +46,6 @@ public class MemberService implements UserDetailsService {
         return new UserMember(member);
     }
 
-//    -------------------------------
 
     public void modifyMember(ModifyForm modifyForm) {
         Member member = memberMapper.findById(modifyForm.getId());
@@ -93,15 +92,17 @@ public class MemberService implements UserDetailsService {
         return memberMapper.getCountByEmail(email);
     }
 
-    public void updateMemberFromAdmin(AdminModifyForm form) {
-        Member member = memberMapper.findById(form.getId());
+    public Member updateMemberFromAdmin(Long id, AdminModifyForm form) {
+        Member member = memberMapper.findById(id);
         member.updateMemberByAdmin(form);
         memberMapper.updateMember(member);
+        return member;
     }
 
-    public void deleteMemberFromAdmin(AdminModifyForm form) {
-        Member member = memberMapper.findById(form.getId());
+    public Member deleteMemberFromAdmin(Long id) {
+        Member member = memberMapper.findById(id);
         member.deleteMember();
         memberMapper.deleteMember(member);
+        return member;
     }
 }
