@@ -66,9 +66,9 @@ public class ProductService {
         return productMapper.getListPage(paginationVo);
     }
 
-    public List<Product> getListPageByName(final PaginationVo paginationVo, String name) {
-        return productMapper.getListPageByName(paginationVo, name);
-    }
+//    public List<Product> getListPageByName(final PaginationVo paginationVo, String name) {
+//        return productMapper.getListPageByName(paginationVo, name);
+//    }
 
     public int getCountByName(String name) {
         return productMapper.getCountByName(name);

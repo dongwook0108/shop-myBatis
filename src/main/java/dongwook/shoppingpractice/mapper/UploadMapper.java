@@ -18,11 +18,11 @@ public interface UploadMapper {
             @Result(property = "imagePath", column = "image_path"),
             @Result(property = "originalFileName", column = "original_file_name"),
     })
-    @Select("SELECT * FROM UPLOADFILE")
+    @Select("SELECT * FROM uploadFile")
     List<Upload> findAll();
 
     @ResultMap(value = "UploadFileMap")
-    @Insert(value = "INSERT INTO UPLOADFILE(image_path, original_file_name) values(#{upload.imagePath},#{upload.originalFileName})")
+    @Insert(value = "INSERT INTO uploadFile(image_path, original_file_name) values(#{upload.imagePath},#{upload.originalFileName})")
     void save(@Param(value = "upload") Upload upload);
 
     @ResultMap(value = "UploadFileMap")
