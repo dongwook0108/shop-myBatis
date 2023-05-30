@@ -38,33 +38,36 @@ public interface ProductMapper {
             @Result(property = "featured", column = "featured"),
             @Result(property = "categoryId", column = "category_id")
     })
-    @Select(value = "SELECT * FROM PRODUCT")
+    @Select(value =
+            "SELECT product_id, name, description, simple_description, price, original_file_name,"
+                    + "category_id, featured FROM PRODUCT")
     List<Product> productList();
 
     @ResultMap(value = "ProductMap")
-    @Select(value = "SELECT * FROM PRODUCT where product_id = #{productId}")
+    @Select(value =
+            "SELECT product_id, name, description, simple_description, price, original_file_name, "
+                    + "category_id, featured FROM PRODUCT where product_id = #{productId}")
     Product findById(@Param(value = "productId") Long productId);
 
-    @Update(value = "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy} WHERE product_id = #{product.id} ")
+    @Update(value =
+            "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy}"
+                    + " WHERE product_id = #{product.id} ")
     void updateProduct(@Param(value = "product") ProductEditForm product);
 
-    @Select(value = "SELECT count(*) as listCnt from product")
+    @Select(value = "SELECT count(*) as listCnt from PRODUCT")
     int getCount();
 
-    @Select(value = "SELECT count(*) as listCnt from product where name=#{name}")
+    @Select(value = "SELECT count(*) as listCnt from PRODUCT where name=#{name}")
     int getCountByName(@Param(value = "name") String name);
 
     @ResultMap(value = "ProductMap")
-    @Select(value = "SELECT * FROM product ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
+    @Select(value = "SELECT product_id, name, simple_description, price"
+            + " FROM PRODUCT ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
     List<Product> getListPage(@Param(value = "page") PaginationVo paginationVo);
 
-
-    @Select(value = "SELECT * FROM product where email like concat('%',#{name},'%') ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
-    List<Product> getListPageByName(@Param(value = "page") PaginationVo paginationVo,
-            @Param(value = "name") String name);
-
     @ResultMap(value = "ProductMap")
-    @Select(value = "SELECT * FROM product where featured = true")
+    @Select(value = "SELECT product_id, name, simple_description, description, price"
+            + " FROM PRODUCT where featured = true")
     List<Product> featuredProductList();
 
 }

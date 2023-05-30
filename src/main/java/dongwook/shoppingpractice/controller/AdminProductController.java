@@ -42,10 +42,10 @@ public class AdminProductController {
         if (StringUtils.hasText(name)) {
             count = productService.getCountByName(name);
             paginationVo = new PaginationVo(count, page, size);
-            products = productService.getListPageByName(paginationVo, name);
+            products = productService.getListPage(paginationVo);
         } else {
             count = productService.getCount();
-            paginationVo = new PaginationVo(count, page, size); // 모든 게시글 개수 구하기.
+            paginationVo = new PaginationVo(count, page, size);
             products = productService.getListPage(paginationVo);
         }
 
