@@ -39,7 +39,7 @@ public class MemberService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        dongwook.shoppingpractice.model.member.Member member = memberMapper.findByEmail(email);
+        Member member = memberMapper.findByEmail(email);
         if (ObjectUtils.isEmpty(member) || !member.isActive()) {
             throw new UsernameNotFoundException(email);
         }

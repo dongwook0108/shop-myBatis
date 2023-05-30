@@ -18,7 +18,7 @@ import org.apache.ibatis.annotations.Update;
 public interface ProductMapper {
 
     @Insert(value =
-            "INSERT INTO PRODUCT(name, description, simple_description, price, original_file_name, created_date, created_by, featured, category_id) "
+            "INSERT INTO product(name, description, simple_description, price, original_file_name, created_date, created_by, featured, category_id) "
                     +
                     "VALUES(#{product.name}, #{product.description}, #{product.simpleDescription},#{product.price}, #{product.originalFileName},#{product.createdDate}, #{product.createdBy}, #{product.featured}, #{product.categoryId})")
     void save(@Param(value = "product") ProductForm product);
@@ -40,34 +40,34 @@ public interface ProductMapper {
     })
     @Select(value =
             "SELECT product_id, name, description, simple_description, price, original_file_name,"
-                    + "category_id, featured FROM PRODUCT")
+                    + "category_id, featured FROM product")
     List<Product> productList();
 
     @ResultMap(value = "ProductMap")
     @Select(value =
             "SELECT product_id, name, description, simple_description, price, original_file_name, "
-                    + "category_id, featured FROM PRODUCT where product_id = #{productId}")
+                    + "category_id, featured FROM product where product_id = #{productId}")
     Product findById(@Param(value = "productId") Long productId);
 
     @Update(value =
-            "UPDATE PRODUCT SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy}"
+            "UPDATE product SET name=#{product.name}, description=#{product.description}, simple_description=#{product.simpleDescription}, price=#{product.price}, updated_date=#{product.updatedDate}, updated_by=#{product.updatedBy}"
                     + " WHERE product_id = #{product.id} ")
     void updateProduct(@Param(value = "product") ProductEditForm product);
 
-    @Select(value = "SELECT count(*) as listCnt from PRODUCT")
+    @Select(value = "SELECT count(*) as listCnt from product")
     int getCount();
 
-    @Select(value = "SELECT count(*) as listCnt from PRODUCT where name=#{name}")
+    @Select(value = "SELECT count(*) as listCnt from product where name=#{name}")
     int getCountByName(@Param(value = "name") String name);
 
     @ResultMap(value = "ProductMap")
     @Select(value = "SELECT product_id, name, simple_description, price"
-            + " FROM PRODUCT ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
+            + " FROM product ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
     List<Product> getListPage(@Param(value = "page") PaginationVo paginationVo);
 
     @ResultMap(value = "ProductMap")
     @Select(value = "SELECT product_id, name, simple_description, description, price"
-            + " FROM PRODUCT where featured = true")
+            + " FROM product where featured = true")
     List<Product> featuredProductList();
 
 }
