@@ -6,11 +6,13 @@ import javax.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 @Getter
-@AllArgsConstructor
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class ModifyForm {
 
     static final String NOTNULL = "공백일 수 없습니다";
@@ -41,43 +43,4 @@ public class ModifyForm {
         this.zipcode = member.getZipcode();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setAddressDetail(String addressDetail) {
-        this.addressDetail = addressDetail;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public static ModifyForm modify(ModifyForm form, Long id) {
-        ModifyForm modifyForm = new ModifyForm();
-        modifyForm.setId(id);
-        modifyForm.setUsername(form.getUsername());
-        modifyForm.setPhoneNumber(form.getPhoneNumber());
-        modifyForm.setEmail(form.getEmail());
-        modifyForm.setAddress(form.getAddress());
-        modifyForm.setAddressDetail(form.getAddressDetail());
-        modifyForm.setZipcode(form.getZipcode());
-        return modifyForm;
-    }
 }

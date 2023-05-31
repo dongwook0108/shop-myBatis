@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
 
-// TODO: @Data 삭제
 @Getter
 public class AdminModifyForm extends BaseEntityForm {
 

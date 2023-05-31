@@ -35,7 +35,6 @@ public interface CategoryMapper {
                     + " WHERE category_id = #{category.id}")
     void update(@Param(value = "category") CategoryEditForm editForm);
 
-    // TODO: * 말고 컬럼 명확하게 명시 해주세요
     @ResultMap(value = "CategoryMap")
     @Select(value = "SELECT category_id, name ,category_code, parent_id"
             + " FROM category where parent_id is NULL")

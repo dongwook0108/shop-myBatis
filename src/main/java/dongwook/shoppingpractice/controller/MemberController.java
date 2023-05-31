@@ -88,17 +88,14 @@ public class MemberController {
     }
 
     @PostMapping(value = "/my-page/edit")
-    public String modifyMemberInfo1(@CurrentMember Member member, @Valid ModifyForm form,
+    public String modifyMemberInfo1(@Valid ModifyForm form,
             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "member/my-page-edit";
         }
 
-        // TODO: 서비스 로직으로 옮겨주세여
-        ModifyForm modifyForm = ModifyForm.modify(form, member.getId());
-
-        memberService.modifyMember(modifyForm);
+        memberService.modifyMember(form);
         return "redirect:/member/my-page";
     }
 
