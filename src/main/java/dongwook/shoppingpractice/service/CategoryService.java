@@ -42,7 +42,6 @@ public class CategoryService {
 
     public void updateCategory(CategoryEditForm form) {
 
-        // TODO: 방법 맞춰서 바꾸기
         CategoryEditForm categoryEditForm = CategoryEditForm.builder()
                 .id(form.getId())
                 .name(form.getName())

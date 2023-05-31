@@ -55,7 +55,6 @@ public class AdminMemberController {
         return "admin/accounts";
     }
 
-    // TODO: PATCH 사용
     @PostMapping("/update-member")
     public String editMemberFromAdmin(AdminModifyForm form, RedirectAttributes redirectAttributes) {
         memberService.updateMemberFromAdmin(form.getId(), form);
@@ -63,7 +62,6 @@ public class AdminMemberController {
         return "redirect:/admin/members";
     }
 
-    // TODO: DELETE MAPPING
     @PostMapping("/delete-member")
     public String deleteMemberFromAdmin(AdminModifyForm form) {
         memberService.deleteMemberFromAdmin(form.getId());
