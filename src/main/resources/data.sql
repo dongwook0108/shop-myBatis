@@ -23,6 +23,21 @@ VALUES ('동욱', '01012341234', 'test12@dongwook.com', '12345',
        ('정언', '1234567890', 'test123@hanmail.net', '12345',
         '{bcrypt}$2a$10$gDsJ9wNtNWDR9d2UxJIvsufC7vTmRc9hqituCgb2X3o8vpuaJ1J9W', '123 Main St',
         'Apt 4B',
+        'user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin', 1),
+
+       ('정언', '1234561111', 'test111@hanmail.net', '12345',
+        '{bcrypt}$2a$10$gDsJ9wNtNWDR9d2UxJIvsufC7vTmRc9hqituCgb2X3o8vpuaJ1J9W', '123 Main St',
+        'Apt 4B',
+        'user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin', 1),
+
+       ('정언', '1234562222', 'test222@hanmail.net', '12345',
+        '{bcrypt}$2a$10$gDsJ9wNtNWDR9d2UxJIvsufC7vTmRc9hqituCgb2X3o8vpuaJ1J9W', '123 Main St',
+        'Apt 4B',
+        'user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin', 1),
+
+       ('정언', '1234563333', 'test333@hanmail.net', '12345',
+        '{bcrypt}$2a$10$gDsJ9wNtNWDR9d2UxJIvsufC7vTmRc9hqituCgb2X3o8vpuaJ1J9W', '123 Main St',
+        'Apt 4B',
         'user', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'admin', 'admin', 1);
 
 insert into CATEGORY(name, category_code, parent_id)
