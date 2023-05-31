@@ -1,14 +1,14 @@
 package dongwook.shoppingpractice.form.member;
 
 import dongwook.shoppingpractice.common.BaseEntityForm;
-import java.time.LocalDateTime;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
 
 // TODO: @Data 삭제
-@Data
+@Getter
 public class AdminModifyForm extends BaseEntityForm {
 
     static final String EMAIL_REGEXP_CHECK_PATTERN = "^[a-zA-Z0-9+-\\_.]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$";
@@ -27,9 +27,11 @@ public class AdminModifyForm extends BaseEntityForm {
     @Pattern(regexp = EMAIL_REGEXP_CHECK_PATTERN, message = "올바른 이메일이 아닙니다.")
     private String email;
 
-    private String updatedBy;
-
-    private LocalDateTime updatedDate;
-
-    private boolean active;
+    @Builder
+    public AdminModifyForm(Long id, String phoneNumber, String username, String email) {
+        this.id = id;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.email = email;
+    }
 }
