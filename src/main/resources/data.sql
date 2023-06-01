@@ -60,6 +60,24 @@ VALUES ('book', '내이름은 독서왕', '책한권으로 똑똑해져봅시다
         'bottle.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 4),
 
        ('shirts', '간지 폭발 셔츠', '입으면 멋이란게 느껴짐', 20000,
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 7),
+
+       ('shirts1', '간지 폭발 셔츠1', '입으면 멋이란게 느껴짐', 20000,
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 1),
+
+       ('shirts2', '간지 폭발 셔츠2', '입으면 멋이란게 느껴짐', 20000,
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 4),
+
+       ('shirts3', '간지 폭발 셔츠3', '입으면 멋이란게 느껴짐', 20000,
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 7),
+
+       ('shirts4', '간지 폭발 셔츠4', '입으면 멋이란게 느껴짐', 20000,
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 1),
+
+       ('shirts5', '간지 폭발 셔츠5', '입으면 멋이란게 느껴짐', 20000,
+        'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 4),
+
+       ('shirts6', '간지 폭발 셔츠6', '입으면 멋이란게 느껴짐', 20000,
         'shirts.jpeg', CURRENT_TIMESTAMP, 'admin', 'admin', 1, 7);
 
 insert into UPLOADFILE(image_path, original_file_name)

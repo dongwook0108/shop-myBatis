@@ -28,7 +28,22 @@
                             <a th:href="@{/admin/products/add}" class="btn btn-small btn-primary">상품
                                 추가</a>
                         </div>
+
+                        <form th:action="@{/admin/products}" method="get">
+                            <!--                            <label for="name"></label>-->
+                            <label for="nameSearch"></label>
+
+                            <input type="text" id="nameSearch"
+                                   name="name"
+                                   placeholder="상품 검색">
+
+                            <button type="submit" style="border-radius: 5px">검색하기</button>
+                        </form>
+
                     </div>
+                    <th:block th:if="${products.isEmpty()}">
+                        <p>결과가 없습니다.</p>
+                    </th:block>
                     <div class="table-responsive">
                         <table class="table table-hover table-striped tm-table-striped-even mt-3">
 
@@ -95,7 +110,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>

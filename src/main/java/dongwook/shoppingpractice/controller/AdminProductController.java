@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.controller;
 
+import dongwook.shoppingpractice.form.common.PageDto;
 import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
@@ -13,12 +14,11 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,25 +31,15 @@ public class AdminProductController {
 
     // TODO: PageDTO 만들어서 사이즈랑 페이지 값 받기
     @GetMapping
-    public String selectListAndPage(Model model,
-            @RequestParam(value = "page", defaultValue = "1") int page,
-            @RequestParam(value = "size", defaultValue = "5") int size,
-            @RequestParam(value = "name", required = false) String name) {
-        List<Product> products;
+    public String selectListAndPage(Model model, @ModelAttribute PageDto pageDto) {
 
-        PaginationVo paginationVo;
-        int count;
-        if (StringUtils.hasText(name)) {
-            count = productService.getCountByName(name);
-            paginationVo = new PaginationVo(count, page, size);
-            products = productService.getListPage(paginationVo);
-        } else {
-            count = productService.getCount();
-            paginationVo = new PaginationVo(count, page, size);
-            products = productService.getListPage(paginationVo);
-        }
+        pageDto.setTotalCount(productService.getCount());
 
-        model.addAttribute("products", products);
+        List<Product> productList = productService.getProductList(pageDto);
+        PaginationVo paginationVo = new PaginationVo(pageDto.getTotalCount(), pageDto.getPage(),
+                pageDto.getSize());
+
+        model.addAttribute("products", productList);
         model.addAttribute("pageVo", paginationVo);
 
         return "admin/products";
