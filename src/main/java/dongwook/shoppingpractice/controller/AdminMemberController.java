@@ -23,12 +23,12 @@ public class AdminMemberController {
     private final MemberService memberService;
 
     @GetMapping
-    public String adminHome() {
+    public String adminHomePage() {
         return "admin/index";
     }
 
     @GetMapping("/members")
-    public String selectListAndPage(Model model, @ModelAttribute PageDto pageDto) {
+    public String memberListPage(Model model, @ModelAttribute PageDto pageDto) {
         pageDto.setTotalCount(memberService.getCount());
 
         List<Member> memberList = memberService.getMemberList(pageDto);
@@ -42,7 +42,8 @@ public class AdminMemberController {
     }
 
     @PostMapping("/update-member")
-    public String editMemberFromAdmin(AdminModifyForm form, RedirectAttributes redirectAttributes) {
+    public String updateMemberFromAdmin(AdminModifyForm form,
+            RedirectAttributes redirectAttributes) {
         memberService.updateMemberFromAdmin(form.getId(), form);
         redirectAttributes.addFlashAttribute("message", "수정 완료");
         return "redirect:/admin/members";

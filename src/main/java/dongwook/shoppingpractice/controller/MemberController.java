@@ -39,8 +39,7 @@ public class MemberController {
     }
 
     @GetMapping(value = "/sign-up")
-    public String signUp(Model model) {
-
+    public String signUpPage(Model model) {
         model.addAttribute(new SignUpForm());
         return "member/sign-up";
     }
@@ -56,12 +55,12 @@ public class MemberController {
     }
 
     @GetMapping(value = "/check-password")
-    public String checkPasswordForm() {
+    public String checkPasswordPage() {
         return "member/check-password";
     }
 
     @PostMapping(value = "/check-password")
-    public String checkPassword(@CurrentMember Member member,
+    public String checkPasswordProcess(@CurrentMember Member member,
             String password, Model model) {
 
         if (memberService.checkPassword(member, password)) {
@@ -73,7 +72,7 @@ public class MemberController {
     }
 
     @GetMapping(value = "/my-page")
-    public String modifyMemberInfoForm(@CurrentMember Member member, Model model) {
+    public String getModifyMemberFormPage(@CurrentMember Member member, Model model) {
         model.addAttribute("message", "수정 완료");
         model.addAttribute("findMember", member);
         return "member/my-page";
@@ -81,14 +80,14 @@ public class MemberController {
 
     //---------------------------------------------회원 정보 수정 폼-------------------------------------------------------------
     @GetMapping(value = "/my-page/edit")
-    public String modifyMemberInfoForm1(@CurrentMember Member member, Model model) {
+    public String modifyMemberFormPage(@CurrentMember Member member, Model model) {
         model.addAttribute(member);
         model.addAttribute(new ModifyForm(member));
         return "member/my-page-edit";
     }
 
     @PostMapping(value = "/my-page/edit")
-    public String modifyMemberInfo1(@Valid ModifyForm form,
+    public String modifyMemberProcess(@Valid ModifyForm form,
             BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
