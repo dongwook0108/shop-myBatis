@@ -29,7 +29,6 @@ public class AdminProductController {
     private final UploadService uploadService;
     private final CategoryService categoryService;
 
-    // TODO: PageDTO 만들어서 사이즈랑 페이지 값 받기
     @GetMapping
     public String selectListAndPage(Model model, @ModelAttribute PageDto pageDto) {
 

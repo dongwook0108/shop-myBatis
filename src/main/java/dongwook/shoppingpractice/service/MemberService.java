@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.service;
 
+import dongwook.shoppingpractice.common.security.SecurityUtils;
 import dongwook.shoppingpractice.form.common.PageDto;
 import dongwook.shoppingpractice.mapper.MemberMapper;
 import dongwook.shoppingpractice.form.member.AdminModifyForm;
@@ -33,7 +34,8 @@ public class MemberService implements UserDetailsService {
     public void save(SignUpForm form) {
 
         // TODO: SecurityUtils 만들어서 인크립트할 수 있도록 변경해보기
-        form.setPassword(passwordEncoder.encode(form.getPassword()));
+//        form.setPassword(passwordEncoder.encode(form.getPassword())); -> {bcrypt} 표시
+        form.setPassword(SecurityUtils.encryptPassword(form.getPassword()));
         Member member = new Member(form);
         memberMapper.save(member);
     }
