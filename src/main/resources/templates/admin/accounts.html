@@ -73,8 +73,9 @@
                             <li class="page-item"
                                 th:each="pageNum : ${#numbers.sequence(pageVo.startPage, pageVo.endPage)}">
                                 <a class="page-link" th:href="@{'/admin/members?page='+${pageNum}}"
-                                   th:text="${pageNum}">1</a>
+                                   th:text="${pageNum}"></a>
                             </li>
+
 
                             <li class="page-item">
                                 <a class="page-link"
@@ -87,6 +88,7 @@
                         </ul>
                     </nav>
                 </div>
+
 
                 <ul class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big"></ul>
             </div>

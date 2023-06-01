@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.service;
 
+import dongwook.shoppingpractice.form.common.PageDto;
 import dongwook.shoppingpractice.mapper.MemberMapper;
 import dongwook.shoppingpractice.form.member.AdminModifyForm;
 import dongwook.shoppingpractice.form.member.ModifyForm;
@@ -19,6 +20,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 
 @Service
@@ -76,15 +78,38 @@ public class MemberService implements UserDetailsService {
         return memberMapper.findById(memberId);
     }
 
+    public List<Member> getMemberList(PageDto pageDTO) {
+
+        int page = pageDTO.getPage();
+        int size = pageDTO.getSize();
+        String email = pageDTO.getEmail();
+
+        int count;
+        List<Member> memberList;
+        PaginationVo paginationVo;
+
+        if (StringUtils.hasText(email)) {
+            count = getCountByEmail(email);
+            paginationVo = new PaginationVo(count, page, size);
+            memberList = getListPageByEmail(paginationVo, email);
+        } else {
+            count = getCount();
+            paginationVo = new PaginationVo(count, page, size);
+            memberList = getListPage(paginationVo);
+        }
+
+        return memberList;
+    }
+
     public int getCount() {
         return this.memberMapper.getCount();
     }
 
-    public List<Member> getListPage(final PaginationVo paginationVo) {
+    public List<Member> getListPage(PaginationVo paginationVo) {
         return memberMapper.getListPage(paginationVo);
     }
 
-    public List<Member> getListPageByEmail(final PaginationVo paginationVo, String email) {
+    public List<Member> getListPageByEmail(PaginationVo paginationVo, String email) {
         return memberMapper.getListPageByEmail(paginationVo, email);
     }
 
