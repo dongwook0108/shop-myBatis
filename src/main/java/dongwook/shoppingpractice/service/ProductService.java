@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.service;
 
+import dongwook.shoppingpractice.form.common.PageDto;
 import dongwook.shoppingpractice.form.common.PaginationVo;
 import dongwook.shoppingpractice.form.product.ProductEditForm;
 import dongwook.shoppingpractice.form.product.ProductForm;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import org.springframework.util.StringUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -58,6 +60,28 @@ public class ProductService {
         productMapper.updateProduct(productEditForm);
     }
 
+    public List<Product> getProductList(PageDto pageDto) {
+        int page = pageDto.getPage();
+        int size = pageDto.getSize();
+        String name = pageDto.getName();
+
+        int count;
+        List<Product> productList;
+        PaginationVo paginationVo;
+
+        if (StringUtils.hasText(name)) {
+            count = getCountByName(name);
+            paginationVo = new PaginationVo(count, page, size);
+            productList = getListPageByName(paginationVo, name);
+        } else {
+            count = getCount();
+            paginationVo = new PaginationVo(count, page, size);
+            productList = getListPage(paginationVo);
+        }
+
+        return productList;
+    }
+
     public int getCount() {
         return this.productMapper.getCount();
     }
@@ -66,9 +90,9 @@ public class ProductService {
         return productMapper.getListPage(paginationVo);
     }
 
-//    public List<Product> getListPageByName(final PaginationVo paginationVo, String name) {
-//        return productMapper.getListPageByName(paginationVo, name);
-//    }
+    public List<Product> getListPageByName(final PaginationVo paginationVo, String name) {
+        return productMapper.getListPageByName(paginationVo, name);
+    }
 
     public int getCountByName(String name) {
         return productMapper.getCountByName(name);

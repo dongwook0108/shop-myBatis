@@ -11,11 +11,15 @@ public class PageDto {
 
     private String email;
 
+    // 상품이름
+    private String name;
+
     private int totalCount;
 
     public PageDto() {
         this.page = 1; // 기본 페이지 설정
         this.size = 5; // 기본 사이즈 설정
     }
+
 }
 

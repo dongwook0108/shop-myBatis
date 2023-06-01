@@ -70,4 +70,10 @@ public interface ProductMapper {
             + " FROM product where featured = true")
     List<Product> featuredProductList();
 
+    @ResultMap(value = "ProductMap")
+    @Select(value = "SELECT product_id, name, simple_description, price"
+            + " FROM product where name like concat('%',#{name},'%')"
+            + " ORDER BY product_id DESC LIMIT #{page.rowCount} OFFSET #{page.offset}")
+    List<Product> getListPageByName(@Param(value = "page") PaginationVo paginationVo,
+            @Param(value = "name") String name);
 }

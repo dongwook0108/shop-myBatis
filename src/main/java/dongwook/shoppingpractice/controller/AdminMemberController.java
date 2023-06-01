@@ -28,12 +28,12 @@ public class AdminMemberController {
     }
 
     @GetMapping("/members")
-    public String selectListAndPage(Model model, @ModelAttribute PageDto pageDTO) {
-        pageDTO.setTotalCount(memberService.getCount());
+    public String selectListAndPage(Model model, @ModelAttribute PageDto pageDto) {
+        pageDto.setTotalCount(memberService.getCount());
 
-        List<Member> memberList = memberService.getMemberList(pageDTO);
-        PaginationVo paginationVo = new PaginationVo(pageDTO.getTotalCount(), pageDTO.getPage(),
-                pageDTO.getSize());
+        List<Member> memberList = memberService.getMemberList(pageDto);
+        PaginationVo paginationVo = new PaginationVo(pageDto.getTotalCount(), pageDto.getPage(),
+                pageDto.getSize());
 
         model.addAttribute("memberList", memberList);
         model.addAttribute("pageVo", paginationVo);
