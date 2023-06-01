@@ -30,7 +30,6 @@ public class MemberService implements UserDetailsService {
     private final MemberMapper memberMapper;
     private final PasswordEncoder passwordEncoder;
 
-
     public void save(SignUpForm form) {
 
         // TODO: SecurityUtils 만들어서 인크립트할 수 있도록 변경해보기
@@ -52,7 +51,6 @@ public class MemberService implements UserDetailsService {
     public void modifyMember(ModifyForm modifyForm) {
         Member member = memberMapper.findById(modifyForm.getId());
         member.updateMember(modifyForm);
-
         memberMapper.updateMember(member);
         login(member);
     }
