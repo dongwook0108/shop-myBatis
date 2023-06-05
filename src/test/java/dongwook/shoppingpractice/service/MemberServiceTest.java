@@ -1,14 +1,12 @@
-package dongwook.shoppingpractice.controller;
+package dongwook.shoppingpractice.service;
 
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import dongwook.shoppingpractice.mapper.MemberMapper;
 import dongwook.shoppingpractice.model.member.Member;
-import dongwook.shoppingpractice.validator.SignUpValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +15,12 @@ import org.springframework.dao.DuplicateKeyException;
 
 @SpringBootTest
 @Slf4j
-class MemberControllerTest {
+class MemberServiceTest {
 
     private final MemberMapper memberMapper;
 
     @Autowired
-    MemberControllerTest(MemberMapper memberMapper) {
+    MemberServiceTest(MemberMapper memberMapper) {
         this.memberMapper = memberMapper;
     }
 
@@ -46,8 +44,9 @@ class MemberControllerTest {
         memberMapper.save(member);
 
         //then
-        Assertions.assertThat(member.getUsername()).isEqualTo("kim");
-        Assertions.assertThat(member.getEmail()).isEqualTo("test13213@naver.com");
+        assertThat(member.getUsername()).isEqualTo("kim");
+        assertThat(member.getEmail()).isEqualTo("test13213@naver.com");
+
     }
 
     @Test
@@ -76,4 +75,5 @@ class MemberControllerTest {
 
 
     }
+
 }
