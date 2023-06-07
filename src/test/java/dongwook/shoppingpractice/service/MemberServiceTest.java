@@ -1,7 +1,7 @@
 package dongwook.shoppingpractice.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import dongwook.shoppingpractice.mapper.MemberMapper;
