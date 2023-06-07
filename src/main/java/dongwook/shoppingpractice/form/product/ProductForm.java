@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 import org.springframework.util.ObjectUtils;
 
 @Getter
+@ToString
 public class ProductForm {
 
     private String name;
