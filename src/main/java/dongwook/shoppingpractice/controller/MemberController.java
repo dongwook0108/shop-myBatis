@@ -1,5 +1,6 @@
 package dongwook.shoppingpractice.controller;
 
+import dongwook.shoppingpractice.common.aop.annotation.Trace;
 import dongwook.shoppingpractice.form.member.ModifyForm;
 import dongwook.shoppingpractice.form.member.SignUpForm;
 import dongwook.shoppingpractice.model.member.CurrentMember;
@@ -38,12 +39,14 @@ public class MemberController {
         webDataBinder.addValidators(modifyValidator);
     }
 
+    @Trace
     @GetMapping(value = "/sign-up")
     public String signUpPage(Model model) {
         model.addAttribute(new SignUpForm());
         return "member/sign-up";
     }
 
+    @Trace
     @PostMapping(value = "/sign-up")
     public String signUpProcess(@Valid SignUpForm signUpForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -54,11 +57,13 @@ public class MemberController {
         return "redirect:/login";
     }
 
+    @Trace
     @GetMapping(value = "/check-password")
     public String checkPasswordPage() {
         return "member/check-password";
     }
 
+    @Trace
     @PostMapping(value = "/check-password")
     public String checkPasswordProcess(@CurrentMember Member member,
             String password, Model model) {
@@ -71,6 +76,7 @@ public class MemberController {
         return "member/check-password";
     }
 
+    @Trace
     @GetMapping(value = "/my-page")
     public String getModifyMemberFormPage(@CurrentMember Member member, Model model) {
         model.addAttribute("message", "수정 완료");
@@ -79,6 +85,7 @@ public class MemberController {
     }
 
     //---------------------------------------------회원 정보 수정 폼-------------------------------------------------------------
+    @Trace
     @GetMapping(value = "/my-page/edit")
     public String modifyMemberFormPage(@CurrentMember Member member, Model model) {
         model.addAttribute(member);
@@ -86,6 +93,7 @@ public class MemberController {
         return "member/my-page-edit";
     }
 
+    @Trace
     @PostMapping(value = "/my-page/edit")
     public String modifyMemberProcess(@Valid ModifyForm form,
             BindingResult bindingResult) {
