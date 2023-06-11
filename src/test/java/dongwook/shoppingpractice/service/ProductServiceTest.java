@@ -17,7 +17,7 @@ class ProductServiceTest {
 
 
     @Autowired
-    private ProductService productService;
+    ProductService productService;
 
     @Test
     void 상품저장() {
