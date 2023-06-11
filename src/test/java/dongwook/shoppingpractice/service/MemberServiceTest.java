@@ -22,14 +22,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @Slf4j
 class MemberServiceTest {
 
-    private final MemberMapper memberMapper;
-    private final MemberService memberService;
-
     @Autowired
-    MemberServiceTest(MemberMapper memberMapper, MemberService memberService) {
-        this.memberMapper = memberMapper;
-        this.memberService = memberService;
-    }
+    private MemberMapper memberMapper;
+    @Autowired
+    private MemberService memberService;
 
     @Test
     @DisplayName("회원가입")

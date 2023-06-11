@@ -11,7 +11,6 @@ import dongwook.shoppingpractice.model.member.Member;
 import dongwook.shoppingpractice.model.member.UserMember;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
