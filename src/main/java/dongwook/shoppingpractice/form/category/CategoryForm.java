@@ -2,9 +2,11 @@ package dongwook.shoppingpractice.form.category;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 
 @Getter
+@ToString
 //@NoArgsConstructor -> 이게 있으면 객체를 못만들어주는데 이유 찾아보기
 public class CategoryForm {
 
