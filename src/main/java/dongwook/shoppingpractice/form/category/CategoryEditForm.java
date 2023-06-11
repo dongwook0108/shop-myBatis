@@ -2,8 +2,10 @@ package dongwook.shoppingpractice.form.category;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class CategoryEditForm {
 
     private Long id;
