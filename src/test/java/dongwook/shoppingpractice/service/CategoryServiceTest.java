@@ -1,10 +1,8 @@
 package dongwook.shoppingpractice.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.form.category.CategoryForm;
 import dongwook.shoppingpractice.mapper.CategoryMapper;
-import dongwook.shoppingpractice.model.Category;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -31,13 +29,32 @@ class CategoryServiceTest {
                 .build();
 
         // when
-        categoryMapper.save(category);
+        categoryService.save(category);
 
         // then
         log.info("category={}", category);
         Assertions.assertThat(category.getName()).isEqualTo("long-shirts");
         Assertions.assertThat(category.getCategoryCode()).isEqualTo("shirts");
         Assertions.assertThat(category.getParentId()).isEqualTo(1L);
+    }
+
+    @Test
+    void 카테고리_업데이트() {
+        // given
+        CategoryEditForm category = CategoryEditForm.builder()
+                .categoryCode("shirts")
+                .name("long-shirts")
+                .parentId(2L)
+                .build();
+
+        // when
+        categoryService.updateCategory(category);
+
+        // then
+        log.info("category={}", category);
+        Assertions.assertThat(category.getName()).isEqualTo("long-shirts");
+        Assertions.assertThat(category.getCategoryCode()).isEqualTo("shirts");
+        Assertions.assertThat(category.getParentId()).isEqualTo(2L);
     }
 
 
