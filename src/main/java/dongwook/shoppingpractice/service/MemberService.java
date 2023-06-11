@@ -55,7 +55,7 @@ public class MemberService implements UserDetailsService {
         login(member);
     }
 
-    private void login(Member member) {
+    public void login(Member member) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
                 new UserMember(member),
                 member.getPassword(),
