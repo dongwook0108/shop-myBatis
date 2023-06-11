@@ -23,9 +23,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 class MemberServiceTest {
 
     @Autowired
-    private MemberMapper memberMapper;
+    MemberMapper memberMapper;
     @Autowired
-    private MemberService memberService;
+    MemberService memberService;
 
     @Test
     @DisplayName("회원가입")

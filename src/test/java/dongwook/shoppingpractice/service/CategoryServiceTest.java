@@ -2,7 +2,6 @@ package dongwook.shoppingpractice.service;
 
 import dongwook.shoppingpractice.form.category.CategoryEditForm;
 import dongwook.shoppingpractice.form.category.CategoryForm;
-import dongwook.shoppingpractice.mapper.CategoryMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,11 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CategoryServiceTest {
 
     @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
-    private CategoryMapper categoryMapper;
-
+    CategoryService categoryService;
     @Test
     void 카테고리_저장() {
         // given
