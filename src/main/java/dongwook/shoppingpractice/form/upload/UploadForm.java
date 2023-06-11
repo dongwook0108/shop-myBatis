@@ -1,8 +1,10 @@
 package dongwook.shoppingpractice.form.upload;
 
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class UploadForm {
 
     private String imagePath;
