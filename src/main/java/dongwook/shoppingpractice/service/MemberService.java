@@ -32,7 +32,8 @@ public class MemberService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     public void save(SignUpForm form) {
-        form.setPassword(SecurityUtils.encryptPassword(form.getPassword()));
+        form.setPassword(passwordEncoder.encode(form.getPassword()));
+//        form.setPassword(SecurityUtils.encryptPassword(form.getPassword()));
         Member member = new Member(form);
         memberMapper.save(member);
     }
